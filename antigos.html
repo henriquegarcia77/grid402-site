@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garagem Clássica — Grid 402 Performance</title>
+<meta name="description" content="Peças de reposição e restauração para carros antigos nacionais.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="apple-touch-icon" href="favicon-180.png">
+<link rel="stylesheet" href="style.css?v=4">
+<style>
+:root{--cream:#f3ead8;--brown:#2a1d12;--rust:#b5562b;--soft:#6b5a48}
+body{background:var(--cream)}
+nav{background:rgba(243,234,216,.9)}
+.serif{font-family:'Playfair Display',serif}
+.hero{min-height:80vh;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;padding-top:20px}
+.hero h1{font-family:'Playfair Display';font-size:clamp(54px,8vw,112px);line-height:.95;color:var(--brown)}
+.hero h1 i{color:var(--rust)}
+.hero p{color:var(--soft);font-size:18px;max-width:480px;margin:24px 0 30px}
+.cstage{position:relative;width:100%;height:min(520px,70vw);justify-self:center}
+#c3d{width:100%;height:100%;display:block;cursor:grab}
+.cload{position:absolute;inset:0;display:grid;place-items:center;font-size:12px;letter-spacing:.2em;color:var(--rust)}
+.badge{width:min(440px,90%);aspect-ratio:1;border-radius:50%;border:3px solid var(--brown);display:grid;place-items:center;text-align:center;position:relative;justify-self:center;background:#fbf5e8;box-shadow:12px 12px 0 var(--brown)}
+.badge::before{content:"";position:absolute;inset:16px;border-radius:50%;border:2px dashed var(--rust)}
+.badge b{font-family:var(--font);font-size:clamp(90px,12vw,160px);color:var(--rust);line-height:1}
+.badge span{font-size:13px;letter-spacing:4px;color:var(--brown);font-weight:800}
+.badge .rot{position:absolute;inset:0;animation:spin 30s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.eras{display:flex;gap:10px;margin-bottom:30px;flex-wrap:wrap}
+.eras button{background:none;border:2px solid var(--brown);padding:10px 20px;font:800 13px var(--font);text-transform:uppercase;cursor:pointer;color:var(--brown)}
+.eras button.a{background:var(--brown);color:var(--cream)}
+.cars{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:26px}
+.car{background:#fff8ec;border:2px solid var(--brown);padding:24px;box-shadow:6px 6px 0 var(--brown);transition:.2s}
+.car:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--rust)}
+.car .yr{font-family:var(--font);font-size:46px;color:var(--rust);line-height:1}
+.car h4{font-family:'Playfair Display';font-size:24px;margin:6px 0;color:var(--brown)}
+.car p{font-size:14px;color:var(--soft)}
+.car ul{list-style:none;margin:14px 0;font-size:13px;color:var(--brown)}
+.car li::before{content:"› ";color:var(--rust);font-weight:800}
+.car a{font-weight:800;font-size:13px;color:var(--rust);text-transform:uppercase}
+.car.hide{display:none}
+.sh small{color:var(--rust)}.sh p{color:var(--soft)}
+h2{color:var(--brown)}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.services div{border-top:3px solid var(--rust);padding-top:20px}
+.services h4{font-family:'Playfair Display';font-size:24px;color:var(--brown)}
+.services p{color:var(--soft);font-size:14px;margin-top:6px}
+.contact{text-align:center;background:var(--brown);color:var(--cream)}
+.contact h2{color:var(--cream);font-family:'Playfair Display';font-size:clamp(46px,7vw,96px)}
+.contact p{color:#cbb99f;margin:20px auto 30px;max-width:520px}
+.contact .btn.ghost{color:var(--cream);border-color:var(--cream)}
+.ticker{background:var(--brown);color:var(--cream)}
+footer{background:#fbf5e8}
+@media(max-width:860px){.hero,.services{grid-template-columns:1fr}.hero{padding-top:110px}}
+.car{display:flex;flex-direction:column;gap:2px}
+.car .yr{font-family:var(--font)!important;font-size:12px!important;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--rust)}
+.car h4{font-size:20px!important;line-height:1.25;margin:6px 0 4px!important}
+.car .pr{font-size:26px;font-weight:700;letter-spacing:-.02em;color:var(--brown);margin-top:auto;padding-top:12px}
+.car .de{color:var(--soft);font-size:13px;margin-top:10px}
+.car .go{margin-top:14px;font-weight:800;font-size:13px;color:var(--rust)}
+.minfo{color:var(--soft);margin:-10px 0 26px;font-size:16px}.minfo b{color:var(--brown)}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.mcard{text-align:left;background:#fff8ec;border:2px solid var(--brown);box-shadow:8px 8px 0 var(--brown);padding:34px 30px;cursor:pointer;font-family:var(--font);color:var(--brown);display:flex;flex-direction:column;gap:6px;min-height:260px;border-radius:20px;transition:.25s}
+.mcard:hover{transform:translate(-4px,-4px);box-shadow:12px 12px 0 var(--rust)}
+.mcard .mn{font-size:13px;font-weight:800;color:var(--rust);letter-spacing:.1em}
+.mcard h3{font-size:40px!important;line-height:1;margin:6px 0}
+.mcard p{color:var(--soft);font-size:15px;flex:1}
+.mcard .mc{font-size:13px;font-weight:700;color:var(--soft)}
+.mcard .mgo{margin-top:10px;font-weight:800;color:var(--rust)}
+.eras .back{border-color:transparent!important;color:var(--rust)!important}
+.mt{font-size:44px!important;color:var(--brown);margin-bottom:4px}
+@media(max-width:900px){.mgrid{grid-template-columns:1fr 1fr}}@media(max-width:560px){.mgrid{grid-template-columns:1fr}}
+.cimg{margin:-24px -24px 16px;aspect-ratio:4/3;background:#fff;border-radius:18px 18px 0 0;overflow:hidden;display:grid;place-items:center;border-bottom:2px solid var(--brown)}.cimg img{width:88%;height:88%;object-fit:contain;transition:transform .6s cubic-bezier(.16,1,.3,1)}.car:hover .cimg img{transform:scale(1.08)}
+.car{overflow:hidden}
+.mimgs{display:flex;gap:8px;margin:-6px 0 14px}.mimgs img{width:64px;height:64px;object-fit:contain;background:#fff;border:1.5px solid var(--brown);border-radius:12px;transition:.4s}.mcard:hover .mimgs img:nth-child(1){transform:rotate(-6deg)}.mcard:hover .mimgs img:nth-child(3){transform:rotate(6deg)}
+.psearch{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e5dccb;border-radius:14px;padding:0 16px;margin:0 0 20px;color:#86868b}
+.psearch:focus-within{border-color:var(--rust)}.psearch input{flex:1;border:0;outline:0;background:none;padding:15px 0;font:500 16px Inter,sans-serif}
+.more{text-align:center;margin-top:30px}
+.cfoot{background:#2a1d12;color:#cbbba2;padding:60px 0 30px;font-size:14px;border:0}
+.cfoot .wrap{display:block}.cfoot .cols{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px}
+.cfoot h6{color:#f3e9d6;font:800 12px var(--font);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
+.cfoot li{list-style:none;padding:4px 0}.cfoot a:hover{color:#e0874f}
+.cfoot .copy{border-top:1px solid #4a3828;margin-top:40px;padding-top:20px;font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+@media(max-width:860px){.cfoot .cols{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div id="hdr"></div>
+
+<header class="wrap hero">
+  <div>
+    <span class="tag mono" style="color:var(--rust);border-color:var(--rust)">// GARAGEM CLÁSSICA</span>
+    <h1>A história<br><i>continua rodando.</i></h1>
+    <p>Peças de reposição e restauração para os clássicos nacionais. Do Fusca ao Maverick, a gente ajuda a manter o seu original.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <a href="#modelos" class="btn ghost">Escolher modelo →</a>
+    </div>
+  </div>
+  <div class="cstage"><canvas id="c3d"></canvas><div class="cload mono" id="cload">CARREGANDO O CLÁSSICO…</div></div>
+</header>
+
+<div class="ticker"><div id="tk"></div></div>
+
+<section id="modelos"><div class="wrap">
+  <div class="sh reveal"><div><small class="mono">01 / MODELOS</small><h2>Escolha o<br>seu clássico</h2></div>
+  <p>Clique no seu carro para ver todas as peças. Compra pelo Mercado Livre.</p></div>
+  <div class="eras" id="eras"></div>
+  <div class="minfo" id="minfo"></div>
+  <label class="psearch" id="psw" style="display:none"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="pq" type="search" placeholder="Buscar peça: carburador, freio, junta…" autocomplete="off"></label>
+  <div class="cars stagger" id="cars"></div>
+  <div class="more" id="more" style="display:none"><button class="btn" id="moreBtn">Ver mais peças</button></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="sh reveal"><div><small class="mono">02 / RESTAURAÇÃO</small><h2>O que a gente<br>encontra pra você</h2></div></div>
+  <div class="services reveal">
+    <div><h4>Mecânica</h4><p>Peças de motor, carburação, freios e suspensão para deixar o clássico rodando bem.</p></div>
+    <div><h4>Acabamento</h4><p>Frisos, emblemas, lanternas, borrachas e peças de interior.</p></div>
+    <div><h4>Compra segura</h4><p>Pagamento, entrega e garantia direto pelo Mercado Livre.</p></div>
+  </div>
+</div></section>
+
+<footer class="cfoot"><div class="wrap">
+  <div class="cols">
+    <div><a href="index.html"><img src="logo-sm.png" alt="Grid 402 Performance" style="height:64px"></a><p style="margin-top:12px;max-width:280px">Peças de reposição e restauração para carros antigos. Vendas pelo Mercado Livre.</p></div>
+    <div><h6>Modelos</h6><ul id="footMods"></ul></div>
+    <div><h6>Institucional</h6><ul><li><a href="index.html">Performance</a></li><li><a href="na-pista.html">Na pista</a></li><li><a href="eventos.html">Eventos</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+    <div><h6>Siga</h6><ul><li><a href="https://www.instagram.com/grid402performance/" target="_blank">Instagram</a></li><li><a href="https://www.facebook.com/profile.php?id=61588606083936" target="_blank">Facebook</a></li></ul></div>
+  </div>
+  <div class="copy"><span>© <span id="y"></span> Grid 402 Performance · Garagem Clássica</span><span>Os produtos são vendidos e entregues pelo Mercado Livre.</span></div>
+</div></footer>
+
+
+<script src="config.js"></script>
+<script src="antigos.js"></script>
+<script src="header.js?v=5"></script>
+<script>
+const ml = q => `https://lista.mercadolivre.com.br/${encodeURIComponent(q)}`;
+const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const conta=id=>PECAS_ANTIGOS.filter(p=>p.modelo===id).length;
+function modelos(){psw.style.display='none';more.style.display='none';
+  eras.style.display='none';minfo.innerHTML='';
+  cars.className='mgrid stagger';
+  cars.innerHTML=MODELOS.map((m,i)=>`<button class="mcard" data-m="${m.id}">
+    ${(()=>{const f=PECAS_ANTIGOS.filter(p=>p.modelo===m.id&&p.img).slice(0,3);return f.length?`<div class="mimgs">${f.map(p=>`<img src="${p.img}" alt="">`).join('')}</div>`:''})()}<span class="mn">${String(i+1).padStart(2,'0')}</span><h3>${m.nome}</h3><p>${m.desc}</p>
+    <span class="mc">${conta(m.id)} ${conta(m.id)===1?'peça':'peças'}</span><span class="mgo">Ver sobre o carro →</span></button>`).join('');
+  requestAnimationFrame(()=>cars.classList.add('in'));
+}
+const norm=t=>t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+function drawP(){const per=innerWidth<=760?6:9;_lim=_lim||per;const q=norm(pq.value.trim());
+  const L=PECAS_ANTIGOS.filter(p=>p.modelo===_cur&&(!q||norm(p.nome+' '+p.tipo).includes(q)));
+  more.style.display=L.length>_lim?'':'none';
+  cars.innerHTML=L.length?L.slice(0,_lim).map(p=>`<a class="car" href="${p.link}" target="_blank" rel="sponsored noopener">
+    ${p.img?`<div class="cimg"><img src="${p.img}" alt="${p.nome}" loading="lazy" onerror="this.parentNode.remove()"></div>`:''}<div class="yr">${p.tipo}</div><h4>${p.nome}</h4>
+    ${p.de?`<s class="de">${brl(p.de)}</s>`:''}<div class="pr">${p.preco?brl(p.preco):'Ver preço'}</div>
+    <span class="go">Comprar no Mercado Livre →</span></a>`).join(''):'<p style="color:#86868b">Nenhuma peça encontrada.</p>';cars.classList.add('in')}
+pq.oninput=()=>{_lim=0;drawP()};moreBtn.onclick=()=>{_lim+=innerWidth<=760?6:9;drawP()};
+function pecas(id){
+  const m=MODELOS.find(x=>x.id===id);
+  eras.style.display='flex';
+  eras.innerHTML='<button class="back">← Todos os modelos</button>'+MODELOS.map(x=>`<button data-m="${x.id}" class="${x.id===id?'a':''}">${x.nome}</button>`).join('');
+  minfo.innerHTML=`<h3 class="mt">${m.nome}</h3><p>${m.desc} ${conta(id)} peças disponíveis.</p>`;
+  cars.className='cars stagger';
+  window._cur=id;window._lim=0;pq.value='';psw.style.display='flex';drawP();
+  requestAnimationFrame(()=>cars.classList.add('in'));
+  document.getElementById('modelos').scrollIntoView({behavior:'smooth'});
+}
+eras.onclick=e=>{if(e.target.classList.contains('back'))modelos();else if(e.target.dataset.m)pecas(e.target.dataset.m)};
+cars.onclick=e=>{const b=e.target.closest('.mcard');if(b)pecas(b.dataset.m)};
+modelos();
+const t="OPALA ★ FUSCA ★ MAVERICK ★ CHARGER ★ CHEVETTE ★ PASSAT ★ GOL GTI ★ ";
+document.getElementById('tk').innerHTML=(`<span>${t}</span>`).repeat(8);
+</script>
+<script src="common.js"></script>
+<script>document.getElementById('footMods').innerHTML=MODELOS.map(m=>`<li><a href="#modelos" data-fm="${m.id}">${m.nome}</a></li>`).join('');document.getElementById('footMods').onclick=e=>{const id=e.target.dataset.fm;if(id){e.preventDefault();pecas(id)}};</script>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { FBXLoader } from 'three/addons/loaders/FBXLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+// carros que alternam a cada visita — para adicionar outro, coloque o .glb em modelo/ e o nome aqui
+const CLASSICOS=['opala'];
+let n=0;try{n=+(localStorage.getItem('g402c')||0)+1;localStorage.setItem('g402c',n)}catch(e){}
+const MOB=matchMedia('(max-width:900px),(pointer:coarse)').matches;const FF=CLASSICOS[n%CLASSICOS.length],FBX=FF.endsWith('.fbx'),F=FF.replace('.fbx','')+(MOB&&!FF.endsWith('.fbx')?'-m':'');
+const canvas=document.getElementById('c3d');
+const r=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});r.setPixelRatio(Math.min(devicePixelRatio,1.5));
+r.toneMapping=THREE.ACESFilmicToneMapping;r.toneMappingExposure=1.25;r.outputColorSpace=THREE.SRGBColorSpace;r.shadowMap.enabled=true;
+const scene=new THREE.Scene();scene.environment=new THREE.PMREMGenerator(r).fromScene(new RoomEnvironment(),.03).texture;
+const cam=new THREE.PerspectiveCamera(30,1,.1,100);cam.position.set(0,1.6,9);cam.lookAt(0,.4,0);
+const sun=new THREE.DirectionalLight(0xfff4e0,2.6);const rim=new THREE.DirectionalLight(0xffd2a8,1.6);rim.position.set(-5,3,-4);scene.add(rim);const fill=new THREE.DirectionalLight(0xffffff,.8);fill.position.set(-4,2,5);scene.add(fill);sun.position.set(4,8,3);sun.castShadow=true;sun.shadow.mapSize.set(MOB?1024:2048,MOB?1024:2048);sun.shadow.radius=5;Object.assign(sun.shadow.camera,{left:-4,right:4,top:4,bottom:-4});
+scene.add(sun,new THREE.HemisphereLight(0xffffff,0xd9c9a8,.8));
+const g=new THREE.Mesh(new THREE.CircleGeometry(6,64),new THREE.ShadowMaterial({opacity:.25}));g.rotation.x=-Math.PI/2;g.receiveShadow=true;scene.add(g);
+const car=new THREE.Group();scene.add(car);
+function add(gl){const m=gl.scene||gl;m.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;[].concat(o.material).forEach(x=>{if(x){x.envMapIntensity=1.6;if(/lataria|portas|porta_malas|decalcs|capo/i.test(x.name)){x.metalness=Math.max(x.metalness??0,.55);x.roughness=Math.min(x.roughness??1,.25);if('clearcoat'in x){x.clearcoat=1;x.clearcoatRoughness=.08}}if(/cromado/i.test(x.name)){x.metalness=1;x.roughness=.12}x.needsUpdate=true}})}});
+  m.updateMatrixWorld(true);const b=new THREE.Box3(),tmp=new THREE.Box3(),sz=new THREE.Vector3();
+  const ms=[];m.traverse(o=>{if(o.isMesh){tmp.setFromObject(o);tmp.getSize(sz);ms.push([o,Math.max(sz.x,sz.y,sz.z),tmp.clone()]);
+    [].concat(o.material).forEach(x=>{if(x&&x.opacity<.15&&!/vidro|glass|window/i.test(x.name)){x.opacity=1;x.transparent=false}})}});
+  const sorted=ms.map(x=>x[1]).filter(isFinite).sort((a,b)=>a-b),big=sorted[Math.floor(sorted.length*.9)]||1;
+  ms.forEach(([o,d,bx])=>{if(!isFinite(d)||d>big*8){o.visible=false;return}b.union(bx)});const s=b.getSize(new THREE.Vector3());const k=4.6/Math.max(s.x,s.z);m.scale.setScalar(k);
+  const c=b.getCenter(new THREE.Vector3());m.position.set(-c.x*k,-b.min.y*k,-c.z*k);car.add(m);document.getElementById('cload').remove()}
+const L=FBX?new FBXLoader():new GLTFLoader();
+const emb=()=>{const ld=(src,cb)=>{const sc=document.createElement('script');sc.src=src;sc.onload=()=>{if(window.GOL_NEXT){const n=window.GOL_NEXT;window.GOL_NEXT=null;ld(n,cb)}else cb()};document.body.appendChild(sc)};ld('modelo/'+F+'-data.js',()=>{const buf=Uint8Array.from(atob(window.GOL_GLB),c=>c.charCodeAt(0)).buffer;FBX?add(L.parse(buf,'')):L.parse(buf,'',add)})};
+if(location.protocol==='file:')emb();else L.load('modelo/'+F+(FBX?'.fbx':'.glb'),add,undefined,emb);
+const size=()=>{const w=canvas.clientWidth,h=canvas.clientHeight;r.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()};addEventListener('resize',size);size();
+let mx=0,drag=0,x0=null,rot=-.7,auto=0;
+addEventListener('pointermove',e=>mx=e.clientX/innerWidth*2-1);
+canvas.addEventListener('pointerdown',e=>x0=e.clientX);addEventListener('pointerup',()=>x0=null);
+canvas.addEventListener('pointermove',e=>{if(x0!==null){drag+=(e.clientX-x0)*.01;x0=e.clientX}});
+r.setAnimationLoop(()=>{auto+=.0025;const t=-.7+auto+mx*.5+drag+scrollY*.005;rot+=(t-rot)*.06;car.rotation.y=rot;r.render(scene,cam)});
+</script>
+</body>
+</html>

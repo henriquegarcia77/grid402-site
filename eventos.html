@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eventos de Arrancada — Grid 402</title>
+<meta name="description" content="Próximos eventos de arrancada e No Prep no Brasil: datas, locais, ingressos e Instagram.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="apple-touch-icon" href="favicon-180.png">
+<link rel="stylesheet" href="style.css?v=4">
+<style>
+/* destaque com contagem regressiva */
+.next{background:#0b0b0d;color:#f5f5f7;position:relative;overflow:hidden}
+.next::before{content:"";position:absolute;inset:0;background:url("pista.jpg") center/cover no-repeat;opacity:.55;animation:kb 20s ease-in-out infinite alternate}
+.next::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,11,13,.92) 0%,rgba(11,11,13,.6) 55%,rgba(11,11,13,.35) 100%)}
+.next>*{position:relative;z-index:1}
+@keyframes kb{to{transform:scale(1.08)}}
+.credit{position:absolute;right:14px;bottom:10px;font-size:10px;color:#777;z-index:1}
+.next .wrap{position:relative;padding:90px 24px 80px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.next small{color:var(--red);font-weight:700;letter-spacing:.14em;font-size:12px}
+.next h1{font-size:clamp(40px,5.5vw,72px)!important;margin:12px 0 10px}
+.next p{color:#a1a1a6;font-size:18px}
+.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.cd div{background:#16161a;border-radius:20px;padding:24px 8px;text-align:center}
+.cd b{display:block;font-size:clamp(40px,5vw,64px);font-weight:700;letter-spacing:-.04em;font-variant-numeric:tabular-nums;line-height:1}
+.cd span{font-size:12px;color:#86868b;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.cd .live{grid-column:1/-1;background:var(--red);font-size:28px;font-weight:700;padding:30px}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.btn.ig{background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af);border:0;color:#fff}
+.btn.lt{background:#f5f5f7;border-color:#f5f5f7;color:#0b0b0d}
+.btn.lt:hover{background:var(--red);border-color:var(--red);color:#fff}
+.btn.out{background:none;border-color:#444;color:#f5f5f7}
+/* lista */
+.ufs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px}
+.ufs button{border:0;background:#e8e8ed;padding:9px 18px;border-radius:980px;font:600 14px var(--font);cursor:pointer}
+.ufs button.on{background:var(--ink);color:#fff}
+.list{display:flex;flex-direction:column;gap:14px}
+.ev{display:grid;grid-template-columns:110px 1fr auto;gap:28px;align-items:center;background:#fff;border-radius:24px;padding:24px 28px;transition:.35s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
+.ev::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--red);transform:scaleY(0);transition:.35s}
+.ev:hover{transform:translateX(6px);box-shadow:0 18px 40px rgba(0,0,0,.08)}
+.ev:hover::before{transform:none}
+.date{text-align:center;border-right:1px solid var(--line);padding-right:24px}
+.date b{display:block;font-size:44px;font-weight:700;letter-spacing:-.04em;line-height:1}
+.date span{font-size:13px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.08em}
+.date small{display:block;font-size:12px;color:var(--mut);margin-top:4px}
+.ev h3{font-size:22px!important;margin-bottom:4px}
+.ev .where{color:var(--mut);font-size:15px}
+.ev .desc{font-size:14px;color:var(--mut);margin-top:8px;max-width:560px}
+.chip{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:980px;background:#f5f5f7;margin-right:6px;margin-bottom:8px}
+.chip.uf{background:var(--ink);color:#fff}
+.chip.soon{background:var(--amb)}
+.ev .links{display:flex;flex-direction:column;gap:8px;min-width:190px}
+.ev .links a{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:980px;font-size:14px;font-weight:600;border:1px solid var(--line);transition:.2s}
+.ev .links a:hover{border-color:var(--ink)}
+.ev .links a.tk{background:var(--red);color:#fff;border-color:var(--red)}
+.ev .links a.tk:hover{background:var(--ink);border-color:var(--ink)}
+.ev .links svg{width:16px;height:16px}
+.h2s{margin:70px 0 24px}
+.empty{padding:40px;text-align:center;color:var(--mut);background:#fff;border-radius:24px}
+.cta-ev{background:#fff;border-radius:28px;padding:44px;margin:80px 0 100px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.cta-ev h3{font-size:30px!important}
+.cta-ev p{color:var(--mut)}
+@media(max-width:860px){.next .wrap{grid-template-columns:1fr;padding:50px 24px}.ev{grid-template-columns:80px 1fr;gap:18px;padding:20px}.ev .links{grid-column:1/-1;flex-direction:row;flex-wrap:wrap}.date b{font-size:34px}.date{padding-right:14px}}
+.modal{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.6);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:.4s}
+.modal.on{opacity:1;pointer-events:auto}
+.mbox{background:#0b0b0d;color:#f5f5f7;border-radius:28px;width:min(1180px,100%);max-height:92vh;overflow:auto;display:grid;grid-template-columns:1.25fr 1fr;transform:translateY(30px) scale(.97);transition:.6s cubic-bezier(.16,1,.3,1);position:relative}
+.modal.on .mbox{transform:none}
+.mclose{position:absolute;top:16px;right:16px;z-index:3;width:40px;height:40px;border-radius:50%;border:0;background:#222;color:#fff;font-size:24px;cursor:pointer}
+.m3d{position:relative;min-height:520px;background:radial-gradient(circle at 50% 60%,#1a0505,#0b0b0d 70%)}
+#track3d{position:absolute;inset:0;width:100%;height:100%;cursor:grab}
+.mlbl{position:absolute;left:24px;right:70px;top:22px;font-size:12px;color:#e10600;letter-spacing:.15em}
+.mhint{position:absolute;left:24px;bottom:18px;font-size:11px;color:#555;letter-spacing:.15em}
+.mtxt{padding:44px 40px}
+.mtxt small{color:var(--red);font-weight:700;letter-spacing:.14em;font-size:12px}
+.mtxt h2{font-size:clamp(30px,3.4vw,44px)!important;margin:10px 0 6px;color:#fff}
+.mtxt .when{color:#a1a1a6;margin-bottom:24px}
+.mtxt h4{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#86868b;margin:22px 0 8px}
+.mtxt p{color:#d2d2d7;line-height:1.6}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px}
+.stats div{background:#16161a;border-radius:16px;padding:16px}
+.stats b{display:block;font-size:28px;font-weight:700;letter-spacing:-.03em}
+.stats span{font-size:11px;color:#86868b;letter-spacing:.08em;text-transform:uppercase}
+.mtxt .acts{margin-top:28px}.mtxt .acts a{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;padding:11px 18px!important}.mtxt .acts svg{width:16px;height:16px}
+.ev{cursor:pointer}
+.ev .more{font-size:13px;font-weight:700;color:var(--red);margin-top:10px;display:inline-block}
+@media(max-width:860px){.mbox{grid-template-columns:1fr}.m3d{min-height:320px}.mtxt{padding:28px}}
+</style>
+</head>
+<body>
+<div id="hdr"></div>
+
+<section class="next" id="next"></section>
+
+<div class="wrap" style="padding-top:70px">
+  <div class="sh reveal"><div><small class="mono">AGENDA</small><h2>Próximos eventos</h2></div><p>Arrancada, No Prep e festivais pelo Brasil. Clique para ver o Instagram, comprar ingresso ou salvar na sua agenda.</p></div>
+  <div class="ufs" id="ufs"></div>
+  <div class="list" id="list"></div>
+  <h2 class="h2s reveal">Em breve</h2>
+  <div class="list" id="soon"></div>
+  <div class="cta-ev reveal">
+    <div><h3>Vai correr? Prepare o carro.</h3><p>Peças de performance com compra segura pelo Mercado Livre.</p></div>
+    <a href="index.html#loja" class="btn red">Ver peças →</a>
+  </div>
+</div>
+
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="mbox">
+    <button class="mclose" id="mclose" aria-label="Fechar">×</button>
+    <div class="m3d"><canvas id="track3d"></canvas><div class="mlbl mono" id="mlbl"></div><div class="mhint mono">ARRASTE PARA GIRAR</div></div>
+    <div class="mtxt" id="mtxt"></div>
+  </div>
+</div>
+<footer><div class="wrap"><span>© <span id="y"></span> Grid 402 · Datas sujeitas a alteração pelos organizadores</span></div></footer>
+
+<script src="config.js"></script>
+<script src="header.js?v=5"></script>
+<script src="eventos.js"></script>
+<script>
+const IG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>';
+const TK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8a2 2 0 0 0 0 4v4h18v-4a2 2 0 0 0 0-4V4H3z"/><path d="M14 4v12" stroke-dasharray="2 2"/></svg>';
+const CAL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>';
+const WEB='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>';
+const MES=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+const DIA=['dom','seg','ter','qua','qui','sex','sáb'];
+const d=s=>new Date(s+'T00:00:00');
+const hoje=new Date();hoje.setHours(0,0,0,0);
+const prox=EVENTOS.filter(e=>e.inicio&&d(e.fim||e.inicio)>=hoje).sort((a,b)=>d(a.inicio)-d(b.inicio));
+const breve=EVENTOS.filter(e=>!e.inicio);
+const gcal=e=>{const f=x=>x.replace(/-/g,'');const end=new Date(d(e.fim||e.inicio).getTime()+864e5).toISOString().slice(0,10);
+  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(e.nome)}&dates=${f(e.inicio)}/${f(end)}&location=${encodeURIComponent(e.local+', '+e.cidade+' - '+e.uf)}&details=${encodeURIComponent(e.desc+' — via Grid 402')}`};
+const quando=e=>{const a=d(e.inicio),b=d(e.fim||e.inicio);
+  return a.getTime()===b.getTime()?`${a.getDate()} de ${MES[a.getMonth()]}`:`${a.getDate()}${a.getMonth()!==b.getMonth()?' de '+MES[a.getMonth()]:''} a ${b.getDate()} de ${MES[b.getMonth()]}`};
+const links=e=>`<div class="links">
+  ${e.ingresso?`<a class="tk" href="${e.ingresso}" target="_blank" rel="noopener">${TK} Ingressos</a>`:''}
+  ${e.insta?`<a href="${e.insta}" target="_blank" rel="noopener">${IG} Instagram</a>`:''}
+  ${e.site?`<a href="${e.site}" target="_blank" rel="noopener">${WEB} Site oficial</a>`:''}
+  ${e.inicio?`<a href="${gcal(e)}" target="_blank" rel="noopener">${CAL} Salvar na agenda</a>`:''}</div>`;
+function card(e){const IDX=EVENTOS.indexOf(e);
+  const a=e.inicio?d(e.inicio):null;
+  return `<div class="ev" data-i="${IDX}">
+    <div class="date">${a?`<span>${MES[a.getMonth()]}</span><b>${String(a.getDate()).padStart(2,'0')}</b><small>${DIA[a.getDay()]}${e.fim&&e.fim!==e.inicio?' → '+d(e.fim).getDate():''}</small>`:'<span>data</span><b>?</b><small>a confirmar</small>'}</div>
+    <div><span class="chip uf">${e.uf}</span><span class="chip ${a?'':'soon'}">${a?e.tipo:'Em breve'}</span>
+      <h3>${e.nome}</h3><div class="where">${e.local} · ${e.cidade}/${e.uf}</div><p class="desc">${e.desc}</p><span class="more">Ver detalhes da prova + pista 3D →</span></div>
+    ${links(e)}</div>`}
+
+// destaque + contagem
+const n=prox[0];
+if(n){
+  next.innerHTML=`<div class="wrap"><div class="hero-in"><small>PRÓXIMO EVENTO · ${n.cidade.toUpperCase()}/${n.uf}</small><h1>${n.nome}</h1>
+    <p>${quando(n)} · ${n.local}</p>
+    <div class="acts">${n.ingresso?`<a class="btn red" href="${n.ingresso}" target="_blank">Comprar ingresso</a>`:''}${n.insta?`<a class="btn ig" href="${n.insta}" target="_blank">Instagram</a>`:''}${n.site?`<a class="btn lt" href="${n.site}" target="_blank">Site oficial</a>`:''}<a class="btn out" href="${gcal(n)}" target="_blank">Salvar na agenda</a></div></div>
+    <div class="cd" id="cd"></div></div>`;
+  const alvo=new Date(n.inicio+'T09:00:00'),fim=new Date(d(n.fim||n.inicio).getTime()+864e5);
+  const tick=()=>{const t=alvo-new Date();
+    if(t<=0){cd.innerHTML=new Date()<fim?'<div class="live">🔴 Acontecendo agora</div>':'';return}
+    const v=[t/864e5,t/36e5%24,t/6e4%60,t/1e3%60].map(x=>String(Math.floor(x)).padStart(2,'0'));
+    cd.innerHTML=['dias','horas','min','seg'].map((l,i)=>`<div><b>${v[i]}</b><span>${l}</span></div>`).join('')};
+  tick();setInterval(tick,1000);
+}else next.style.display='none';
+
+// filtros por estado
+const ufs=['Todos',...new Set(prox.map(e=>e.uf))];
+document.getElementById('ufs').innerHTML=ufs.map((u,i)=>`<button class="${i?'':'on'}">${u}</button>`).join('');
+function draw(u){const l=prox.filter(e=>u==='Todos'||e.uf===u);
+  list.innerHTML=l.length?l.map(card).join(''):'<div class="empty">Nenhum evento nesse estado por enquanto.</div>'}
+document.getElementById('ufs').onclick=e=>{if(e.target.tagName!=='BUTTON')return;[...e.currentTarget.children].forEach(b=>b.classList.toggle('on',b===e.target));draw(e.target.textContent)};
+draw('Todos');
+soon.innerHTML=breve.map(card).join('');
+// ===== detalhe do evento =====
+const modal=document.getElementById('modal');
+function abrir(i){const e=EVENTOS[i];
+  mtxt.innerHTML=`<small>${e.tipo.toUpperCase()} · ${e.cidade.toUpperCase()}/${e.uf}</small><h2>${e.nome}</h2>
+  <div class="when">${e.inicio?quando(e):'Data a confirmar'} · ${e.local}</div>
+  <h4>A prova</h4><p>${e.prova||e.desc}</p>
+  <h4>A pista</h4><p>${e.pista||''}</p>
+  <div class="stats"><div><b>${e.metros||201}m</b><span>Distância</span></div><div><b>2</b><span>Raias</span></div><div><b>${e.tipo==='No Prep'?'No Prep':'Prep'}</b><span>Pista</span></div></div>
+  ${links(e).replace('class="links"','class="acts" style="display:flex;gap:10px;flex-wrap:wrap"').replace(/<a /g,'<a class="btn out" ')}`;
+  mlbl.textContent=`${e.local.toUpperCase()} · ${e.metros||201} M`;
+  modal.classList.add('on');document.body.style.overflow='hidden';window.drawTrack&&window.drawTrack(e.metros||201,e.tipo==='No Prep');}
+function fechar(){modal.classList.remove('on');document.body.style.overflow='';window.stopTrack&&window.stopTrack()}
+document.addEventListener('click',ev=>{const c=ev.target.closest('.ev');if(c&&!ev.target.closest('a'))abrir(+c.dataset.i)});
+mclose.onclick=fechar;modal.onclick=ev=>{if(ev.target===modal)fechar()};addEventListener('keydown',ev=>ev.key==='Escape'&&fechar());
+
+</script>
+<script src="common.js"></script>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+const cv=document.getElementById('track3d');
+const R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});R.setPixelRatio(Math.min(devicePixelRatio,2));
+const S=new THREE.Scene();S.fog=new THREE.Fog(0x0b0b0d,70,320);
+const C=new THREE.PerspectiveCamera(40,1,.1,1000);
+const O=new OrbitControls(C,cv);O.enableDamping=true;O.enablePan=false;O.minDistance=12;O.maxDistance=180;O.maxPolarAngle=1.42;O.enableZoom=true;
+let G=null,run=false,t=0,car=null,L=201;
+const M=(c,o=1)=>new THREE.LineBasicMaterial({color:c,transparent:o<1,opacity:o});
+const line=(pts,m)=>new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts.map(p=>new THREE.Vector3(...p))),m);
+const box=(w,h,d,x,y,z,m)=>{const e=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(w,h,d)),m);e.position.set(x,y,z);return e};
+const label=(txt,col,sx,sy)=>{const c=document.createElement('canvas');c.width=512;c.height=128;const x=c.getContext('2d');x.fillStyle=col;x.font='800 84px Inter,Arial';x.textAlign='center';x.fillText(txt,256,100);const s=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),transparent:true,depthWrite:false}));s.scale.set(sx,sy,1);return s};
+const carWire=(m)=>{const g=new THREE.Group();g.add(box(4.4,.9,1.9,0,.75,0,m));g.add(box(2,.75,1.6,-.4,1.55,0,m));for(const x of[-1.4,1.4])for(const z of[-.95,.95]){const w=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.CylinderGeometry(.42,.42,.3,12)),m);w.rotation.x=Math.PI/2;w.position.set(x,.42,z);g.add(w)}return g};
+let cam0=null;
+window.drawTrack=(metros,noprep)=>{
+  if(G)S.remove(G);G=new THREE.Group();S.add(G);L=metros;
+  const len=metros*0.5, W=4.2, white=M(0xf5f5f7), dim=M(0x3a3a3e), red=M(0xe10600), grid=M(0x1c1c20), amber=M(0xf2a900);
+  // chão
+  for(let x=-40;x<=len+60;x+=6)G.add(line([[x,0,-40],[x,0,40]],grid));
+  for(let z=-40;z<=40;z+=6)G.add(line([[-40,0,z],[len+60,0,z]],grid));
+  // pista: bordas, muros e divisória
+  for(const z of[-2*W,2*W]){G.add(line([[-12,0,z],[len+45,0,z]],white));G.add(box(len+57,1,.25,len/2+16.5,.5,z*1.12,dim))}
+  G.add(line([[-12,0,0],[len+45,0,0]],noprep?dim:red));
+  // marcas a cada 10 m (tracejado nas raias)
+  for(let x=0;x<len;x+=5)for(const z of[-W,W])G.add(line([[x,0,z],[x+1.6,0,z]],dim));
+  // largada (burnout box) e chegada
+  G.add(line([[0,0,-2*W],[0,0,2*W]],white));G.add(box(10,.02,4*W-.4,-6,0,0,amber));
+  for(let i=0;i<8;i++){const x=len+i*.9;G.add(line([[x,0,-2*W],[x,0,2*W]],i%2?white:red))}
+  // marcos de distância
+  const marks=metros>=402?[[18.3/2,'60ft'],[100*0.5,'100m'],[201*0.5,'201m'],[len,metros+'m']]:[[18.3/2,'60ft'],[100*0.5,'100m'],[len,metros+'m']];
+  marks.forEach(([x,t])=>{for(const z of[-2*W-1.6,2*W+1.6]){G.add(line([[x,0,z],[x,3.2,z]],white))}const s=label(t,x===len?'#e10600':'#f5f5f7',7,1.75);s.position.set(x,4.4,-2*W-1.6);G.add(s)});
+  // pórtico de chegada
+  for(const z of[-2*W-1,2*W+1])G.add(line([[len,0,z],[len,6,z]],red));G.add(line([[len,6,-2*W-1],[len,6,2*W+1]],red));
+  const fin=label(metros+' m','#e10600',10,2.5);fin.position.set(len,7.6,0);G.add(fin);
+  // árvore de largada
+  G.add(line([[-3,0,0],[-3,4.6,0]],white));
+  const cols=[0xf2a900,0xf2a900,0xf2a900,0x14b84a,0xe10600];
+  cols.forEach((c,i)=>{for(const z of[-.45,.45]){const s=new THREE.Mesh(new THREE.SphereGeometry(.26,10,10),new THREE.MeshBasicMaterial({color:c}));s.position.set(-3,4.5-i*.62,z);G.add(s)}});
+  // arquibancadas e postes de luz dos dois lados
+  for(let x=4;x<len-6;x+=24){G.add(box(18,4.5,6,x+9,2.25,-2*W-9,dim));}
+  for(let x=0;x<=len+30;x+=18)for(const z of[-2*W-3.4,2*W+3.4]){G.add(line([[x,0,z],[x,9,z]],dim));G.add(line([[x,9,z],[x,9,z*.86]],white))}
+  // carros (um em cada raia)
+  car=new THREE.Group();const c1=carWire(red),c2=carWire(white);c1.position.z=-W;c2.position.z=W;car.add(c1,c2);G.add(car);
+  run=true;t=0;resize();fit(len);
+};
+function fit(len){const asp=Math.max(C.aspect,.5),span=len+30,vf=THREE.MathUtils.degToRad(C.fov);
+  const dist=Math.max(span/(2*Math.tan(vf/2)*asp),(2*8.4+8)/(2*Math.tan(vf/2)))*0.72;
+  const dir=new THREE.Vector3(-.6,.45,.68).normalize();const tg=new THREE.Vector3(len*.45,0,0);
+  C.position.copy(tg).addScaledVector(dir,dist);O.target.copy(tg);O.maxDistance=dist*2;O.autoRotate=true;O.autoRotateSpeed=.35;O.update()}
+window.stopTrack=()=>{run=false};
+function resize(){const w=cv.clientWidth,h=cv.clientHeight;if(!w)return;R.setSize(w,h,false);C.aspect=w/h;C.updateProjectionMatrix()}
+addEventListener('resize',resize);
+R.setAnimationLoop(()=>{if(!run)return;t+=.016;const len=L*.5,cyc=t%6,p=Math.max(0,Math.min((cyc-1)/3.4,1));
+  if(car){car.children[0].position.x=len*p*p;car.children[1].position.x=len*Math.pow(Math.max(0,Math.min((cyc-1.06)/3.4,1)),2);car.children[0].rotation.z=car.children[1].rotation.z=p>0&&p<.25?.06:0}
+  O.update();R.render(S,C)});
+cv.addEventListener('pointerdown',()=>{O.autoRotate=false});
+</script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Na Pista — Ferramentas de arrancada | Grid 402</title>
+<meta name="description" content="Teste seu tempo de reação, calcule o bico injetor ideal e estime o tempo do seu carro nos 402 metros.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="apple-touch-icon" href="favicon-180.png">
+<link rel="stylesheet" href="style.css?v=4">
+<style>
+.phero{text-align:center;padding:90px 0 50px}
+.phero h1{margin-bottom:14px}
+.phero p{color:var(--mut);font-size:20px;max-width:620px;margin:0 auto}
+.tabs{display:inline-flex;gap:4px;background:#e8e8ed;padding:4px;border-radius:980px;margin-top:34px}
+.tabs button{border:0;background:none;padding:10px 22px;border-radius:980px;font:600 14px var(--font);cursor:pointer;color:#1d1d1f;transition:.3s}
+.tabs button.on{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.tool{display:none;padding:20px 0 100px}
+.tool.on{display:block;animation:heroIn .8s cubic-bezier(.16,1,.3,1)}
+.card{background:#fff;border-radius:28px;padding:44px;display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;box-shadow:0 4px 30px rgba(0,0,0,.04)}
+.card h2{margin-bottom:8px}
+.card .lead{color:var(--mut);margin-bottom:24px}
+label{display:block;font-size:13px;font-weight:600;color:var(--mut);margin:16px 0 6px}
+input,select{width:100%;background:#f5f5f7;border:1px solid transparent;border-radius:12px;padding:14px 16px;font:600 17px var(--font);transition:.2s}
+input:focus,select:focus{outline:none;border-color:var(--red);background:#fff;box-shadow:0 0 0 4px rgba(225,6,0,.1)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.res div{background:#f5f5f7;border-radius:18px;padding:22px}
+.res div.big{grid-column:1/-1;background:var(--ink);color:#fff}
+.res b{display:block;font-size:38px;font-weight:700;letter-spacing:-.03em;line-height:1.1}
+.res div.big b{font-size:56px;color:#fff}
+.res span{font-size:13px;color:var(--mut);font-weight:500}
+.res div.big span{color:#a1a1a6}
+.note{font-size:13px;color:var(--mut);margin-top:14px;line-height:1.5}
+/* árvore */
+.tree{background:#0b0b0d;border-radius:24px;padding:36px;text-align:center}
+.lights{display:flex;flex-direction:column;align-items:center;gap:12px}
+.row{display:flex;gap:30px}
+.lamp{width:46px;height:46px;border-radius:50%;background:#1f1f22;border:3px solid #2c2c30;transition:.08s}
+.lamp.y.on{background:var(--amb);box-shadow:0 0 30px var(--amb)}
+.lamp.g.on{background:var(--grn);box-shadow:0 0 30px var(--grn)}
+.lamp.r.on{background:var(--red);box-shadow:0 0 30px var(--red)}
+.readout{margin-top:22px;font-size:52px;font-weight:700;color:var(--grn);letter-spacing:-.03em}
+.readout small{display:block;font-size:12px;color:#86868b;letter-spacing:.1em;font-weight:600}
+.tree .btn{margin-top:18px;width:100%;justify-content:center;background:var(--red);border-color:var(--red)}
+.hist{list-style:none;margin-top:10px}
+.hist li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.hist li b{font-variant-numeric:tabular-nums}
+.scale{margin-top:20px;font-size:14px;color:var(--mut);line-height:1.9}
+.scale b{color:var(--ink)}
+.buy{margin-top:22px}
+.pl{display:flex;gap:10px;align-items:center;margin-bottom:18px}.pl span{font-size:13px;color:var(--red);font-weight:600;white-space:nowrap}
+.pl input.need{border-color:var(--red);animation:shk .4s}@keyframes shk{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.rk-t{margin:26px 0 6px;font-size:20px}
+.rank{list-style:none;counter-reset:r}.rank li{counter-increment:r;display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:12px;font-size:15px}
+.rank li:nth-child(odd){background:#f5f5f7}.rank li:before{content:counter(r);width:26px;height:26px;border-radius:50%;background:#e8e8ed;display:grid;place-items:center;font:700 12px var(--font)}
+.rank li:nth-child(1):before{background:#f5c518}.rank li:nth-child(2):before{background:#c9c9cf}.rank li:nth-child(3):before{background:#d08a4a;color:#fff}
+.rank li span{flex:1;font-weight:600}.rank li b{font-variant-numeric:tabular-nums}.rank li.me{outline:2px solid var(--red)}
+.rank .empty{color:var(--mut);font-size:14px}
+@media(max-width:860px){.card{grid-template-columns:1fr;padding:28px}.tabs button{padding:9px 14px;font-size:13px}}
+</style>
+</head>
+<body>
+<div id="hdr"></div>
+
+<div class="wrap phero hero-in">
+  <span class="tag mono">// NA PISTA</span>
+  <h1>Ferramentas de arrancada.</h1>
+  <p>Treine sua largada, descubra o bico injetor certo e estime o tempo do seu carro nos 402 metros.</p>
+  <div class="tabs" id="tabs">
+    <button class="on" data-t="reacao">Tempo de reação</button>
+    <button data-t="bico">Calculadora de bico</button>
+    <button data-t="tempo">Tempo do carro</button>
+  </div>
+</div>
+
+<!-- REAÇÃO -->
+<section class="tool on wrap" id="reacao"><div class="card">
+  <div class="tree">
+    <div class="lights">
+      <div class="row"><div class="lamp y"></div><div class="lamp y"></div></div>
+      <div class="row"><div class="lamp y"></div><div class="lamp y"></div></div>
+      <div class="row"><div class="lamp y"></div><div class="lamp y"></div></div>
+      <div class="row"><div class="lamp g"></div><div class="lamp g"></div></div>
+      <div class="row"><div class="lamp r"></div><div class="lamp r"></div></div>
+    </div>
+    <div class="readout" id="rt">0.000<small>REAÇÃO (s)</small></div>
+    <button class="btn" id="go">Preparar largada</button>
+  </div>
+  <div>
+    <h2>Desafio da largada</h2>
+    <p class="lead">Coloque seu nome, espere o verde e clique (ou aperte espaço). Antes do verde é queimada. Seu melhor tempo entra no ranking.</p>
+    <div class="pl"><input id="pname" maxlength="18" placeholder="Seu nome de piloto"><span id="pmsg"></span></div>
+    <div class="res"><div><b id="best">—</b><span>Melhor tempo</span></div><div><b id="avg">—</b><span>Média</span></div></div>
+    <ul class="hist" id="hist"></ul>
+    <h3 class="rk-t">🏁 Ranking</h3>
+    <ol class="rank" id="rank"></ol>
+    <p class="scale"><b>Abaixo de 0,200 s</b> — nível de piloto<br><b>0,200 a 0,300 s</b> — muito bom<br><b>Acima de 0,300 s</b> — dá pra treinar mais</p>
+  </div>
+</div></section>
+
+<!-- BICO -->
+<section class="tool wrap" id="bico"><div class="card">
+  <div>
+    <h2>Calculadora de bico injetor</h2>
+    <p class="lead">Descubra a vazão mínima de cada bico para a potência que você quer.</p>
+    <div class="two">
+      <div><label>Potência desejada (cv)</label><input type="number" id="bcv" value="500"></div>
+      <div><label>Nº de cilindros (bicos)</label><input type="number" id="bcil" value="4"></div>
+    </div>
+    <label>Combustível e aspiração</label>
+    <select id="bcomb">
+      <option value="0.50">Gasolina — aspirado</option>
+      <option value="0.60" selected>Gasolina — turbo</option>
+      <option value="0.75">Etanol — aspirado</option>
+      <option value="0.85">Etanol — turbo</option>
+      <option value="1.10">Metanol</option>
+    </select>
+    <label>Duty cycle máximo (%)</label><input type="number" id="bduty" value="80">
+  </div>
+  <div>
+    <div class="res">
+      <div class="big"><b id="blb">—</b><span>lb/h mínimo por bico</span></div>
+      <div><b id="bcc">—</b><span>cc/min por bico</span></div>
+      <div><b id="bsug">—</b><span>Bico sugerido</span></div>
+    </div>
+    <p class="note">Cálculo: potência × consumo específico (BSFC) ÷ (bicos × duty cycle). Valores de BSFC são médias; confira sempre com seu preparador. Para segurança, escolha um bico acima do mínimo.</p>
+    <a class="btn red buy" id="bbuy" href="#" target="_blank" rel="sponsored noopener">Ver bicos no Mercado Livre →</a>
+  </div>
+</div></section>
+
+<!-- TEMPO -->
+<section class="tool wrap" id="tempo"><div class="card">
+  <div>
+    <h2>Tempo do carro</h2>
+    <p class="lead">Estimativa do tempo e da velocidade final a partir do peso e da potência.</p>
+    <label>Seu carro</label><input id="carro" list="carlist" placeholder="Digite e escolha: Gol, Chevette, Opala…" maxlength="40" autocomplete="off"><datalist id="carlist"></datalist><p class="note" id="cinfo" style="margin-top:6px"></p>
+    <label>Motor</label><input id="mnome" list="motlist" placeholder="Digite: AP 2.0, 302 V8, 2JZ, K20…" autocomplete="off"><datalist id="motlist"></datalist><p class="note" id="minfo" style="margin-top:6px"></p>
+    <div class="two">
+      <div><label>Tem modificação?</label><select id="motor">
+        <option value="orig">Não, original</option><option value="asp">Aspirado preparado (comando, cabeçote)</option><option value="tlow">Turbo baixa pressão (~0,8 bar)</option><option value="thigh">Turbo alta pressão (2 bar+)</option><option value="nitro">Nitro</option></select></div>
+      <div><label>Câmbio</label><select id="cambio">
+        <option value="orig">Original</option><option value="ref">Reforçado / relação curta</option><option value="seq">Sequencial / dogbox</option><option value="auto">Automático (Powerglide)</option></select></div>
+    </div>
+    <label>Pneu</label><select id="pneu"><option value="rua">Pneu de rua</option><option value="radial" selected>Drag radial</option><option value="slick">Slick</option></select>
+    <label>Peso do carro + piloto (kg)</label><input type="number" id="peso" value="1100">
+    <label>Potência na roda (cv)</label><input type="number" id="cv" value="350">
+    <label>Distância da prova</label><select id="dist"><option value="402">402 m — arrancada</option><option value="201">201 m — no prep</option></select>
+    <label id="mlab">Tempo que você quer fazer nos 402 m (s)</label><input type="number" id="meta" step="0.1" placeholder="Ex.: 10.5">
+  </div>
+  <div>
+    <div class="res">
+      <div class="big"><b id="et">—</b><span>Tempo nos 402 m (s)</span></div>
+      <div><b id="vf">—</b><span>Velocidade final (km/h)</span></div>
+      <div><b id="t201">—</b><span>Tempo nos 201 m (s)</span></div>
+      <div><b id="pp">—</b><span>kg por cv</span></div>
+      <div><b id="cvneed">—</b><span>cv para baixar 1 s</span></div>
+    </div>
+    <p class="note">Fórmula de Hale. O tempo real depende de tração, câmbio, pista, clima e piloto.</p>
+    <a class="btn red buy" id="plano" href="plano.html">Quer baixar o tempo? Ver peças para o seu carro →</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span>© <span id="y"></span> Grid 402 Performance · Compras pelo Mercado Livre</span></div></footer>
+
+<script src="config.js"></script>
+<script src="header.js?v=5"></script>
+<script>
+// abas
+const tabs=document.getElementById('tabs');
+function openTab(t){document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));document.querySelectorAll('.tool').forEach(s=>s.classList.toggle('on',s.id===t))}
+tabs.onclick=e=>{if(e.target.dataset.t){openTab(e.target.dataset.t);history.replaceState(null,'','#'+e.target.dataset.t)}};
+if(['reacao','bico','tempo'].includes(location.hash.slice(1)))openTab(location.hash.slice(1));
+const f3=v=>v.toFixed(3).replace('.',',');
+
+// reação
+const lamps=[...document.querySelectorAll('.lamp')],ys=lamps.filter(l=>l.classList.contains('y')),gs=lamps.filter(l=>l.classList.contains('g')),rs=lamps.filter(l=>l.classList.contains('r'));
+const btn=document.getElementById('go'),rt=document.getElementById('rt');
+let state='idle',t0=0,timers=[],runs=[];
+const reset=()=>{timers.forEach(clearTimeout);timers=[];lamps.forEach(l=>l.classList.remove('on'))};
+const show=(v,c)=>{rt.innerHTML=`${v}<small>REAÇÃO (s)</small>`;rt.style.color=c};
+function hit(){
+  if((state==='idle'||state==='done')&&!pname.value.trim()){pname.classList.remove('need');void pname.offsetWidth;pname.classList.add('need');pname.focus();pmsg.textContent='Coloque seu nome';return}
+  if(state==='idle'||state==='done'){pmsg.textContent='';
+    reset();state='staging';btn.textContent='Clique no verde!';show('0,000','var(--grn)');
+    for(let i=0;i<3;i++)timers.push(setTimeout(()=>{ys[i*2].classList.add('on');ys[i*2+1].classList.add('on')},800+i*500+Math.random()*200));
+    timers.push(setTimeout(()=>{gs.forEach(g=>g.classList.add('on'));t0=performance.now();state='green'},2300+Math.random()*700));
+  }else if(state==='staging'){
+    reset();rs.forEach(r=>r.classList.add('on'));show('Queimou!','var(--red)');state='done';btn.textContent='Tentar de novo';log(null);
+  }else if(state==='green'){
+    const s=(performance.now()-t0)/1000;show(f3(s),'var(--grn)');state='done';btn.textContent='Tentar de novo';log(s);
+  }
+}
+function log(s){runs.unshift(s);const ok=runs.filter(x=>x!==null);
+  best.textContent=ok.length?f3(Math.min(...ok)):'—';avg.textContent=ok.length?f3(ok.reduce((a,b)=>a+b)/ok.length):'—';
+  if(s!==null)saveRank(pname.value.trim(),s);
+  hist.innerHTML=runs.slice(0,5).map((r,i)=>`<li><span>Largada ${runs.length-i}</span><b style="color:${r===null?'var(--red)':'inherit'}">${r===null?'Queimou':f3(r)+' s'}</b></li>`).join('')}
+btn.onclick=hit;
+// ranking
+const RK='grid402-ranking';let mem=[];
+const getR=()=>{try{return JSON.parse(localStorage.getItem(RK))||[]}catch(e){return mem}};
+const setR=r=>{mem=r;try{localStorage.setItem(RK,JSON.stringify(r))}catch(e){}};
+try{pname.value=localStorage.getItem('grid402-nome')||''}catch(e){}
+pname.oninput=()=>{pname.classList.remove('need');pmsg.textContent='';try{localStorage.setItem('grid402-nome',pname.value)}catch(e){}};
+function saveRank(n,t){const r=getR(),i=r.findIndex(x=>x.n.toLowerCase()===n.toLowerCase());
+  if(i<0)r.push({n,t});else if(t<r[i].t)r[i]={n,t};else{drawRank();return}
+  r.sort((a,b)=>a.t-b.t);setR(r.slice(0,50));const pos=r.findIndex(x=>x.n.toLowerCase()===n.toLowerCase())+1;pmsg.textContent='Novo recorde! '+pos+'º lugar';drawRank()}
+function drawRank(){const r=getR(),me=pname.value.trim().toLowerCase();
+  rank.innerHTML=r.length?r.slice(0,10).map(x=>`<li class="${x.n.toLowerCase()===me?'me':''}"><span>${x.n.replace(/[<>&"]/g,'')}</span><b>${f3(x.t)} s</b></li>`).join(''):'<li class="empty">Ninguém largou ainda. Seja o primeiro!</li>'}
+drawRank();
+addEventListener('keydown',e=>{if(e.code==='Space'&&document.getElementById('reacao').classList.contains('on')&&e.target.tagName!=='INPUT'){e.preventDefault();hit()}});
+
+// bico
+const SIZES=[19,24,30,36,42,50,60,65,80,96,112,120,160,220];
+function bico(){
+  const cvv=+bcv.value,cil=+bcil.value,bs=+bcomb.value,d=(+bduty.value||80)/100;if(!cvv||!cil)return;
+  const hp=cvv*0.9863,lb=hp*bs/(cil*d);
+  blb.textContent=Math.ceil(lb);bcc.textContent=Math.round(lb*10.5);
+  const s=SIZES.find(x=>x>=lb*1.05)||SIZES[SIZES.length-1];bsug.textContent=s+' lb/h';
+  bbuy.href=`https://lista.mercadolivre.com.br/${encodeURIComponent('bico injetor '+s+' lb')}`;
+}
+[bcv,bcil,bcomb,bduty].forEach(i=>i.oninput=bico);bico();
+
+// tempo
+function calc(){
+  const kg=+peso.value,c=+cv.value;if(!kg||!c)return;
+  const lb=kg*2.2046,hp=c*0.9863,e=5.825*Math.pow(lb/hp,1/3)*(CAM?fator():1),mph=234*Math.pow(hp/lb,1/3);
+  et.textContent=e.toFixed(2).replace('.',',');vf.textContent=Math.round(mph*1.609);
+  t201.textContent=(e/1.57).toFixed(2).replace('.',',');pp.textContent=(kg/c).toFixed(2).replace('.',',');
+  const need=lb/Math.pow((e-1)/5.825/(CAM?fator():1),3)/0.9863;cvneed.textContent=e>2?'+'+Math.round(need-c):'—';
+}
+const CARROS=[["Chevette 1.6",900,73],["Opala 4.1 6cc",1220,148],["Opala 2.5 4cc",1150,98],["Fusca 1300",780,38],["Fusca 1600",800,52],["Gol 1.6 AP (quadrado)",870,90],["Gol 1.8 AP (quadrado)",900,99],["Gol GTI 2.0",980,121],["Gol G3 1.0 16v Turbo",950,112],["Gol G5 1.6",970,104],["Voyage 1.8 AP",920,95],["Parati 1.8 AP",960,99],["Passat 1.6",900,78],["Saveiro 1.8 AP",950,95],["Santana 2.0",1100,112],["Maverick V8 302",1350,199],["Monza 2.0",1050,110],["Kadett GSi 2.0",1020,121],["Corsa 1.0",850,60],["Celta 1.0",870,70],["Uno 1.0 Fire",820,65],["Uno Turbo i.e.",960,118],["Palio 1.0",900,66],["Escort XR3 2.0",1000,115],["Golf GTI 1.8 Turbo (MK4)",1300,193],["Golf GTI 2.0 TSI (MK7)",1370,230],["Jetta 2.0 TSI",1430,211],["Up TSI 1.0",960,105],["Polo GTS 1.4 TSI",1240,150],["Civic Si 2.0",1250,192],["Civic 1.8",1230,140],["Honda Fit 1.5",1100,116],["Fiat Marea Turbo 2.0 20v",1360,182],["Fiat Tempra Turbo",1260,165],["Peugeot 208 GTI",1200,173],["Subaru Impreza WRX",1400,265],["Mitsubishi Lancer Evo X",1530,295],["Nissan Skyline GT-R R34",1560,280],["Toyota Supra MK4 Turbo",1570,330],["Mustang GT 5.0",1700,466],["Camaro SS 6.2",1700,461],["BMW M3 E46",1570,343],["Audi RS3",1570,400],["Golf R 2.0",1500,300],["Hilux 2.8 Diesel",2100,204]];
+
+// motores: [nome, cv original, peso do motor (kg), cv máximo turbo forte realista]
+var MOTORES=[["VW 1300 a ar",38,100,150],["VW 1600 a ar",52,105,180],["VW AP 1.6",90,125,450],["VW AP 1.8",99,125,500],["VW AP 2.0",121,125,650],["VW EA111 1.6",104,110,300],["VW EA888 2.0 TSI",230,145,550],["VW EA211 1.0 TSI",116,95,250],["GM Chevette 1.6",73,115,300],["GM Família I 1.0/1.4",70,105,300],["GM Família II 2.0 (Monza/Kadett)",121,130,600],["GM 151 4cc 2.5 (Opala)",98,175,400],["GM 250 6cc 4.1 (Opala)",148,215,700],["GM LS 5.3/6.0 V8",330,190,1000],["Ford 302 V8 (Maverick)",199,215,800],["Ford CHT 1.6",73,115,250],["Ford Zetec 2.0",130,130,450],["Fiat Fire 1.0/1.4",70,95,250],["Fiat 2.0 20v 5cil (Marea)",182,160,700],["Fiat 1.6 Sevel (Uno Turbo)",118,110,400],["Honda B16/B18",160,125,550],["Honda K20",200,120,650],["Mitsubishi 4G63",250,170,900],["Toyota 2JZ-GTE",330,230,1200],["Nissan RB26",280,240,1100],["Subaru EJ20",250,140,700]];
+var MAPA={"Chevette":"GM Chevette 1.6","Opala 4.1":"GM 250 6cc 4.1 (Opala)","Opala 2.5":"GM 151 4cc 2.5 (Opala)","Fusca 1300":"VW 1300 a ar","Fusca 1600":"VW 1600 a ar","Gol 1.6 AP":"VW AP 1.6","Gol 1.8 AP":"VW AP 1.8","Gol GTI":"VW AP 2.0","Voyage 1.8":"VW AP 1.8","Parati 1.8":"VW AP 1.8","Saveiro 1.8":"VW AP 1.8","Santana 2.0":"VW AP 2.0","Passat":"VW AP 1.6","Maverick":"Ford 302 V8 (Maverick)","Monza":"GM Família II 2.0 (Monza/Kadett)","Kadett":"GM Família II 2.0 (Monza/Kadett)","Corsa":"GM Família I 1.0/1.4","Celta":"GM Família I 1.0/1.4","Uno 1.0":"Fiat Fire 1.0/1.4","Uno Turbo":"Fiat 1.6 Sevel (Uno Turbo)","Palio":"Fiat Fire 1.0/1.4","Marea":"Fiat 2.0 20v 5cil (Marea)","Escort XR3":"Ford Zetec 2.0","Up TSI":"VW EA211 1.0 TSI","Golf GTI 2.0":"VW EA888 2.0 TSI","Jetta":"VW EA888 2.0 TSI","Golf R":"VW EA888 2.0 TSI","Civic Si":"Honda K20","Evo":"Mitsubishi 4G63","Supra":"Toyota 2JZ-GTE","Skyline":"Nissan RB26","Impreza":"Subaru EJ20","Camaro":"GM LS 5.3/6.0 V8","Gol G5":"VW EA111 1.6"};
+var MOD={orig:{f:m=>m[1],dw:0,t:'original'},asp:{f:m=>Math.round(m[1]*1.35),dw:0,t:'aspirado preparado (~+35%)'},tlow:{f:m=>Math.round(Math.max(m[1]*1.7,m[1]+80)),dw:25,t:'turbo baixa pressão'},thigh:{f:m=>m[3],dw:40,t:'turbo alta pressão'},nitro:{f:m=>m[1]+100,dw:15,t:'nitro (+100 cv)'}};
+var CAM={orig:{dw:0,f:1},ref:{dw:3,f:.985},seq:{dw:8,f:.965},auto:{dw:25,f:.975}},PNEU={rua:1.04,radial:1,slick:.975};
+function fator(){return CAM[cambio.value].f*PNEU[pneu.value]}
+motlist.innerHTML=MOTORES.map(m=>`<option value="${m[0]}">`).join('');
+const achaCarro=()=>CARROS.find(x=>x[0].toLowerCase()===carro.value.trim().toLowerCase());
+const achaMotor=n=>MOTORES.find(m=>m[0].toLowerCase()===(n||'').trim().toLowerCase());
+const motorDoCarro=c=>{if(!c)return null;const k=Object.keys(MAPA).find(k=>c[0].toLowerCase().includes(k.toLowerCase()));return k?achaMotor(MAPA[k]):null};
+function aplica(){const c=achaCarro(),orig=motorDoCarro(c),m=achaMotor(mnome.value)||orig;
+  const baseKg=c?c[1]:(+peso.value||1100)-80;const md=MOD[motor.value],C=CAM[cambio.value];
+  const swapKg=(m&&orig&&m!==orig)?m[2]-orig[2]:0;const cvMotor=m?md.f(m):(c?c[2]:Math.round((+cv.value||200)/.85));
+  peso.value=Math.round(baseKg+80+swapKg+md.dw+C.dw);cv.value=Math.round(cvMotor*.85);
+  minfo.textContent=m?`${m[0]}: ${m[1]} cv original${m!==orig&&orig?`, swap no lugar do ${orig[0]} (${swapKg>=0?'+':''}${swapKg} kg)`:''}. Com ${md.t}: ~${cvMotor} cv no motor, ~${Math.round(cvMotor*.85)} na roda.`:'';
+  cinfo.textContent=c?`${c[0]} original: ${c[1]} kg. Somamos piloto (+80 kg). Peso e potência podem ser editados.`:'';calc()}
+carro.addEventListener('change',()=>{const o=motorDoCarro(achaCarro());if(o)mnome.value=o[0];aplica()});
+mnome.addEventListener('change',aplica);
+[motor,cambio].forEach(x=>x.onchange=aplica);pneu.onchange=calc;
+carlist.innerHTML=CARROS.map(c=>`<option value="${c[0]}">`).join('');
+dist.onchange=()=>{const d=dist.value;mlab.textContent='Tempo que você quer fazer nos '+d+' m (s)';meta.placeholder=d==='201'?'Ex.: 6.8':'Ex.: 10.5'};
+[peso,cv,meta,carro].forEach(i=>i.oninput=calc);calc();
+plano.onclick=e=>{e.preventDefault();const kg=+peso.value,c=+cv.value;const lb=kg*2.2046,cur=5.825*Math.pow(lb/(c*0.9863),1/3)*fator();
+  const d=+dist.value,k=d===201?1.57:1;const m=meta.value?+meta.value*k:Math.max(cur-1,6);location.href='plano.html?'+new URLSearchParams({carro:carro.value.trim()||'Seu carro',peso:kg,cv:c,meta:(m/fator()).toFixed(2),dist:d,f:fator().toFixed(4),motor:(mnome.value?mnome.value+' · ':'')+motor.selectedOptions[0].text,cambio:cambio.selectedOptions[0].text,pneu:pneu.selectedOptions[0].text})};
+</script>
+<script src="common.js"></script>
+</body>
+</html>

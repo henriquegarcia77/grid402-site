@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vestuário de Arrancada — Grid 402</title>
+<meta name="description" content="Camisetas, bonés e moletons de arrancada e cultura turbo.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="apple-touch-icon" href="favicon-180.png">
+<link rel="stylesheet" href="style.css?v=4">
+<style>
+body{background:#0b0b0d;color:#f5f5f7}
+.vhero{text-align:center;padding:100px 0 40px;position:relative;overflow:hidden}
+.vhero h1{font-size:clamp(52px,9vw,128px)!important;background:linear-gradient(180deg,#fff 30%,#555);-webkit-background-clip:text;background-clip:text;color:transparent}
+.vhero p{color:#a1a1a6;font-size:20px;margin-top:10px}
+.vhero .flag{position:absolute;inset:0;background:repeating-conic-gradient(#fff 0 25%,transparent 0 50%) 0 0/40px 40px;opacity:.04;transform:perspective(600px) rotateX(55deg) translateY(30%);animation:roll 6s linear infinite}
+@keyframes roll{to{background-position:0 80px}}
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:30px 0 50px}
+.chips button{border:1px solid #333;background:none;color:#f5f5f7;padding:9px 18px;border-radius:980px;font:600 14px var(--font);cursor:pointer;transition:.2s}
+.chips button.on,.chips button:hover{background:#f5f5f7;color:#0b0b0d}
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-bottom:120px;perspective:1000px}
+.vcard{background:#16161a;border-radius:26px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .4s;transform-style:preserve-3d}
+.vcard:hover{box-shadow:0 30px 60px rgba(225,6,0,.25);transform:translateY(-6px)}
+.vcard .ph{aspect-ratio:1;background:#fff;position:relative;overflow:hidden;padding:52px 20px 20px}
+.vcard .ph img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s}.vcard:hover .ph img{transform:scale(1.05)}
+.vcard .ph svg{width:40%;color:#333;transform:translateZ(40px)}
+.store{position:absolute;top:14px;left:14px;z-index:2;font:700 11px var(--font);letter-spacing:.08em;padding:6px 12px;border-radius:980px;text-transform:uppercase}
+.store.shopee{background:#ee4d2d;color:#fff}
+.store.ml{background:#ffe600;color:#2d3277}
+.vcard .info{padding:22px}
+.vcard small{color:#86868b;font-size:13px}
+.vcard h3{font-size:20px!important;margin:4px 0 10px}
+.vcard .pr{font-size:24px;font-weight:700;letter-spacing:-.02em}
+.vcard .go{margin-top:16px;display:block;text-align:center;background:#f5f5f7;color:#0b0b0d;padding:12px;border-radius:980px;font-weight:600;font-size:14px;transition:.2s}
+.vcard:hover .go{background:var(--red);color:#fff}
+footer{background:#0b0b0d;border-color:#222}
+@media(max-width:900px){.vgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.vgrid{grid-template-columns:1fr}}
+.soon{text-align:center;padding:80px 20px 140px}.soon b{display:block;font-size:clamp(40px,6vw,72px);letter-spacing:-.04em;margin-bottom:12px}.soon p{color:#a1a1a6;margin-bottom:28px}
+</style>
+</head>
+<body>
+<div id="hdr"></div>
+<div class="vhero"><div class="flag"></div><div class="wrap hero-in" style="position:relative">
+  <span class="tag mono" style="background:none">// VESTUÁRIO</span>
+  <h1>Vista a pista.</h1>
+  <p>Camisetas, bonés e moletons para quem vive a arrancada.</p>
+</div></div>
+<div class="wrap">
+  <div class="chips" id="chips"></div>
+  <div class="vgrid stagger" id="vgrid"></div>
+</div>
+<footer><div class="wrap"><span>© <span id="y"></span> Grid 402 · Compras pela Shopee e pelo Mercado Livre</span></div></footer>
+<script src="config.js"></script>
+<script src="header.js?v=5"></script>
+<script src="vestuario.js"></script>
+<script>
+const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const shirt='<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M16 6l-10 6 4 9 5-2v23h18V19l5 2 4-9-10-6c-1 3-4 5-8 5s-7-2-8-5z"/></svg>';
+const tipos=['Todos',...new Set(VESTUARIO.map(v=>v.tipo))];
+chips.innerHTML=tipos.map((t,i)=>`<button class="${i?'':'on'}">${t}</button>`).join('');
+function draw(t){
+  const L=VESTUARIO.filter(v=>v.link&&v.link!=='#');if(!L.length){chips.style.display='none';vgrid.className='';vgrid.innerHTML=`<div class="soon"><b>Coleção chegando.</b><p>Camisetas, bonés e moletons de arrancada com compra pela Shopee e pelo Mercado Livre.</p><a class="btn red" href="https://www.instagram.com/grid402performance/" target="_blank">Acompanhar no Instagram →</a></div>`;return}
+  vgrid.innerHTML=L.filter(v=>t==='Todos'||v.tipo===t).map(v=>`
+  <a class="vcard" href="${v.link}" target="_blank" rel="sponsored noopener">
+    <div class="ph"><span class="store ${v.loja}">${v.loja==='shopee'?'Shopee':'Mercado Livre'}</span>${v.img?`<img src="${v.img}" alt="${v.nome}" loading="lazy">`:shirt}</div>
+    <div class="info"><small>${v.tipo}</small><h3>${v.nome}</h3><div class="pr">${brl(v.preco)}</div>
+    <span class="go">Comprar ${v.loja==='shopee'?'na Shopee':'no Mercado Livre'} →</span></div></a>`).join('');
+}
+chips.onclick=e=>{if(e.target.tagName!=='BUTTON')return;[...chips.children].forEach(b=>b.classList.toggle('on',b===e.target));draw(e.target.textContent)};
+draw('Todos');
+</script>
+<script src="common.js"></script>
+</body>
+</html>

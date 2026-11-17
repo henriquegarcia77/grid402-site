@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano de peças para baixar o tempo | Grid 402</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="apple-touch-icon" href="favicon-180.png">
+<link rel="stylesheet" href="style.css?v=4">
+<style>
+.phero{text-align:center;padding:80px 0 30px}
+.phero h1{margin:10px 0 12px}.phero p{color:var(--mut);max-width:640px;margin:0 auto}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:34px 0 50px}
+.kpis div{background:#fff;border-radius:20px;padding:22px}.kpis div.dk{background:#0b0b0d;color:#fff}
+.kpis b{display:block;font-size:38px;letter-spacing:-.03em;line-height:1.1}.kpis span{font-size:13px;color:#86868b;font-weight:500}
+.kpis .dk b{color:#ff3b30}
+.step{display:grid;grid-template-columns:260px 1fr;gap:30px;padding:34px 0;border-top:1px solid var(--line)}
+.step h3{font-size:24px;letter-spacing:-.02em}.step .n{font:700 12px 'JetBrains Mono',monospace;color:var(--red);letter-spacing:.15em}
+.step p{color:var(--mut);font-size:14px;margin-top:8px;line-height:1.5}
+.step .gain{display:inline-block;margin-top:12px;background:#e8f8ee;color:#0a8a3a;font-weight:700;font-size:13px;padding:6px 12px;border-radius:99px}
+.pp{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.pp a{background:#fff;border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:8px;transition:transform .3s,box-shadow .3s}
+.pp a:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.08)}
+.pp img{width:100%;aspect-ratio:1;object-fit:contain;background:#fff}
+.pp small{color:var(--red);font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.pp h4{font-size:14px;font-weight:600;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pp b{font-size:18px}.pp em{font-style:normal;font-size:13px;font-weight:600;color:var(--red)}
+.tot{background:#0b0b0d;color:#fff;border-radius:24px;padding:30px;display:flex;justify-content:space-between;align-items:center;gap:20px;margin:30px 0 80px;flex-wrap:wrap}
+.tot b{font-size:34px}.tot span{color:#a1a1a6;font-size:14px}
+.warn{font-size:13px;color:var(--mut);margin-top:-60px;margin-bottom:80px}
+@media(max-width:860px){.kpis{grid-template-columns:1fr 1fr}.step{grid-template-columns:1fr;gap:16px}.kpis b{font-size:30px}}
+</style>
+</head>
+<body>
+<div id="hdr"></div>
+<div class="wrap">
+  <div class="phero"><span class="tag mono">// PLANO DE PREPARAÇÃO</span><h1 id="tt">Seu carro</h1><p id="sub"></p></div>
+  <div class="kpis" id="kpis"></div>
+  <div id="steps"></div>
+  <div style="text-align:center;margin:30px 0 80px"><a class="btn red" href="na-pista.html#tempo">← Refazer o cálculo</a></div>
+  <p class="warn">Estimativa baseada em peso e potência (fórmula de Hale) e em regras gerais de preparação. Cada projeto é diferente: confirme medidas e compatibilidade com seu preparador antes de comprar.</p>
+</div>
+<footer><div class="wrap"><span>© <span id="y"></span> Grid 402 Performance · Compras pelo Mercado Livre</span></div></footer>
+<script src="config.js"></script>
+<script src="header.js?v=5"></script>
+<script src="produtos.js"></script>
+<script>
+const Q=new URLSearchParams(location.search),carro=Q.get('carro')||'Seu carro',kg=+Q.get('peso')||1100,cv=+Q.get('cv')||200;
+const lb=kg*2.2046,ET=c=>5.825*Math.pow(lb/(c*0.9863),1/3),cur=ET(cv);
+let meta=+Q.get('meta')||cur-1;meta=Math.max(Math.min(meta,cur-.05),5.5);
+const need=Math.ceil(lb/Math.pow(meta/5.825,3)/0.9863),gap=Math.max(need-cv,0),crank=Math.round(need*1.18);
+const D=Q.get('dist')==='201'?201:402,K=D===201?1.57:1,FF=+Q.get('f')||1,T=v=>v*FF/K;
+const f2=v=>v.toFixed(2).replace('.',','),R=v=>'R$ '+Math.round(v).toLocaleString('pt-BR');
+const esc=s=>s.replace(/[<>&"]/g,'');
+document.title='Plano para '+esc(carro)+' | Grid 402';
+tt.textContent=carro;sub.textContent=`Para sair de ${f2(T(cur))} s e chegar em ${f2(T(meta))} s nos ${D} m${D===201?' (no prep)':''}, seu carro precisa de cerca de ${need} cv na roda (+${gap} cv). Montamos as peças na ordem certa para chegar lá.`;
+const cfg=[Q.get('motor'),Q.get('cambio'),Q.get('pneu')].filter(Boolean).map(esc).join(' · ');if(cfg)sub.textContent+=' Configuração: '+cfg+'.';
+kpis.innerHTML=`<div><b>${f2(T(cur))} s</b><span>Tempo atual nos ${D} m</span></div><div class="dk"><b>${f2(T(meta))} s</b><span>Sua meta nos ${D} m</span></div><div><b>${need} cv</b><span>Potência na roda necessária</span></div><div><b>+${gap} cv</b><span>Quanto falta ganhar</span></div>`;
+
+const P=PRODUTOS.map(p=>({...p,v:+p.preco||0}));
+const by=(f)=>P.filter(f).sort((a,b)=>a.v-b.v);
+const lbs=p=>{const m=p.nome.match(/(\d{2,3})\s*lb/i);return m?+m[1]:0};
+const pick=(arr,n,frac=0)=>{if(!arr.length)return[];const i=Math.min(arr.length-1,Math.floor(frac*arr.length));return arr.slice(i,i+n)};
+const lvl=Math.min(need/700,1);
+const steps=[];
+// 1 injeção
+const bicoLb=Math.ceil(crank*0.85/(4*0.8));
+let bicos=by(p=>/bico/i.test(p.nome)&&lbs(p)>=Math.min(bicoLb,80));if(!bicos.length)bicos=by(p=>/bico/i.test(p.nome));
+const ecu=by(p=>p.categoria==='injecao'&&/fueltech|ft\d/i.test(p.nome)&&!/bico|wideband|sonda/i.test(p.nome));
+steps.push({t:'Injeção e gerenciamento',d:`Para ${crank} cv no virabrequim no etanol, cada bico precisa de pelo menos ${bicoLb} lb/h (4 cilindros, 80% de duty). Uma injeção programável deixa você acertar mapa, ponto e boost.`,g:'Base para todo o resto',it:[...bicos.slice(0,2),...pick(ecu,1,lvl)]});
+// 2 alimentação
+const alim=by(p=>p.categoria==='alimentacao'||/bomba/i.test(p.nome));const tq=by(p=>p.categoria==='tanque');
+steps.push({t:'Alimentação',d:'Mais potência pede mais combustível com pressão estável. Bomba de alta vazão e tanque de inox com retorno evitam o motor empobrecer no fim da reta.',g:'Segurança do motor',it:[...pick(alim,2,lvl),...tq.slice(0,1)]});
+// 3 turbo
+if(gap>30||need>220){const tb=by(p=>p.categoria==='turbo'&&/turbina|turbo/i.test(p.nome));
+steps.push({t:'Turbo',d:`O maior ganho por real investido. Para ${need} cv na roda escolhemos uma turbina na faixa certa de tamanho.`,g:`+${Math.round(gap*0.7)} cv estimados`,it:pick(tb,2,lvl)})}
+// 4 motor
+if(need>320){const mt=by(p=>p.categoria==='motor');steps.push({t:'Motor forjado',d:'Acima de ~320 cv na roda, pistões e bielas forjados dão a resistência que o motor original não tem.',g:'Aguenta a pressão',it:pick(mt,3,lvl)})}
+// 5 nitro
+const nt=by(p=>p.categoria==='nitro');if(nt.length&&gap>0)steps.push({t:'Nitro (opcional)',d:'Ganho rápido na largada, sem mexer no motor. Ótimo para completar os cavalos que faltam.',g:`+${Math.min(150,Math.max(50,Math.round(gap*.3)))} cv no botão`,it:pick(nt,2,lvl)});
+// 6 tração
+const rd=by(p=>p.categoria==='rodas');if(rd.length)steps.push({t:'Tração',d:'Potência sem tração vira fumaça. Rodas weld leves com tala certa para o pneu de arrancada fazem o carro sair na frente.',g:'Melhora o 60 pés',it:pick(rd,2,lvl)});
+
+let total=0;const seen=new Set();
+document.getElementById("steps").innerHTML=steps.map((s,i)=>{const its=s.it.filter(p=>p&&!seen.has(p.link)&&seen.add(p.link));its.forEach(p=>total+=p.v);
+ return its.length?`<div class="step"><div><span class="n">ETAPA ${String(i+1).padStart(2,'0')}</span><h3>${s.t}</h3><p>${s.d}</p><span class="gain">${s.g}</span></div><div class="pp">${its.map(p=>`<a href="${p.link}" target="_blank" rel="sponsored noopener"><img src="${p.img}" alt="" loading="lazy"><small>${p.marca}</small><h4>${p.nome}</h4><b>${R(p.v)}</b><em>Comprar no Mercado Livre →</em></a>`).join('')}</div></div>`:''}).join('');
+document.getElementById('y').textContent=new Date().getFullYear();
+</script>
+<script src="common.js"></script>
+</body>
+</html>
