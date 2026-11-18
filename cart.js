@@ -43,7 +43,7 @@ const st=document.createElement('style');st.textContent=`
 .g4bt{display:block;width:100%;border:0;border-radius:14px;padding:15px;font:700 15px Inter,system-ui,sans-serif;cursor:pointer;margin-top:8px}
 .g4b1{background:#e10600;color:#fff}.g4b2{background:#111;color:#fff}.g4b3{background:none;color:#888;font-size:13px;padding:8px}
 .g4note{font-size:11.5px;color:#888;line-height:1.5;margin-top:10px;text-align:center}
-.g4toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#111;color:#fff;padding:12px 18px;border-radius:12px;font:600 14px Inter,system-ui,sans-serif;z-index:10001;opacity:0;transition:.3s;pointer-events:none}
+.g4toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);max-width:min(420px,90vw);text-align:center;background:#111;color:#fff;padding:12px 18px;border-radius:12px;font:600 14px Inter,system-ui,sans-serif;z-index:10001;opacity:0;transition:.3s;pointer-events:none}
 .g4toast.on{opacity:1}
 .g4ex{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:10002;display:grid;place-items:center;padding:16px;opacity:0;transition:.3s}.g4ex.on{opacity:1}
 .g4exb{background:#111;color:#fff;border-radius:24px;padding:26px;max-width:560px;width:100%;position:relative;font-family:Inter,system-ui,sans-serif;transform:translateY(20px) scale(.97);transition:.35s cubic-bezier(.16,1,.3,1);box-shadow:0 30px 80px rgba(0,0,0,.5)}.g4ex.on .g4exb{transform:none}
@@ -71,7 +71,7 @@ const wrap=document.createElement('div');wrap.innerHTML=`
 <div class="g4toast" id="g4toast"></div>`;
 document.body.appendChild(wrap);
 const $=id=>document.getElementById(id);
-const toast=m=>{const t=$('g4toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2200)};
+const toast=m=>{const t=$('g4toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),m.length>60?6000:2200)};
 const open=()=>document.documentElement.classList.add('g4open'),close=()=>document.documentElement.classList.remove('g4open');
 $('g4fab').onclick=open;$('g4x').onclick=close;$('g4ov').onclick=close;
 document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
@@ -82,16 +82,21 @@ function paint(){
   $('g4sub').textContent=n?`${n} ${n>1?'peças':'peça'} · ${cart.filter(x=>x.ok).length} já abertas`:'Adicione peças para montar seu projeto';
   $('g4ls').innerHTML=n?cart.map((x,i)=>`<div class="g4it${x.ok?' done':''}">${x.img?`<img src="${x.img}" alt="" loading="lazy">`:''}<div class="t"><b>${x.nome}</b><em>${brl(x.preco)}</em><br><a href="${x.link}" target="_blank" rel="sponsored noopener" data-i="${i}">Abrir no Mercado Livre</a></div><button class="g4rm" data-r="${i}" aria-label="Remover">×</button></div>`).join('')
     :`<div class="g4em">🔧<br><b>Seu projeto está vazio.</b><br>Toque em <b>🛒 Adicionar</b> nas peças da loja, dos clássicos ou do blog para montar sua lista.</div>`;
-  const pend=cart.filter(x=>!x.ok).length;$('g4all').textContent=!n?'Abrir no Mercado Livre':pend===n?(n>1?`Abrir 1ª peça no Mercado Livre (1 de ${n})`:'Abrir no Mercado Livre'):pend?`Abrir próxima peça (${n-pend+1} de ${n})`:'Abrir todas de novo';
+  const pend=cart.filter(x=>!x.ok).length;$('g4all').textContent=!n?'Abrir no Mercado Livre':pend===n?(n>1?`Abrir todas no Mercado Livre (${n})`:'Abrir no Mercado Livre'):pend?`Abrir próxima peça (${n-pend+1} de ${n})`:'Abrir todas de novo';
   document.querySelectorAll('.g4add').forEach(b=>{const on=has(b._l);b.classList.toggle('on',on);b.innerHTML=on?'✔ No projeto':'🛒 Adicionar'});
 }
 $('g4ls').addEventListener('click',e=>{const a=e.target.closest('a[data-i]');if(a){cart[a.dataset.i].ok=1;setTimeout(save,50)}
   const r=e.target.closest('[data-r]');if(r){cart.splice(+r.dataset.r,1);save()}});
 /* Navegadores só permitem abrir 1 aba por clique: abrimos uma peça por vez e o botão vira "Abrir próxima peça". */
-$('g4all').onclick=()=>{const i=cart.findIndex(x=>!x.ok);
-  if(i<0){if(!cart.length)return;cart.forEach(x=>x.ok=0);save();return $('g4all').onclick()}
-  const w=window.open(cart[i].link,'_blank');if(w)try{w.opener=null}catch(e){}cart[i].ok=1;save();
-  const rest=cart.filter(x=>!x.ok).length;toast(rest?`Peça ${i+1} aberta. Volte aqui e toque em "Abrir próxima" (${rest} restante${rest>1?'s':''})`:'Todas as peças foram abertas 🏁')};
+/* Tenta abrir todas as peças pendentes de uma vez. Se o navegador bloquear pop-ups,
+   as que faltarem continuam no botão "Abrir próxima peça" (1 aba por clique). */
+$('g4all').onclick=()=>{if(!cart.length)return;if(!cart.some(x=>!x.ok))cart.forEach(x=>x.ok=0);
+  let opened=0,blocked=0;
+  cart.forEach(x=>{if(x.ok)return;if(blocked){return}const w=window.open(x.link,'_blank');
+    if(w){try{w.opener=null}catch(e){}x.ok=1;opened++}else blocked++});
+  save();const rest=cart.filter(x=>!x.ok).length;
+  if(rest)toast(`${opened} aberta${opened>1?'s':''}. Seu navegador bloqueou as outras: toque de novo para abrir a próxima, ou permita pop-ups deste site para abrir todas de uma vez.`);
+  else toast(opened>1?`${opened} peças abertas no Mercado Livre 🏁`:'Peça aberta no Mercado Livre 🏁')};
 $('g4sh').onclick=async()=>{const url=location.origin+'/?projeto='+cart.map(x=>code(x.link)).filter(Boolean).join('.');
   const txt=`Meu projeto na Grid 402 (${cart.length} peças):`;
   try{if(navigator.share){await navigator.share({title:'Meu projeto Grid 402',text:txt,url});return}}catch(e){return}
