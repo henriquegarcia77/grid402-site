@@ -60,6 +60,7 @@ body{background:#f2f2f4;font-family:Inter,system-ui,sans-serif;color:#1d1d1f;mar
 @media(max-width:860px){.lgrid{grid-template-columns:1fr}.side{position:fixed;inset:0 auto 0 0;width:min(320px,86vw);z-index:9990;border-radius:0;overflow:auto;transform:translateX(-105%);transition:.3s;top:0;padding-top:70px}.side.open{transform:none}.sov{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9989;opacity:0;pointer-events:none;transition:.3s}.sov.on{opacity:1;pointer-events:auto}
 .ftog{display:inline-flex;align-items:center;gap:6px;background:#111;color:#fff;border:0;border-radius:10px;padding:11px 14px;font:700 14px Inter,sans-serif}.pgrid{grid-template-columns:repeat(2,1fr);gap:10px}.lsearch{min-width:0;flex:1}.pc4 .pr{font-size:18px}.sclose{display:block!important}}
 @media(max-width:860px){.ltools{width:100%}.lsearch{order:-1;flex:1 1 100%}.ftog{flex:1;justify-content:center}.ltools label{display:none}.pc4 .buy{font-size:0}.pc4 .buy::after{content:'Comprar';font-size:13px}.ltools select{flex:1}.pc4 .bd{font-size:9.5px;padding:3px 7px}.pc4 h3{font-size:11.5px!important}.lband{padding-top:84px}.lband p{font-size:14px}}
+.sov{display:none}@media(max-width:860px){.sov{display:block}}
 .sclose{display:none;position:absolute;top:16px;right:16px;background:#111;color:#fff;border:0;border-radius:50%;width:36px;height:36px;font-size:16px}
 </style>
 </head>
@@ -70,6 +71,7 @@ body{background:#f2f2f4;font-family:Inter,system-ui,sans-serif;color:#1d1d1f;mar
   <p>Turbo, injeção, bicos, nitro, motor forjado, rodas, acessórios e peças para clássicos. Monte seu projeto 🛒 e compre com segurança pelo Mercado Livre.</p>
   <div class="lnav" id="lnav"></div>
 </div></div>
+<div class="sov" id="sov"></div>
 <main class="lwrap">
   <div class="ltop">
     <div class="crumb"><a href="index.html">Home</a> &nbsp;|&nbsp; <span id="crumbc">Todos os produtos</span></div>
@@ -81,7 +83,7 @@ body{background:#f2f2f4;font-family:Inter,system-ui,sans-serif;color:#1d1d1f;mar
     </div>
   </div>
   <div class="lgrid">
-    <div class="sov" id="sov"></div><aside class="side" id="side"><button class="sclose" id="sclose">✕</button>
+    <aside class="side" id="side"><button class="sclose" id="sclose">✕</button>
       <div class="blk"><h5>Faixa de preço</h5>
         <div class="qp" id="qp"><button data-r="0-300">Até R$ 300</button><button data-r="300-1000">R$ 300–1 mil</button><button data-r="1000-3000">R$ 1–3 mil</button><button data-r="3000-">+ R$ 3 mil</button></div>
         <label class="t">Valor mínimo</label><input type="number" id="pmin" placeholder="Mín">
