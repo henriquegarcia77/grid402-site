@@ -4,8 +4,8 @@ try{sessionStorage.setItem('g402load','1');if(!/index\.html$|\/$/.test(location.
 const LOGO='<img src="logo-sm.png" alt="Grid 402 Performance" class="hlogo">';
 const SEARCH='<svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>';
 const BAG='<svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>';
-const links=[["Home","index.html"],["Carros antigos","antigos.html"],["Na pista","na-pista.html"],["Eventos","eventos.html"],["Vestuário","vestuario.html"],["Blog","blog.html"]];
-const isIndex=!!document.getElementById('loja');
+const links=[["Home","index.html"],["Loja","loja.html"],["Carros antigos","antigos.html"],["Na pista","na-pista.html"],["Eventos","eventos.html"],["Vestuário","vestuario.html"],["Blog","blog.html"]];
+const isIndex=!!document.getElementById('pq');
 document.getElementById('hdr').outerHTML=`
 <header class="gnav" id="gnav"><div class="gwrap">
   <div class="mob"><a class="lg" href="index.html" aria-label="Grid 402">${LOGO}</a></div>
@@ -27,10 +27,12 @@ const close=()=>{g.classList.remove('srch','open');d.classList.remove('on')};
 document.querySelectorAll('.sBtn').forEach(b=>b.onclick=()=>{const o=!g.classList.contains('srch');close();if(o){g.classList.add('srch');d.classList.add('on');setTimeout(()=>q.focus(),300)}});
 document.getElementById('mBtn').onclick=()=>{const o=!g.classList.contains('open');close();if(o)g.classList.add('open')};
 d.onclick=close;addEventListener('keydown',e=>e.key==='Escape'&&close());
-const go=t=>{close();if(isIndex&&window.doSearch)doSearch(t);else location.href='index.html?q='+encodeURIComponent(t)};
+const go=t=>{close();if(isIndex&&window.doSearch)doSearch(t);else location.href='loja.html?q='+encodeURIComponent(t)};
 document.getElementById('searchForm').onsubmit=e=>{e.preventDefault();go(q.value.trim())};
 document.querySelectorAll('[data-q]').forEach(a=>a.onclick=e=>{e.preventDefault();q.value=a.dataset.q;go(a.dataset.q)});
 // na própria loja, links de categoria filtram sem recarregar
 if(isIndex) document.querySelectorAll('#gmenu a[href*="?cat="]').forEach(a=>a.onclick=e=>{e.preventDefault();close();setCat(new URL(a.href).searchParams.get('cat'))});
 document.getElementById('gmenu').addEventListener('click',()=>g.classList.remove('open'));
 })();
+
+(()=>{const s=document.createElement('script');s.src=new URL('cart.js?v=1',(document.currentScript&&document.currentScript.src)||location.href).href;s.defer=true;(document.readyState==='loading'?document.addEventListener('DOMContentLoaded',()=>document.body.appendChild(s)):document.body.appendChild(s))})();

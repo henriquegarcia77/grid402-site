@@ -233,7 +233,24 @@ h2{font-size:clamp(34px,4.5vw,54px)}
 .seoblk{padding:60px 0;border-top:1px solid var(--line)}.seoblk h2{font-size:26px;letter-spacing:-.02em;margin-bottom:12px}.seoblk p{color:var(--mut);max-width:820px;line-height:1.7}.seoblk .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.seoblk .chips a{background:#fff;border:1px solid var(--line);padding:8px 14px;border-radius:99px;font-size:14px;font-weight:600}.seoblk .chips a:hover{border-color:var(--red);color:var(--red)}
 .lbottom h1.tag{font-size:12px!important;letter-spacing:.18em!important;line-height:1.2!important;font-weight:500!important;text-transform:uppercase!important;margin:0!important;font-family:'JetBrains Mono',monospace!important;display:inline-block}
 .h1like{font-family:var(--font);font-size:clamp(40px,5vw,72px)!important;font-weight:700;letter-spacing:-.035em;line-height:1.02;margin:6px 0 20px}.h1like .r{color:var(--red);display:block}
+.mpgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.mpgrid .prod{position:relative}.mpgrid .rank{position:absolute;top:10px;left:10px;z-index:4;background:#111;color:#fff;font:800 12px Inter,sans-serif;padding:6px 10px;border-radius:99px}.mpgrid .rank i{font-style:normal;color:#ff3a30}
+@media(max-width:900px){.mpgrid{grid-template-columns:repeat(2,1fr)}}
+.mproj{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;background:#111;color:#fff;border-radius:32px;padding:48px}.mproj h2{color:#fff!important;font-size:clamp(28px,3.4vw,44px)!important}.mproj small{color:#ff3a30}.mproj p{color:#bbb;font-size:17px;line-height:1.6;margin:14px 0 22px}.mproj .btn.ghost{color:#fff;border-color:#444}.mpbtns{display:flex;gap:10px;flex-wrap:wrap}
+.mpsteps{list-style:none;margin:0;padding:0;display:grid;gap:12px}.mpsteps li{display:flex;gap:14px;align-items:center;background:#1c1c1e;border-radius:18px;padding:16px}.mpsteps b{background:#e10600;min-width:36px;height:36px;border-radius:50%;display:grid;place-items:center}.mpsteps em{font-style:normal;color:#ffe600;font-weight:700}
+@media(max-width:900px){.mproj{grid-template-columns:1fr;padding:28px;border-radius:24px}}
+.hcats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.hcat{background:#fff;border:1px solid var(--line);border-radius:22px;padding:14px;display:flex;flex-direction:column;gap:4px;transition:.25s}.hcat:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.08);border-color:var(--red)}.hcat .hi{aspect-ratio:1;display:grid;place-items:center;background:#fff;border-radius:14px;overflow:hidden;margin-bottom:6px}.hcat img{width:100%;height:100%;object-fit:contain}.hcat b{font-size:15px}.hcat small{color:var(--mut);font-size:12.5px}
+@media(max-width:900px){.hcats{grid-template-columns:repeat(2,1fr)}}.btn.big{font-size:17px;padding:18px 30px}
 </style>
+
+
+
+
+
+
+
+
+
+
 
 <script type="application/ld+json" id="orgld">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "Grid 402 Performance", "url": "https://grid402performance.com.br", "logo": "https://grid402performance.com.br/logo.png", "sameAs": ["https://www.instagram.com/grid402performance/", "https://www.facebook.com/profile.php?id=61588606083936"]}, {"@type": "WebSite", "name": "Grid 402 Performance", "url": "https://grid402performance.com.br", "inLanguage": "pt-BR", "potentialAction": {"@type": "SearchAction", "target": "https://grid402performance.com.br/?q={search_term_string}#loja", "query-input": "required name=search_term_string"}}]}</script>
 </head>
@@ -274,7 +291,7 @@ h2{font-size:clamp(34px,4.5vw,54px)}
     <div class="hero-in">
       <h1 class="tag mono">// LOJA DE PEÇAS PARA ARRANCADA</h1>
       <h2 class="h1like">Do grid<span class="r">à bandeirada.</span></h2>
-      <div class="cta"><a href="#loja" class="btn red">Ver produtos</a><a href="#ofertas" class="btn ghost">Ofertas</a></div>
+      <div class="cta"><a href="loja.html" class="btn red">Ver produtos</a><a href="#ofertas" class="btn ghost">Ofertas</a></div>
     </div>
     <a class="nextcard" id="nextcard" href="eventos.html"></a>
   </div>
@@ -302,18 +319,22 @@ h2{font-size:clamp(34px,4.5vw,54px)}
   <a href="na-pista.html"><div><small class="mono" style="color:#fff">FERRAMENTAS</small><h3>Fora da<br>pista</h3></div><span class="bgn">0.0</span><p>Tempo de reação, calculadora de bico e tempo do carro nos 402 m.</p><span class="go"><i>→</i> Testar agora</span></a>
 </div></section>
 
+<section id="maisprocurados" style="padding-top:0"><div class="wrap">
+  <div class="sh reveal"><div><small class="mono">🔥 MAIS PROCURADOS DA SEMANA</small><h2>O que a galera está comprando</h2></div></div>
+  <div class="mpgrid reveal" id="mpgrid"></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap"><div class="mproj reveal">
+  <div><small class="mono">// MONTE SEU PROJETO</small><h2>Monte a lista de peças do seu carro</h2>
+  <p>Toque em <b>🛒 Adicionar</b> nas peças da loja, dos clássicos e do blog. Sua lista fica salva, mostra o total estimado e você abre cada peça no Mercado Livre na hora de comprar. Dá até para mandar o projeto para o mecânico ou para os amigos.</p>
+  <div class="mpbtns"><a href="loja.html" class="btn red">Começar pela loja</a><a href="na-pista.html#tempo" class="btn ghost">Calcular tempo e montar plano</a></div></div>
+  <ol class="mpsteps"><li><b>🏁</b><span>Não sabe por onde começar? Calcule o tempo do seu carro e receba um <em>plano de peças</em> pronto</span></li><li><b>1</b><span>Escolha as peças e toque em <em>🛒 Adicionar</em></span></li><li><b>2</b><span>Veja o total no botão 🛒 Meu projeto</span></li><li><b>3</b><span>Abra cada peça no Mercado Livre e compre com segurança</span></li><li><b>4</b><span>Compartilhe o projeto no WhatsApp</span></li></ol>
+</div></div></section>
+
 <section id="loja" style="padding-top:0"><div class="wrap">
-  <div class="sh reveal"><div><small class="mono">LOJA</small><h2>Todos os produtos</h2></div></div>
-  <div class="shop reveal">
-    <details class="fwrap" open><summary class="ftog">Filtrar e ordenar</summary><aside class="filters">
-      <h5>Categoria</h5><div id="fCat"></div>
-      <h5>Marca</h5><div id="fBrand"></div>
-      <h5>Ordenar</h5>
-      <select id="sort"><option value="rel">Relevância</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option><option value="off">Maior desconto</option></select>
-      <button class="btn ghost clear" id="clear">Limpar filtros</button>
-    </aside></details>
-    <div><label class="psearch"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="pq" type="search" placeholder="Buscar produto: turbina, bico, FuelTech, roda…" autocomplete="off"></label><div class="bar"><span id="count"></span><span id="term"></span></div><div class="pgrid" id="grid"></div><div class="more"><button class="btn" id="moreBtn">Ver mais produtos</button></div></div>
-  </div>
+  <div class="sh reveal"><div><small class="mono">LOJA</small><h2>Compre por categoria</h2></div><a class="btn red" href="loja.html">Ver todos os produtos →</a></div>
+  <div class="hcats reveal" id="hcats"></div>
+  <div style="text-align:center;margin-top:28px"><a class="btn red big" href="loja.html">Ver todos os produtos da loja →</a></div>
 </div></section>
 
 <section style="padding-top:0"><div class="wrap">
@@ -333,7 +354,16 @@ h2{font-size:clamp(34px,4.5vw,54px)}
 </div></div>
 
 
-<section class="seoblk" id="seoblk"><div class="wrap"><h2>Loja de peças para arrancada e carros antigos</h2><p>A Grid 402 Performance reúne peças de performance para arrancada, No Prep e preparação de rua, e peças de reposição para clássicos nacionais. Encontre turbina e kit turbo, injeção programável FuelTech, bicos injetores, bomba de combustível, kit nitro, rodas weld, embreagem cerâmica e peças de motor forjado, sempre com compra segura pelo Mercado Livre.</p><div class="chips"><a href="pecas/injecao">Injeção eletrônica programável e bicos</a><a href="pecas/alimentacao">Bomba de combustível e alimentação</a><a href="pecas/turbo">Turbina, kit turbo e acessórios</a><a href="pecas/motor">Peças de motor forjado e embreagem</a><a href="pecas/conversao">Kit para passar de carburado para injeção</a><a href="pecas/nitro">Kit nitro e garrafa de nitro</a><a href="pecas/rodas">Rodas de arrancada weld</a><a href="pecas/tanque">Tanque de combustível inox para arrancada</a><a href="pecas/opala">Peças Opala</a><a href="pecas/maverick">Peças Maverick</a><a href="pecas/fusca">Peças Fusca</a><a href="pecas/gol">Peças Gol quadrado</a><a href="pecas/chevette">Peças Chevette</a><a href="pecas/passat">Peças Passat</a><a href="pecas/variant">Peças Variant</a><a href="pecas/c10">Peças C10</a><a href="pecas/rural">Peças Rural</a><a href="pecas/landau">Peças Landau</a><a href="pecas/galaxie">Peças Galaxie</a><a href="pecas/omega">Peças Omega</a></div></div></section>
+
+
+
+
+
+
+
+
+
+
 <footer class="foot"><div class="wrap">
   <div class="cols">
     <div><a href="index.html" class="logo">GRID<b>402</b></a><p style="margin-top:12px;max-width:280px">Peças de performance para arrancada e carros antigos. Vendas pelo Mercado Livre.</p></div>
@@ -374,7 +404,7 @@ let ok=false;try{const c=document.createElement('canvas');ok=!!(c.getContext('we
 if(!ok){p.classList.add('on');document.getElementById('car3d').style.display='none';const l=document.getElementById('loading');l&&l.remove()}})();</script>
 <script src="config.js"></script>
 <script src="eventos.js"></script>
-<script src="header.js?v=5"></script>
+<script src="header.js?v=6"></script>
 <script src="produtos.js"></script>
 <script src="marcas-logos.js"></script>
 <script>
@@ -420,6 +450,10 @@ document.getElementById('brands').innerHTML=`<div class="btrack">${_bh}${_bh}</d
 // Carrossel
 const car=document.getElementById('carousel'), dots=document.getElementById('dots');
 car.innerHTML=PRODUTOS.filter(p=>p.destaque).map(card).join('');
+(()=>{const TOP=["https://meli.la/1bR42xn","https://meli.la/2ufwkyX","https://meli.la/18nSSnr","https://meli.la/2E19FSP","https://meli.la/2YKW1eY","https://meli.la/2mjsDh8","https://meli.la/2PHYAsM","https://meli.la/1PzCW9o"];
+const g=document.getElementById('mpgrid');if(!g)return;const L=TOP.map(l=>PRODUTOS.find(p=>p.link===l)).filter(Boolean);
+g.innerHTML=L.map((p,i)=>card(p).replace('<div class="ph">',`<span class="rank"><i>#${i+1}</i> mais procurado</span><div class="ph">`)).join('')})();
+
 function drawDots(){dots.innerHTML=Array.from({length:Math.ceil(car.scrollWidth/car.clientWidth)},(_,i)=>`<span data-i="${i}"></span>`).join('');upd()}
 function upd(){const i=Math.round(car.scrollLeft/car.clientWidth);[...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i))}
 dots.onclick=e=>{if(e.target.dataset.i)car.scrollLeft=e.target.dataset.i*car.clientWidth};
@@ -429,35 +463,16 @@ next.onclick=()=>step(1);prev.onclick=()=>step(-1);
 let auto=setInterval(()=>step(1),5000);
 car.onmouseenter=()=>clearInterval(auto);car.onmouseleave=()=>auto=setInterval(()=>step(1),5000);
 
-// Loja com filtros
-const st={cats:new Set(),brands:new Set(),q:''};
-fCat.innerHTML=CATEGORIAS.map(c=>`<label><input type="checkbox" value="${c.id}" data-f="cats"> ${c.nome}</label>`).join('');
-fBrand.innerHTML=marcas.map(m=>`<label><input type="checkbox" value="${m}" data-f="brands"> ${m}</label>`).join('');
-document.querySelectorAll('.filters input').forEach(i=>i.onchange=()=>{i.checked?st[i.dataset.f].add(i.value):st[i.dataset.f].delete(i.value);render()});
-sort.onchange=render;
-const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
-function render(){
-  let list=PRODUTOS.filter(p=>(!st.cats.size||st.cats.has(p.categoria))&&(!st.brands.size||st.brands.has(p.marca))&&
-    (!st.q||norm(p.nome+' '+p.marca+' '+p.categoria).includes(norm(st.q))));
-  const s=sort.value;
-  if(s==='menor')list.sort((a,b)=>a.preco-b.preco);if(s==='maior')list.sort((a,b)=>b.preco-a.preco);if(s==='off')list.sort((a,b)=>offOf(b)-offOf(a));
-  const per=innerWidth<=760?6:9;window._lim=window._lim||per;moreBtn.parentNode.style.display=list.length>_lim?'':'none';
-  grid.innerHTML=list.length?list.slice(0,_lim).map(card).join(''):`<div class="empty">Nenhum produto encontrado aqui.<br><br><a href="${ml(st.q||'pecas performance')}" target="_blank" rel="sponsored" class="btn red">Buscar no Mercado Livre →</a></div>`;
-  count.textContent=`${list.length} produto${list.length!==1?'s':''}`;
-  term.textContent=st.q?`Busca: "${st.q}"`:'';
-}
-function setCat(id){st.cats.clear();if(id)st.cats.add(id);document.querySelectorAll('[data-f=cats]').forEach(i=>i.checked=st.cats.has(i.value));render();loja.scrollIntoView()}
+// Home: categorias levam para a loja
+const ICO={injecao:'⚡',alimentacao:'⛽',turbo:'🌀',motor:'🔩',conversao:'🔧',nitro:'💨',rodas:'🛞',tanque:'🛢️',acessorios:'⏱️',classicos:'🚗'};
+document.getElementById('hcats').innerHTML=CATEGORIAS.map(c=>{const n=PRODUTOS.filter(p=>p.categoria===c.id);const im=(n.find(p=>p.img&&p.img.startsWith('data:'))||n[0]||{}).img||'';return `<a href="loja.html?cat=${c.id}" class="hcat"><span class="hi">${im?`<img src="${im}" alt="" loading="lazy">`:''}</span><b>${ICO[c.id]||''} ${c.nome}</b><small>${n.length} produtos</small></a>`}).join('');
 document.addEventListener('click',e=>{
-  const c=e.target.closest('[data-cat]');if(c){e.preventDefault();setCat(c.dataset.cat)}
-  const b=e.target.closest('[data-brand]');if(b){st.brands.clear();st.brands.add(b.dataset.brand);document.querySelectorAll('[data-f=brands]').forEach(i=>i.checked=st.brands.has(i.value));render();loja.scrollIntoView()}
+  const c=e.target.closest('[data-cat]');if(c){e.preventDefault();location.href='loja.html?cat='+c.dataset.cat}
+  const b=e.target.closest('[data-brand]');if(b){location.href='loja.html?marca='+encodeURIComponent(b.dataset.brand)}
 });
-clear.onclick=()=>{st.cats.clear();st.brands.clear();st.q='';q.value='';pq.value='';window._lim=0;document.querySelectorAll('.filters input').forEach(i=>i.checked=false);sort.value='rel';render()};
-pq.oninput=()=>{st.q=pq.value.trim();window._lim=0;render()};
-moreBtn.onclick=()=>{_lim+=innerWidth<=760?6:9;render()};
-window.doSearch=t=>{pq.value=t;window._lim=0;st.q=t;render();loja.scrollIntoView({behavior:'smooth'})};
-const hp=new URLSearchParams(location.search);if(hp.get('cat'))setTimeout(()=>setCat(hp.get('cat')),300);if(hp.get('q'))setTimeout(()=>doSearch(hp.get('q')),300);
-render();
-if(matchMedia('(max-width:1000px)').matches)document.querySelector('.fwrap').removeAttribute('open');
+window.doSearch=t=>{location.href='loja.html?q='+encodeURIComponent(t)};
+window.setCat=id=>{location.href='loja.html?cat='+id};
+{const hp=new URLSearchParams(location.search);if(hp.get('cat'))location.replace('loja.html?cat='+hp.get('cat'));else if(hp.get('q'))location.replace('loja.html?q='+encodeURIComponent(hp.get('q')))}
 
 </script>
 <script src="common.js"></script>
