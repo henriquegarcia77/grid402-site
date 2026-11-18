@@ -64,10 +64,10 @@ const wrap=document.createElement('div');wrap.innerHTML=`
 <div class="g4clip"><aside class="g4dr" aria-label="Meu projeto"><div class="g4hd"><small>// MONTE SEU PROJETO</small><h3>Meu projeto</h3><p id="g4sub"></p><button class="g4x" id="g4x" aria-label="Fechar">✕</button></div>
 <div class="g4ls" id="g4ls"></div>
 <div class="g4ft"><div class="g4tot"><span>Total estimado</span><b id="g4tot">R$ 0</b></div>
-<button class="g4bt g4b1" id="g4all">Abrir todos no Mercado Livre</button>
+<button class="g4bt g4b1" id="g4all">Abrir no Mercado Livre</button>
 <button class="g4bt g4b2" id="g4sh">Compartilhar projeto</button>
 <button class="g4bt g4b3" id="g4clr">Limpar projeto</button>
-<p class="g4note">Cada peça abre o anúncio no Mercado Livre, onde você coloca no carrinho e compra com segurança. Preços podem variar.</p></div></aside></div>
+<p class="g4note">Cada peça abre em uma aba do Mercado Livre: adicione ao carrinho de lá, volte aqui e abra a próxima. No fim, finalize tudo no carrinho do Mercado Livre. Preços podem variar.</p></div></aside></div>
 <div class="g4toast" id="g4toast"></div>`;
 document.body.appendChild(wrap);
 const $=id=>document.getElementById(id);
@@ -82,12 +82,16 @@ function paint(){
   $('g4sub').textContent=n?`${n} ${n>1?'peças':'peça'} · ${cart.filter(x=>x.ok).length} já abertas`:'Adicione peças para montar seu projeto';
   $('g4ls').innerHTML=n?cart.map((x,i)=>`<div class="g4it${x.ok?' done':''}">${x.img?`<img src="${x.img}" alt="" loading="lazy">`:''}<div class="t"><b>${x.nome}</b><em>${brl(x.preco)}</em><br><a href="${x.link}" target="_blank" rel="sponsored noopener" data-i="${i}">Abrir no Mercado Livre</a></div><button class="g4rm" data-r="${i}" aria-label="Remover">×</button></div>`).join('')
     :`<div class="g4em">🔧<br><b>Seu projeto está vazio.</b><br>Toque em <b>🛒 Adicionar</b> nas peças da loja, dos clássicos ou do blog para montar sua lista.</div>`;
+  const pend=cart.filter(x=>!x.ok).length;$('g4all').textContent=!n?'Abrir no Mercado Livre':pend===n?(n>1?`Abrir 1ª peça no Mercado Livre (1 de ${n})`:'Abrir no Mercado Livre'):pend?`Abrir próxima peça (${n-pend+1} de ${n})`:'Abrir todas de novo';
   document.querySelectorAll('.g4add').forEach(b=>{const on=has(b._l);b.classList.toggle('on',on);b.innerHTML=on?'✔ No projeto':'🛒 Adicionar'});
 }
 $('g4ls').addEventListener('click',e=>{const a=e.target.closest('a[data-i]');if(a){cart[a.dataset.i].ok=1;setTimeout(save,50)}
   const r=e.target.closest('[data-r]');if(r){cart.splice(+r.dataset.r,1);save()}});
-$('g4all').onclick=()=>{let blocked=0;cart.forEach((x,i)=>{const w=window.open(x.link,'_blank','noopener');if(!w&&i>0)blocked++;x.ok=1});save();
-  if(blocked)toast('Seu navegador bloqueou algumas abas. Use os botões de cada peça.')};
+/* Navegadores só permitem abrir 1 aba por clique: abrimos uma peça por vez e o botão vira "Abrir próxima peça". */
+$('g4all').onclick=()=>{const i=cart.findIndex(x=>!x.ok);
+  if(i<0){if(!cart.length)return;cart.forEach(x=>x.ok=0);save();return $('g4all').onclick()}
+  const w=window.open(cart[i].link,'_blank');if(w)try{w.opener=null}catch(e){}cart[i].ok=1;save();
+  const rest=cart.filter(x=>!x.ok).length;toast(rest?`Peça ${i+1} aberta. Volte aqui e toque em "Abrir próxima" (${rest} restante${rest>1?'s':''})`:'Todas as peças foram abertas 🏁')};
 $('g4sh').onclick=async()=>{const url=location.origin+'/?projeto='+cart.map(x=>code(x.link)).filter(Boolean).join('.');
   const txt=`Meu projeto na Grid 402 (${cart.length} peças):`;
   try{if(navigator.share){await navigator.share({title:'Meu projeto Grid 402',text:txt,url});return}}catch(e){return}
