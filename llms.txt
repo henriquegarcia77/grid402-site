@@ -1,0 +1,46 @@
+# Grid 402 Performance
+
+> Loja online de peças para arrancada (drag race, No Prep) e peças para carros antigos nacionais (Opala, Maverick, Fusca, Chevette e outros). Todas as compras são feitas com segurança pelo Mercado Livre. O site também tem ferramentas gratuitas: cálculo de tempo nos 402 m e 201 m, plano de peças para baixar o tempo, calculadora de bico injetor e teste de tempo de reação.
+
+## Loja
+- [Todos os produtos](https://grid402performance.com.br/loja): turbo, injeção FuelTech, bicos, nitro, motor forjado, rodas, 3 step, manômetros e peças para clássicos.
+- [Injeção](https://grid402performance.com.br/pecas/injecao)
+- [Alimentação](https://grid402performance.com.br/pecas/alimentacao)
+- [Turbo](https://grid402performance.com.br/pecas/turbo)
+- [Motor](https://grid402performance.com.br/pecas/motor)
+- [Carburado → Injeção](https://grid402performance.com.br/pecas/conversao)
+- [Nitro](https://grid402performance.com.br/pecas/nitro)
+- [Rodas](https://grid402performance.com.br/pecas/rodas)
+- [Tanques inox](https://grid402performance.com.br/pecas/tanque)
+- [Acessórios até R$ 300](https://grid402performance.com.br/pecas/acessorios)
+- [Peças para clássicos](https://grid402performance.com.br/pecas/classicos)
+
+## Peças para carros antigos
+- [Peças para Opala](https://grid402performance.com.br/pecas/opala): A lenda da Chevrolet, de 4 e 6 cilindros.
+- [Peças para Maverick](https://grid402performance.com.br/pecas/maverick): O músculo nacional da Ford.
+- [Peças para Fusca](https://grid402performance.com.br/pecas/fusca): O carro mais querido do Brasil.
+- [Peças para Gol quadrado](https://grid402performance.com.br/pecas/gol): Base favorita da arrancada nacional.
+- [Peças para Chevette](https://grid402performance.com.br/pecas/chevette): Tração traseira, leve e valente.
+- [Peças para Passat](https://grid402performance.com.br/pecas/passat): O clássico VW dos anos 70 e 80.
+- [Peças para Variant](https://grid402performance.com.br/pecas/variant): A perua VW a ar que virou cult.
+- [Peças para C10](https://grid402performance.com.br/pecas/c10): A picape Chevrolet raiz.
+- [Peças para Rural](https://grid402performance.com.br/pecas/rural): A Willys valente de fazenda e cidade.
+- [Peças para Landau](https://grid402performance.com.br/pecas/landau): O luxo V8 da Ford.
+- [Peças para Galaxie](https://grid402performance.com.br/pecas/galaxie): O grandalhão americano feito no Brasil.
+- [Peças para Omega](https://grid402performance.com.br/pecas/omega): O sedã 6 cilindros que virou lenda.
+
+## Guias do blog
+- [Como adaptar motor 6 cilindros (250-S) no Opala 4 cilindros: guia completo](https://grid402performance.com.br/blog/como-adaptar-motor-6cc-no-opala-4cc): Trocar o 4 cilindros pelo 6cc é o sonho de todo dono de Opala. Veja o que muda no radiador, embreagem, escape, suspensão, freios e documentação.
+- [Peças para preparar o Opala 6cc: comando, escape dimensionado, Weber e embreagem](https://grid402performance.com.br/blog/pecas-para-preparar-opala-6cc): As peças que mais dão resultado no Opala 6 cilindros aspirado, na ordem certa para gastar bem o dinheiro.
+- [Carburador Weber no Opala 4cc e 6cc: qual coletor usar e como acertar](https://grid402performance.com.br/blog/carburador-weber-no-opala): Weber 40, 44 ou 45? Um ou dois carburadores? Veja como escolher o coletor de admissão certo para o seu Opala.
+- [Maverick V8 302: ignição eletrônica e coletor quadrijet para acordar o motor](https://grid402performance.com.br/blog/maverick-v8-302-ignicao-eletronica-coletor): Os dois upgrades mais simples e eficientes para o Maverick V8 302: trocar o platinado por ignição eletrônica e montar um coletor quadrijet.
+- [Fusca 1600: carburador H30 e kit motor para deixar o besouro novo](https://grid402performance.com.br/blog/fusca-1600-carburador-kit-motor): Motor do Fusca fraco ou gastando óleo? Veja quando trocar o carburador, quando fazer o kit motor e quais peças usar.
+- [Kit turbo para AP: como escolher o certo para o seu Gol, Voyage ou Saveiro](https://grid402performance.com.br/blog/kit-turbo-ap-como-escolher): Pulsativo ou 1:1, carburado ou injetado, turbina 42/48 ou .50: o guia para montar o AP turbo sem gastar duas vezes.
+- [Carburado para injeção: como converter Opala, Chevette, Maverick e AP](https://grid402performance.com.br/blog/carburado-para-injecao-programavel): O que muda, o que comprar e por onde começar para passar o seu clássico ou o seu AP do carburador para a injeção programável.
+- [Bico injetor para turbo: como calcular a vazão certa (com calculadora)](https://grid402performance.com.br/blog/como-calcular-bico-injetor-turbo): Etanol ou gasolina, 300 ou 600 cv: aprenda a escolher a vazão do bico injetor sem deixar o motor pobre.
+- [Nitro na arrancada: como funciona, kit seco ou molhado e o que comprar](https://grid402performance.com.br/blog/nitro-na-arrancada-guia): O ganho rápido mais famoso da arrancada explicado de forma simples, com os cuidados para não quebrar o motor.
+- [Tração no 201 m e no No Prep: rodas, embreagem e tanque que fazem diferença](https://grid402performance.com.br/blog/tracao-201m-no-prep-rodas-embreagem): Potência sem tração vira fumaça. Veja as peças que ajudam o carro a sair na frente na arrancada e no No Prep.
+
+## Ferramentas
+- [Tempo do carro nos 402 m e 201 m](https://grid402performance.com.br/na-pista): calcule o tempo pelo peso, potência, câmbio e pneu e receba um plano de peças.
+- [Eventos de arrancada](https://grid402performance.com.br/eventos): agenda de eventos de arrancada e No Prep no Brasil.
