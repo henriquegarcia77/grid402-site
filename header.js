@@ -35,7 +35,7 @@ if(isIndex) document.querySelectorAll('#gmenu a[href*="?cat="]').forEach(a=>a.on
 document.getElementById('gmenu').addEventListener('click',()=>g.classList.remove('open'));
 })();
 
-(()=>{const s=document.createElement('script');s.src=new URL('cart.js?v=1',(document.currentScript&&document.currentScript.src)||location.href).href;s.defer=true;(document.readyState==='loading'?document.addEventListener('DOMContentLoaded',()=>document.body.appendChild(s)):document.body.appendChild(s))})();
+(()=>{const s=document.createElement('script');s.src=new URL('cart.js?v=2',(document.currentScript&&document.currentScript.src)||location.href).href;s.defer=true;(document.readyState==='loading'?document.addEventListener('DOMContentLoaded',()=>document.body.appendChild(s)):document.body.appendChild(s))})();
 
 /* ===== Rodapé padrão Grid 402 (todas as páginas, menos o blog) ===== */
 (()=>{
