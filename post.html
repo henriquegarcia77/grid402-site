@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blog — Grid 402 Performance</title>
+<!--seo--><meta name="description" content="Guias de arrancada e preparação.">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Grid 402 Performance"><meta property="og:title" content="Blog — Grid 402 Performance"><meta property="og:description" content="Guias de arrancada e preparação."><meta property="og:url" content="https://grid402performance.com.br/post"><meta property="og:image" content="https://grid402performance.com.br/og.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#e10600"><!--/seo-->
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="apple-touch-icon" href="favicon-180.png">
 <link rel="stylesheet" href="style.css?v=4">
@@ -118,7 +121,7 @@ a:hover .pc-i2,.pcover.big:hover .pc-i2{transform:rotate(16deg) translateY(6px)}
 <script src="posts.js"></script>
 <script src="blogui.js"></script>
 <script>
-const id=new URLSearchParams(location.search).get('id');
+const id=window.POST_ID||new URLSearchParams(location.search).get('id');
 const p=POSTS.find(x=>x.id===id)||POSTS[0];
 document.title=p.titulo+' — Grid 402';
 const fmt=d=>new Date(d+'T12:00').toLocaleDateString('pt-BR',{day:'numeric',month:'long',year:'numeric'});
@@ -144,7 +147,7 @@ art.insertAdjacentHTML('beforeend',`<section class="related" id="rel"><h2>Todos 
  const last=POSTS.filter(x=>x!==p).sort((a,b)=>b.data.localeCompare(a.data)).slice(0,4);
  promo.innerHTML=`<div class="in"><div class="sb sb-s"><h5>Buscar</h5><form id="sbf"><input id="sbq" placeholder="Turbina, bico, FuelTech…"><button>🔍</button></form></div>
  <div class="sb sb-cta"><h5>Arrancada e antigos</h5><p>Peças de performance e de restauração para clássicos. Tudo com compra segura pelo Mercado Livre.</p><a href="index.html">Peças de arrancada →</a><a href="antigos.html" class="alt">Peças de antigos →</a></div>
- <div class="sb sb-l"><h5>Últimos artigos</h5>${last.map(x=>`<a href="post.html?id=${x.id}"><img src="${thumb(x)}" alt=""><span>${x.titulo}</span></a>`).join('')}</div>
+ <div class="sb sb-l"><h5>Últimos artigos</h5>${last.map(x=>`<a href="blog/${x.id}"><img src="${thumb(x)}" alt=""><span>${x.titulo}</span></a>`).join('')}</div>
 </div>`}
 sbf.onsubmit=e=>{e.preventDefault();const t=sbq.value.trim();if(t)location.href='index.html?q='+encodeURIComponent(t)+'#loja'};
 document.body.insertAdjacentHTML('beforeend','<div class="sbar" id="sbar"><b>Grid 402:</b> peças para arrancada e carros antigos.<a href="index.html">Arrancada</a><a href="antigos.html" class="alt">Antigos</a><button aria-label="Fechar" id="sbx">×</button></div>');
@@ -159,7 +162,7 @@ art.querySelectorAll('.txt h2,.txt .pcards,.txt p,.txt ul').forEach(el=>io2.obse
 addEventListener('scroll',()=>{const h=document.documentElement;prog.style.width=(h.scrollTop/(h.scrollHeight-innerHeight)*100)+'%'},{passive:true});
 art.insertAdjacentHTML('beforeend','<p class="aff">Os links de produtos são links de afiliado do Mercado Livre: comprando por eles você paga o mesmo preço e ajuda o Grid 402.</p>');
 art.querySelectorAll('a.prodlink').forEach(a=>{a.target='_blank';a.rel='sponsored noopener'});
-more.innerHTML=POSTS.filter(x=>x!==p).slice(0,3).map(x=>`<a href="post.html?id=${x.id}"><small style="color:${x.cor}">${x.categoria}</small><h3>${x.titulo}</h3></a>`).join('');
+more.innerHTML=POSTS.filter(x=>x!==p).slice(0,3).map(x=>`<a href="blog/${x.id}"><small style="color:${x.cor}">${x.categoria}</small><h3>${x.titulo}</h3></a>`).join('');
 </script>
 <script src="common.js"></script>
 </body>

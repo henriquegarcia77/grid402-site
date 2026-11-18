@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blog — Grid 402 Performance</title>
-<meta name="description" content="Dicas de preparação, injeção, pilotagem de arrancada e restauração de carros antigos.">
+<!--seo--><meta name="description" content="Guias de turbo, injeção, bicos, nitro e tração para quem vive a arrancada.">
+<link rel="canonical" href="https://grid402performance.com.br/blog"><meta property="og:type" content="website"><meta property="og:site_name" content="Grid 402 Performance"><meta property="og:title" content="Blog de arrancada e preparação | Grid 402"><meta property="og:description" content="Guias de turbo, injeção, bicos, nitro e tração para quem vive a arrancada."><meta property="og:url" content="https://grid402performance.com.br/blog"><meta property="og:image" content="https://grid402performance.com.br/og.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#e10600"><!--/seo-->
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="apple-touch-icon" href="favicon-180.png">
 <link rel="stylesheet" href="style.css?v=4">
@@ -68,7 +70,7 @@ const cats=['Todos',...new Set(POSTS.map(p=>p.categoria))];
 filters.innerHTML=cats.map((c,i)=>`<button class="${i?'':'on'}">${c}</button>`).join('');
 function draw(c){
   const list=POSTS.filter(p=>c==='Todos'||p.categoria===c);
-  posts.innerHTML=list.map(p=>`<a class="post" href="post.html?id=${p.id}">
+  posts.innerHTML=list.map(p=>`<a class="post" href="blog/${p.id}">
     <div class="cover">${coverHTML(p)}</div>
     <div class="body"><h3>${p.titulo}</h3><p>${p.resumo}</p><small>${fmt(p.data)} · ${p.tempo} de leitura</small></div></a>`).join('');
 }

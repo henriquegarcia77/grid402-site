@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://grid402performance.com.br/sitemap.xml
