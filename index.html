@@ -441,7 +441,7 @@ const card=p=>{const off=offOf(p);return `<a class="prod" href="${p.link}" targe
     <span class="buy"><span><b class="lg">Comprar no Mercado Livre →</b><b class="sm">Comprar →</b></span></span></div></a>`};
 
 // Menu + categorias + rodapé
-document.getElementById('footCats').innerHTML=CATEGORIAS.map(c=>`<li><a href="#loja" data-cat="${c.id}">${c.nome}</a></li>`).join('');
+
 const marcas=[...new Set(PRODUTOS.map(p=>p.marca))].sort();
 const slug=m=>m.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const _bh=marcas.filter(m=>m!=='Universal').sort((a,b)=>(LOGOS[slug(b)]?1:0)-(LOGOS[slug(a)]?1:0)).map(m=>`<span data-brand="${m}" class="bl${LOGOS[slug(m)]?' has':''}">${LOGOS[slug(m)]?`<img src="${LOGOS[slug(m)]}" alt="${m}">`:''}<em>${m}</em></span>`).join('');

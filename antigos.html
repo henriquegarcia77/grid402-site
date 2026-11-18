@@ -188,7 +188,7 @@ const t="OPALA ★ FUSCA ★ MAVERICK ★ CHARGER ★ CHEVETTE ★ PASSAT ★ GO
 document.getElementById('tk').innerHTML=(`<span>${t}</span>`).repeat(8);
 </script>
 <script src="common.js"></script>
-<script>document.getElementById('footMods').innerHTML=MODELOS.map(m=>`<li><a href="#modelos" data-fm="${m.id}">${m.nome}</a></li>`).join('');document.getElementById('footMods').onclick=e=>{const id=e.target.dataset.fm;if(id){e.preventDefault();pecas(id)}};</script>
+<script>{const fm=document.getElementById('footMods');if(fm){fm.innerHTML=MODELOS.map(m=>`<li><a href="#modelos" data-fm="${m.id}">${m.nome}</a></li>`).join('');fm.onclick=e=>{const id=e.target.dataset.fm;if(id){e.preventDefault();pecas(id)}}}}</script>
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
 <script type="module">
 import * as THREE from 'three';

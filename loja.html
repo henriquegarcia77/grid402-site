@@ -175,7 +175,6 @@ function fillSide(){
  PRODUTOS.filter(p=>p.categoria==='classicos'&&!p.modelo).forEach(p=>{const m=mods.find(m=>norm(p.nome).includes(norm(m.nome)));if(m)p.modelo=m.id});
  ALL=PRODUTOS.concat(extra);fillSide();render()}catch(e){console.warn(e)}};document.body.appendChild(sc)})();
 render();
-document.getElementById('footCats')&&(document.getElementById('footCats').innerHTML=CATEGORIAS.map(c=>`<li><a href="#" data-cat="${c.id}">${c.nome}</a></li>`).join(''));
 const _y=document.getElementById('y');_y&&(_y.textContent=new Date().getFullYear());
 </script>
 <script src="common.js"></script>
