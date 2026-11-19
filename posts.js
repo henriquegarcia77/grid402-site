@@ -2,6 +2,8 @@
 const POSTS = [
  {
   "id": "opala-blue-shark-fabio-wisniewski-armageddon",
+  "capaNome": "BLUE SHARK",
+  "capaSub": "Tri do Armageddon",
   "titulo": "Opala Blue Shark: o tubarão azul tricampeão do Armageddon",
   "resumo": "Fábio Wisniewski e o Opala Blue Shark, 6 cilindros turbo, venceram o Armageddon três vezes e viraram o carro No Prep mais famoso do Brasil.",
   "categoria": "Pilotos",
@@ -13,6 +15,8 @@ const POSTS = [
  },
  {
   "id": "hudema-drag-race-opala-carbon-historia",
+  "capaNome": "HUDEMA",
+  "capaSub": "Opala Carbon V8",
   "titulo": "Hudema Drag Race: de Pitanga para o Brasil com o Opala Carbon V8",
   "resumo": "Josimar Hudema cresceu em oficina, criou a Hudema Drag Race e a Equipe 100 Gás e virou recordista da Lista Área 43 com o Opala Carbon V8.",
   "categoria": "Pilotos",
@@ -24,6 +28,8 @@ const POSTS = [
  },
  {
   "id": "helder-gandolfo-camaro-v8-historia",
+  "capaNome": "GANDOLFO",
+  "capaSub": "Camaro V8 4x4",
   "titulo": "Helder Gandolfo: mais de 30 anos de arrancada, do dragster ao Camaro V8 4x4",
   "resumo": "Piloto paranaense desde 1993, tricampeão no Dragster Light, Pro Mod a 305 km/h e vice no Armageddon com o Camaro 1968 tubular.",
   "categoria": "Pilotos",
@@ -35,6 +41,8 @@ const POSTS = [
  },
  {
   "id": "scort-opala-yellow-black-lethal-historia",
+  "capaNome": "SCORT",
+  "capaSub": "Opala Yellow Black Lethal",
   "titulo": "Scort e o Opala Yellow Black Lethal: a lenda de 3.500 cv da arrancada brasileira",
   "resumo": "A história de Agenor \"Scort\" Scortgagna e do Opala 1977 que virou ícone da arrancada, somou 13 títulos nacionais e ganhou até o Hot Wheels Legends.",
   "categoria": "Pilotos",
@@ -46,6 +54,8 @@ const POSTS = [
  },
  {
   "id": "grandao-frigo-recorde-pro-mod",
+  "capaNome": "GRANDÃO",
+  "capaSub": "Pro Mod · 347 km/h",
   "titulo": "Sidnei \"Grandão\" Frigo: o piloto que levou a Pro Mod brasileira a 347 km/h",
   "resumo": "Recordista da Pro Mod fora dos EUA, campeão da SPID CUP e agora dividindo a pista com o filho Lucas. Conheça a trajetória do Grandão.",
   "categoria": "Pilotos",
@@ -57,6 +67,8 @@ const POSTS = [
  },
  {
   "id": "mauricio-debarba-dragster-brasil",
+  "capaNome": "DEBARBA",
+  "capaSub": "Dragster · 4,042 s",
   "titulo": "Maurício Debarba: o rei do dragster nas pistas brasileiras",
   "resumo": "Recordista do dragster na SPID CUP com 4,042 s e campeão no SPID FEST 2026. Conheça o piloto que domina o carro mais radical da arrancada.",
   "categoria": "Pilotos",
@@ -68,6 +80,8 @@ const POSTS = [
  },
  {
   "id": "adriano-scariot-recorde-dianteira-turbo",
+  "capaNome": "SCARIOT",
+  "capaSub": "Dianteira Turbo · recorde mundial",
   "titulo": "Adriano Scariot: piloto e mecânico, recordista mundial na dianteira turbo",
   "resumo": "De Paranaguá para o recorde mundial: Adriano Scariot fez 6,118 s com pneu radial na Dianteira Turbo B, preparando o próprio carro.",
   "categoria": "Pilotos",
@@ -79,6 +93,8 @@ const POSTS = [
  },
  {
   "id": "roderjan-busato-equipe-mrb-pro-mod",
+  "capaNome": "BUSATO",
+  "capaSub": "Equipe MRB · Pro Mod",
   "titulo": "Roderjan Busato: do Passat 76 à maior equipe de Pro Mod do Brasil",
   "resumo": "Ele assistia às provas em Curitiba aos 15 anos. Depois correu de Passat, Gol Turbo e Camaro 69, e hoje comanda a equipe MRB na Pro Mod.",
   "categoria": "Pilotos",
