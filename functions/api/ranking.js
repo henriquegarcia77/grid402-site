@@ -14,7 +14,7 @@ export async function onRequestPost({ request, env }) {
   if (!env.RANKING) return json({ erro: 'sem KV' }, 503);
   let b; try { b = await request.json() } catch (e) { return json({ erro: 'json' }, 400) }
   const n = clean(b.n), t = Math.round(Number(b.t) * 1000) / 1000;
-  if (!n || !(t >= 0.1 && t <= 3)) return json({ erro: 'inválido' }, 400);
+  if (!n || !(t > 0 && Number.isFinite(t))) return json({ erro: 'inválido' }, 400);
   const r = await load(env); const i = r.findIndex(x => x.n.toLowerCase() === n.toLowerCase());
   if (i < 0) r.push({ n, t, d: Date.now() }); else if (t < r[i].t) r[i] = { n, t, d: Date.now() };
   r.sort((a, b) => a.t - b.t); const top = r.slice(0, 100);
