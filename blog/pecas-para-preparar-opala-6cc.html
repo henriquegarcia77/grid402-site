@@ -68,7 +68,7 @@ a:hover .pc-i2,.pcover.big:hover .pc-i2{transform:rotate(16deg) translateY(6px)}
 .promo em{font-style:normal;font-weight:800;font-size:16px;color:#1d1d1f;display:block;margin-top:4px}
 .promo .tag{position:absolute;top:-8px;left:-6px;background:var(--red);color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;padding:3px 8px;border-radius:99px;transform:rotate(-6deg)}
 .promo .all{justify-content:center;background:#0b0b0d;color:#fff;font-weight:700;font-size:14px;padding:14px}
-@media(max-width:980px){.postwrap{grid-template-columns:minmax(0,1fr)}.postwrap>article{width:100%;max-width:100%}.postwrap input{max-width:100%}.promo{padding-top:0;margin-bottom:40px}.promo .in{position:static;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory}.promo h4{display:none}.promo a{flex:0 0 240px;scroll-snap-align:start}.promo .all{flex:0 0 160px}}
+@media(max-width:980px){.postwrap{grid-template-columns:minmax(0,1fr)}.postwrap>article{width:100%;max-width:100%}.postwrap input{max-width:100%}.promo{padding-top:0;margin-bottom:40px}.promo .in{position:static;flex-direction:column}.promo h4{display:none}.promo a{flex:0 0 240px;scroll-snap-align:start}.promo .all{flex:0 0 160px}}
 
 .sb{border-radius:20px;padding:20px;margin-bottom:6px}.sb h5{font:800 18px var(--font);letter-spacing:-.01em;text-transform:uppercase;margin-bottom:12px}
 .sb-s{background:#fff;border:1px solid var(--line)}.sb-s form{display:flex;border:1px solid var(--line);border-radius:12px;overflow:hidden}
@@ -87,12 +87,12 @@ a:hover .pc-i2,.pcover.big:hover .pc-i2{transform:rotate(16deg) translateY(6px)}
 .sbar.on{transform:translate(-50%,0)}.sbar b{color:#ff3b30}
 .sbar a{background:var(--red);color:#fff;font-weight:700;padding:11px 20px;border-radius:980px;white-space:nowrap}
 .sbar button{background:none;border:0;color:#86868b;font-size:22px;cursor:pointer}
-@media(max-width:980px){.promo .sb{flex:0 0 260px}.sb-l{display:none}}
+@media(max-width:980px){.promo .sb{flex:auto}.sb-l{display:none}}
 @media(max-width:600px){.sbar{font-size:13px;gap:10px;padding:10px 10px 10px 14px}.sbar a{padding:9px 14px}}
 #prog{position:fixed;left:0;top:0;height:3px;background:var(--red);z-index:200;width:0}
 .hero-cover{max-width:1100px;margin:30px auto 0;padding:0 22px}.hero-cover .pcover{border-radius:28px;aspect-ratio:21/9}
 @media(max-width:700px){.hero-cover .pcover{aspect-ratio:4/3}}
-.toc{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 22px;margin:0 0 36px}
+.toc{position:static!important;inset:auto!important;transform:none!important;width:auto!important;height:auto!important;z-index:auto!important;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 22px;margin:0 0 36px}
 .toc b{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
 .toc ol{margin:10px 0 0 18px}.toc li{margin:6px 0;font-size:16px}.toc a{color:#1d1d1f!important;border:0!important;font-weight:500!important}.toc a:hover{color:var(--red)!important}
 .txt h2,.txt .pcards,.txt p,.txt ul{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s cubic-bezier(.16,1,.3,1)}
@@ -156,7 +156,7 @@ const ld=document.createElement('script');ld.type='application/ld+json';ld.textC
 hc.innerHTML=coverHTML(p,true);
 const hs=[...art.querySelectorAll('.txt h2')];hs.forEach((h,i)=>h.id='s'+i);
 if(hs.length>2)art.querySelector('.txt').insertAdjacentHTML('afterbegin',`<nav class="toc"><b>Neste post</b><ol>${hs.map((h,i)=>`<li><a href="#s${i}">${h.textContent}</a></li>`).join('')}</ol></nav>`);
-art.querySelector('.meta').insertAdjacentHTML('afterend','<div class="share"><button id="cp">🔗 Copiar link</button><button id="tp">↑ Ver produtos</button></div>');
+art.querySelector('.meta').insertAdjacentHTML('afterend','<div class="share"><button id="cp">🔗 Copiar link</button>'+(art.querySelector('.pcards')?'<button id="tp">↑ Ver produtos</button>':'')+'</div>');
 cp.onclick=()=>{navigator.clipboard?.writeText(location.href);cp.textContent='✓ Link copiado'};
 const pr=postProds(p);const seen=new Set();const uniq=pr.filter(x=>!seen.has(x.link)&&seen.add(x.link));
 art.insertAdjacentHTML('beforeend',`<section class="related" id="rel"><h2>Todos os produtos deste post</h2><div class="rel">${uniq.map(x=>`<a href="${x.link}" target="_blank" rel="sponsored noopener"><img src="${x.img}" alt="" loading="lazy"><b>${x.nome}</b><span>${x.preco?brl(x.preco):'Ver preço'}</span></a>`).join('')}</div></section>`);
@@ -175,7 +175,7 @@ document.body.insertAdjacentHTML('beforeend','<div class="sbar" id="sbar"><b>Gri
 let sbClosed=false;try{sbClosed=sessionStorage.getItem('g402bar')==='1'}catch(e){}
 addEventListener('scroll',()=>{if(!sbClosed)sbar.classList.toggle('on',scrollY>600)},{passive:true});
 sbx.onclick=()=>{sbClosed=true;sbar.classList.remove('on');try{sessionStorage.setItem('g402bar','1')}catch(e){}};
-tp.onclick=()=>rel.scrollIntoView({behavior:'smooth'});
+window.tp&&(tp.onclick=()=>rel.scrollIntoView({behavior:'smooth'}));
 if(p.id.includes('bico')){const fc=art.querySelector('.pcards');fc&&fc.insertAdjacentHTML('beforebegin',`<div class="calc"><h3>Calcule agora</h3><div class="row"><div><label>Potência (cv)</label><input id="kcv" type="number" value="400"></div><div><label>Cilindros</label><input id="kcil" type="number" value="4"></div><div><label>Combustível</label><select id="kfu"><option value=".6">Gasolina turbo</option><option value=".85" selected>Etanol turbo</option><option value="1.1">Metanol</option></select></div></div><div class="out" id="kout"></div></div>`);
   const kc=()=>{const lb=(+kcv.value*+kfu.value)/(+kcil.value*.8);kout.innerHTML=`${Math.ceil(lb)} lb/h <small>vazão mínima por bico (80% de duty) · ~${Math.round(lb*10.5)} cc/min</small>`};[kcv,kcil,kfu].forEach(e=>e.oninput=kc);kc()}
 const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io2.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
