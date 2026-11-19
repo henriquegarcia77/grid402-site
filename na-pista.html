@@ -204,9 +204,20 @@ const getR=()=>{try{return JSON.parse(localStorage.getItem(RK))||[]}catch(e){ret
 const setR=r=>{mem=r;try{localStorage.setItem(RK,JSON.stringify(r))}catch(e){}};
 try{pname.value=localStorage.getItem('grid402-nome')||''}catch(e){}
 pname.oninput=()=>{pname.classList.remove('need');pmsg.textContent='';try{localStorage.setItem('grid402-nome',pname.value)}catch(e){}};
+/* ranking online (functions/api/ranking.js); se a API falhar, usa o do navegador */
+let online=false;
+const merge=(a,b)=>{const m={};[...a,...b].forEach(x=>{const k=x.n.toLowerCase();if(!m[k]||x.t<m[k].t)m[k]={n:x.n,t:x.t}});return Object.values(m).sort((x,y)=>x.t-y.t).slice(0,100)};
+fetch('/api/ranking',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(R=>{online=true;const loc=getR();setR(merge(R,loc));drawRank();
+  /* envia recordes antigos que só estavam neste navegador */
+  loc.filter(x=>!R.some(y=>y.n.toLowerCase()===x.n.toLowerCase()&&y.t<=x.t)).forEach(x=>fetch('/api/ranking',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(x)}).catch(()=>{}))}).catch(()=>{});
 function saveRank(n,t){const r=getR(),i=r.findIndex(x=>x.n.toLowerCase()===n.toLowerCase());
-  if(i<0)r.push({n,t});else if(t<r[i].t)r[i]={n,t};else{drawRank();return}
-  r.sort((a,b)=>a.t-b.t);setR(r.slice(0,50));const pos=r.findIndex(x=>x.n.toLowerCase()===n.toLowerCase())+1;pmsg.textContent='Novo recorde! '+pos+'º lugar';drawRank()}
+  const rec=i<0||t<r[i].t;
+  if(i<0)r.push({n,t});else if(rec)r[i]={n,t};
+  r.sort((a,b)=>a.t-b.t);setR(r.slice(0,100));
+  if(rec){const pos=r.findIndex(x=>x.n.toLowerCase()===n.toLowerCase())+1;pmsg.textContent='Novo recorde! '+pos+'º lugar'}
+  drawRank();
+  if(rec)fetch('/api/ranking',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({n,t})}).then(r=>r.ok?r.json():Promise.reject()).then(R=>{online=true;setR(merge(R,getR()));drawRank();
+    const pos=R.findIndex(x=>x.n.toLowerCase()===n.toLowerCase())+1;if(pos)pmsg.textContent='Novo recorde! '+pos+'º lugar no ranking geral'}).catch(()=>{})}
 function drawRank(){const r=getR(),me=pname.value.trim().toLowerCase();
   rank.innerHTML=r.length?r.slice(0,10).map(x=>`<li class="${x.n.toLowerCase()===me?'me':''}"><span>${x.n.replace(/[<>&"]/g,'')}</span><b>${f3(x.t)} s</b></li>`).join(''):'<li class="empty">Ninguém largou ainda. Seja o primeiro!</li>'}
 drawRank();
