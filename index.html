@@ -255,6 +255,21 @@ h2{font-size:clamp(34px,4.5vw,54px)}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script type="application/ld+json" id="orgld">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "Grid 402 Performance", "url": "https://grid402performance.com.br", "logo": "https://grid402performance.com.br/logo.png", "sameAs": ["https://www.instagram.com/grid402performance/", "https://www.facebook.com/profile.php?id=61588606083936"]}, {"@type": "WebSite", "name": "Grid 402 Performance", "url": "https://grid402performance.com.br", "inLanguage": "pt-BR", "potentialAction": {"@type": "SearchAction", "target": "https://grid402performance.com.br/?q={search_term_string}#loja", "query-input": "required name=search_term_string"}}]}</script>
 </head>
 <body>
@@ -379,7 +394,7 @@ h2{font-size:clamp(34px,4.5vw,54px)}
 
 <script>
 (()=>{const L=document.getElementById('loader');if(!L)return;
-let seen=false;try{seen=Date.now()-(+localStorage.getItem('g402visit')||0)<1800000||sessionStorage.getItem('g402load')==='1';sessionStorage.setItem('g402load','1');localStorage.setItem('g402visit',Date.now())}catch(e){}
+let seen=false;try{var ir=false;try{ir=!!document.referrer&&new URL(document.referrer).host===location.host}catch(_){}seen=ir&&sessionStorage.getItem('g402load')==='1';sessionStorage.setItem('g402load','1');localStorage.setItem('g402visit',Date.now())}catch(e){}
 if(seen){L.remove();return}
 
 document.body.style.overflow='hidden';
