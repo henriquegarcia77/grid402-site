@@ -468,8 +468,8 @@ document.getElementById('brands').innerHTML=`<div class="btrack">${_bh}${_bh}</d
 // Carrossel
 const car=document.getElementById('carousel'), dots=document.getElementById('dots');
 car.innerHTML=PRODUTOS.filter(p=>p.destaque).map(card).join('');
-(()=>{const TOP=["https://meli.la/1bR42xn","https://meli.la/2ufwkyX","https://meli.la/18nSSnr","https://meli.la/2E19FSP","https://meli.la/2YKW1eY","https://meli.la/2mjsDh8","https://meli.la/2PHYAsM","https://meli.la/1PzCW9o"];
-const g=document.getElementById('mpgrid');if(!g)return;const L=TOP.map(l=>PRODUTOS.find(p=>p.link===l)).filter(Boolean);
+(()=>{const TOP=["https://meli.la/1bR42xn","https://meli.la/2ufwkyX","https://meli.la/2ArcQ1S","https://meli.la/1EAaKnz","https://meli.la/2YKW1eY","https://meli.la/2mjsDh8","https://meli.la/2DskHqY","https://meli.la/1PzCW9o"];
+const g=document.getElementById('mpgrid');if(!g)return;const L=TOP.map(l=>PRODUTOS.find(p=>p.link===l)).filter(Boolean);PRODUTOS.filter(p=>p.preco&&p.categoria!=='classicos'&&!L.includes(p)).slice(0,8-L.length).forEach(p=>L.push(p));
 g.innerHTML=L.map((p,i)=>card(p).replace('<div class="ph">',`<span class="rank"><i>#${i+1}</i> mais procurado</span><div class="ph">`)).join('')})();
 
 function drawDots(){dots.innerHTML=Array.from({length:Math.ceil(car.scrollWidth/car.clientWidth)},(_,i)=>`<span data-i="${i}"></span>`).join('');upd()}
