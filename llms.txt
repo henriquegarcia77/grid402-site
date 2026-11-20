@@ -30,6 +30,11 @@
 - [Peças para Omega](https://grid402performance.com.br/pecas/omega): O sedã 6 cilindros que virou lenda.
 
 ## Guias do blog
+- [FT450 ou FT550: qual FuelTech comprar para o seu projeto](https://grid402performance.com.br/blog/ft450-ou-ft550-qual-fueltech-comprar): Diferenças entre FuelTech FT450 e FT550, qual combina com turbo de rua ou arrancada e o que mais comprar junto (chicote e wideband).
+- [3 step: o que é, como funciona e como instalar no carro turbo](https://grid402performance.com.br/blog/3-step-o-que-e-como-funciona): Entenda o que é 3 step (e 2 step), para que serve na largada de arrancada, como instalar e quais modelos comprar.
+- [Sonda wideband: o que é, para que serve e qual comprar](https://grid402performance.com.br/blog/sonda-wideband-o-que-e-qual-comprar): Por que a wideband é obrigatória em carro preparado, diferença para a sonda original, Bosch 4.2 x 4.9 e como instalar.
+- [Manômetro de turbo e de óleo: quais instalar e como ligar](https://grid402performance.com.br/blog/manometro-pressao-turbo-oleo-como-instalar): Os relógios que todo carro turbo precisa: pressão do turbo, pressão de óleo e combustível. Qual comprar e como instalar.
+- [Dosador de combustível 1:1: para que serve e como regular no turbo](https://grid402performance.com.br/blog/dosador-de-combustivel-1-1-como-regular): Como funciona o regulador de pressão de combustível 1:1, quando usar no turbo injetado ou carburado e como regular sem empobrecer o motor.
 - [Como adaptar motor 6 cilindros (250-S) no Opala 4 cilindros: guia completo](https://grid402performance.com.br/blog/como-adaptar-motor-6cc-no-opala-4cc): Trocar o 4 cilindros pelo 6cc é o sonho de todo dono de Opala. Veja o que muda no radiador, embreagem, escape, suspensão, freios e documentação.
 - [Peças para preparar o Opala 6cc: comando, escape dimensionado, Weber e embreagem](https://grid402performance.com.br/blog/pecas-para-preparar-opala-6cc): As peças que mais dão resultado no Opala 6 cilindros aspirado, na ordem certa para gastar bem o dinheiro.
 - [Carburador Weber no Opala 4cc e 6cc: qual coletor usar e como acertar](https://grid402performance.com.br/blog/carburador-weber-no-opala): Weber 40, 44 ou 45? Um ou dois carburadores? Veja como escolher o coletor de admissão certo para o seu Opala.
