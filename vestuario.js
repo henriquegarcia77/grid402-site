@@ -5,6 +5,14 @@
    img  : link da foto do produto
    ========================================================= */
 const VESTUARIO = [
+ {"nome": "Boné Simpson Racing Arrancada Original", "tipo": "Boné", "loja": "ml", "img": "https://http2.mlstatic.com/D_NQ_NP_705653-MLB115604318515_082026-O-bone-simpson-racing-arrancada-original-turbo-aspirado.webp", "preco": 231.57, "link": "https://meli.la/1TtXS1h"},
+ {"nome": "Boné Trucker Bordô FuelTech", "tipo": "Boné", "loja": "ml", "img": "https://http2.mlstatic.com/D_NQ_NP_887033-MLA117604888962_102026-O.webp", "preco": 78, "link": "https://meli.la/1WCwj4o"},
+ {"nome": "Boné Trucker Telinha Fuel Tech Motor Sensor", "tipo": "Boné", "loja": "ml", "img": "https://http2.mlstatic.com/D_NQ_NP_736188-MLB74317195396_022024-O-bone-trucker-telinha-personalizado-fuel-tech-motor-sensor.webp", "preco": 54.9, "link": "https://meli.la/2PxgU23"},
+ {"nome": "Boné FuelTech FT Education Icon Cinza 2026", "tipo": "Boné", "loja": "ml", "img": "https://http2.mlstatic.com/D_NQ_NP_670125-MLB109552692172_042026-O-bone-fueltech-modelo-ft-education-icon-cinza-colecao-2026.webp", "preco": 119.75, "link": "https://meli.la/2Rjmcbh"},
+ {"nome": "Jaqueta FuelTech Motorsport Race", "tipo": "Jaqueta", "loja": "ml", "img": "https://http2.mlstatic.com/D_NQ_NP_871493-MLB105565860685_012026-O-jaqueta-fueltech-motorsport-race-m.webp", "preco": 417.35, "link": "https://meli.la/11zrNys"},
+ {"nome": "Jaqueta Bomber Azul Marinho FuelTech", "tipo": "Jaqueta", "loja": "ml", "img": "https://http2.mlstatic.com/D_NQ_NP_664398-MLB120002034665_102026-O-jaqueta-bomber-azul-marinho-fueltech.webp", "preco": 319, "link": "https://meli.la/2Fuucnc"},
+ {"nome": "Camiseta Opaleiro Opala 6 Cilindros Diplomata", "tipo": "Camiseta", "loja": "ml", "img": "https://http2.mlstatic.com/D_NQ_NP_694578-MLB84733085409_052025-O-camiseta-opaleiro-camisa-opala-6-cilindros-antigo-diplomata.webp", "preco": 30.88, "link": "https://meli.la/2ri1zQ3"},
+ {"nome": "Camiseta Opala 1968-1992 GM Carro Antigo", "tipo": "Camiseta", "loja": "ml", "img": "https://http2.mlstatic.com/D_NQ_NP_710302-MLB106713199474_022026-O-camiseta-masculina-opala-1968-1992-gm-camisa-carro-antigo.webp", "preco": 28.81, "link": "https://meli.la/1VGgGTM"},
  {
   "nome": "Camiseta Fueltech 100% Algodão",
   "tipo": "Camiseta",
