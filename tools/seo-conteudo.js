@@ -282,3 +282,61 @@ module.exports = {
     posts: ["pecas-para-preparar-opala-6cc"]
   }
 };
+Object.assign(module.exports, {
+  freios: {
+    textos: [
+      ["Quando trocar pastilha e disco de freio", "A pastilha costuma durar entre 20 e 40 mil km, dependendo do uso. Sinais de que está na hora: chiado ao frear, pedal mais baixo, luz de desgaste no painel ou vibração no volante. O disco deve ser trocado quando estiver abaixo da espessura mínima gravada nele ou empenado. Sempre troque os dois lados do mesmo eixo juntos."],
+      ["Pastilha original, Bosch, Cobreq ou Fras-le?", "Todas as marcas conhecidas seguem as normas do Inmetro. As de fábrica (Chevrolet, VW, Fiat) e as da Bosch costumam ter frenagem mais suave e menos pó. As linhas de reposição mais em conta funcionam bem para uso urbano. O importante é comprar a peça certa para o modelo e o ano do carro."],
+      ["Confira a aplicação antes de comprar", "Disco e pastilha mudam conforme o aro da roda, o motor e o ano. No anúncio do Mercado Livre, use a ferramenta de compatibilidade e confira o código da peça antiga."]
+    ],
+    faq: [
+      ["De quantos em quantos km trocar a pastilha de freio?", "Em média entre 20 e 40 mil km. Uso em cidade, com muito anda e para, gasta mais rápido. Peça a verificação a cada revisão."],
+      ["Preciso trocar o disco junto com a pastilha?", "Nem sempre. O disco só precisa ser trocado se estiver abaixo da espessura mínima, empenado ou muito riscado. Mas pastilha nova em disco gasto dura menos e freia pior."],
+      ["Pastilha de freio chiando é normal?", "Um leve chiado nos primeiros dias pode acontecer. Chiado constante ou barulho metálico indica desgaste, peça mal assentada ou pastilha de baixa qualidade."],
+      ["Como saber qual pastilha serve no meu carro?", "Use a ferramenta de compatibilidade do anúncio no Mercado Livre informando modelo, ano e motor, ou compare o código da peça antiga."]
+    ],
+    posts: []
+  },
+  suspensao: {
+    textos: [
+      ["Sinais de amortecedor gasto", "Carro balançando demais em lombadas, barulho na suspensão, pneu gastando de forma irregular e frenagem mais longa são sinais clássicos. Amortecedor vazando óleo também precisa ser trocado. A troca é sempre feita em par, no mesmo eixo."],
+      ["Troque o kit junto", "Batente, coxim e coifa trabalham junto com o amortecedor. Trocar só o amortecedor e manter o kit velho faz a peça nova durar menos e manter barulhos. Por isso os kits completos costumam valer a pena."],
+      ["Cofap, Nakata, Monroe ou original?", "As marcas conhecidas têm qualidade parecida para uso de rua. O que muda é o acerto: alguns são mais firmes, outros mais confortáveis. Para carro original, prefira a calibração equivalente à de fábrica."]
+    ],
+    faq: [
+      ["Quando trocar o amortecedor?", "Em geral entre 40 e 60 mil km, ou antes se aparecerem vazamento, barulho ou o carro balançar demais."],
+      ["Preciso trocar os 4 amortecedores de uma vez?", "Não é obrigatório. O mínimo é trocar em par, os dois do mesmo eixo. Trocar os quatro deixa o carro mais equilibrado."],
+      ["O que é o kit do amortecedor?", "É o conjunto de batente, coifa e coxim. Ele protege o amortecedor e evita barulhos. O ideal é trocar junto."],
+      ["Precisa fazer alinhamento depois de trocar o amortecedor?", "Sim. Na dianteira, a troca mexe na geometria da suspensão, por isso o alinhamento é recomendado."]
+    ],
+    posts: []
+  },
+  ignicao: {
+    textos: [
+      ["Quando trocar as velas de ignição", "Velas comuns duram em média 20 a 30 mil km. Velas de irídio e platina duram bem mais. Falha no motor, partida difícil, consumo alto e marcha lenta irregular são sinais de vela gasta. Troque sempre o jogo completo."],
+      ["Vela certa para o motor", "Cada motor pede um modelo específico de vela (grau térmico, rosca e folga). Usar o código errado pode causar falha ou até danificar o motor. Os jogos desta página já indicam a aplicação por carro."],
+      ["Cabos e bobina", "Se o motor continuar falhando depois da troca de velas, verifique cabos e bobina de ignição. Em motores com bobina individual, uma bobina com defeito derruba um cilindro inteiro."]
+    ],
+    faq: [
+      ["De quantos em quantos km trocar a vela?", "Velas comuns entre 20 e 30 mil km. Velas de irídio podem passar de 60 mil km. Confira o manual do carro."],
+      ["Vela NGK serve em qualquer carro?", "A NGK tem modelos para quase todos os carros, mas cada motor usa um código. Confira a aplicação no anúncio."],
+      ["Carro a etanol usa vela diferente?", "Alguns motores flex usam a mesma vela para os dois combustíveis; outros têm indicação específica. Siga o código indicado para o seu motor."],
+      ["Preciso trocar o cabo de vela junto?", "Não necessariamente, mas cabos ressecados ou com mais de 50 mil km valem a troca para evitar falhas."]
+    ],
+    posts: []
+  },
+  manutencao: {
+    textos: [
+      ["Kit de revisão: filtros e óleo", "Trocar óleo e filtros no prazo é a manutenção mais barata e a que mais protege o motor. Os kits de filtros juntam filtro de óleo, de ar, de combustível e de cabine, todos para o mesmo carro, o que evita erro na compra."],
+      ["Correia dentada: não deixe passar do prazo", "Se a correia dentada romper, em muitos motores as válvulas batem nos pistões e o conserto fica caro. A troca costuma ser entre 40 e 60 mil km, sempre com o tensor. Compre o kit completo e confira o prazo no manual do carro."],
+      ["Óleo certo para o motor", "Use sempre a viscosidade e a especificação indicadas no manual (por exemplo 5W30 ou 15W40). Kits de troca de óleo com filtro facilitam a revisão em casa ou na oficina de confiança."]
+    ],
+    faq: [
+      ["De quanto em quanto tempo trocar o óleo do motor?", "Em geral a cada 5 a 10 mil km ou a cada 6 a 12 meses, o que vier primeiro. Uso severo (cidade, trechos curtos) pede trocas mais frequentes."],
+      ["Quando trocar a correia dentada?", "Na maioria dos carros entre 40 e 60 mil km, ou conforme o manual. Troque sempre junto com o tensor."],
+      ["Precisa trocar o filtro de óleo em toda troca de óleo?", "Sim, é o recomendado. O filtro velho guarda sujeira que contamina o óleo novo."],
+      ["Filtro de cabine faz diferença?", "Faz. Ele filtra o ar que entra no carro e ajuda o ar-condicionado a funcionar melhor. A troca é barata e rápida."]
+    ],
+    posts: []
+  }
+});

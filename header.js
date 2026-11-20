@@ -45,7 +45,7 @@ document.getElementById('gmenu').addEventListener('click',()=>g.classList.remove
 (()=>{
 if(/\/blog(\.html|\/|$)|\/post\.html/.test(location.pathname)||window.POST_ID)return;
 const CL=/antigos\.html/.test(location.pathname)||!!document.querySelector('footer.cfoot');
-const cats=[['injecao','Injeção'],['alimentacao','Alimentação'],['turbo','Turbo'],['motor','Motor'],['nitro','Nitro'],['rodas','Rodas'],['acessorios','Acessórios até R$ 300'],['classicos','Peças para clássicos']];
+const cats=[['injecao','Injeção'],['turbo','Turbo'],['motor','Motor'],['nitro','Nitro'],['rodas','Rodas'],['acessorios','Acessórios até R$ 300'],['freios','Freios'],['suspensao','Suspensão'],['ignicao','Velas de ignição'],['manutencao','Filtros e revisão']];
 const mods=[['opala','Opala'],['maverick','Maverick'],['fusca','Fusca'],['chevette','Chevette'],['gol','Gol quadrado'],['galaxie','Galaxie']];
 const y=new Date().getFullYear();
 const st=document.createElement('style');st.textContent=`
@@ -68,7 +68,7 @@ const html=`<footer class="gfoot"><div class="gw"><div class="gc">
 <div class="gl"><a href="index.html" aria-label="Grid 402 Performance"><img src="logo-sm.png" alt="Grid 402 Performance" loading="lazy"></a>
 <p>Peças de performance para arrancada e peças para carros antigos. Compra segura pelo Mercado Livre.</p>
 <div class="gs"><a href="https://www.instagram.com/grid402performance/" target="_blank" rel="noopener" aria-label="Instagram">${ig}</a><a href="https://www.facebook.com/profile.php?id=61588606083936" target="_blank" rel="noopener" aria-label="Facebook">${fb}</a></div></div>
-<div><h6>Loja</h6><ul>${cats.map(c=>`<li><a href="loja.html?cat=${c[0]}">${c[1]}</a></li>`).join('')}<li><a href="loja.html"><b>Ver todos →</b></a></li></ul></div>
+<div><h6>Loja</h6><ul>${cats.map(c=>`<li><a href="pecas/${c[0]}">${c[1]}</a></li>`).join('')}<li><a href="loja.html"><b>Ver todos →</b></a></li></ul></div>
 <div><h6>Clássicos</h6><ul>${mods.map(m=>`<li><a href="pecas/${m[0]}">Peças ${m[1]}</a></li>`).join('')}<li><a href="antigos.html"><b>Todos os modelos →</b></a></li></ul></div>
 <div><h6>Navegar</h6><ul><li><a href="index.html">Home</a></li><li><a href="loja.html">Loja</a></li><li><a href="antigos.html">Carros antigos</a></li><li><a href="na-pista.html">Na pista</a></li><li><a href="eventos.html">Eventos</a></li><li><a href="vestuario.html">Vestuário</a></li><li><a href="blog.html">Blog</a></li></ul></div>
 <div><h6>Ferramentas</h6><ul><li><a href="na-pista.html#tempo">Tempo do carro</a></li><li><a href="na-pista.html">Tempo de reação</a></li><li><a href="na-pista.html">Calculadora de bico</a></li><li><a href="#" onclick="window.G4projeto&&G4projeto.open();return false">🛒 Meu projeto</a></li></ul></div>
