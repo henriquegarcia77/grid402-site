@@ -12,7 +12,7 @@ const v=Date.now();
 for(let n=1;n<=N;n++){
  const list=posts.slice((n-1)*POR_PAGINA,n*POR_PAGINA);
  const cards=list.map(p=>`<a class="post" href="blog/${p.id}" data-id="${p.id}"><div class="cover"><div class="pcover" style="--c:${p.cor}"><div class="pc-bg"></div><span class="pc-tag">${esc(p.categoria)}</span></div></div><div class="body"><h3>${esc(p.titulo)}</h3><p>${esc(p.resumo)}</p><small>${fmt(p.data)} · ${p.tempo} de leitura</small></div></a>`).join('\n');
- let nav='';if(N>1){nav='<nav class="pag" id="pag" aria-label="Páginas do blog">'+(n>1?`<a href="${url(n-1).slice(1)}" rel="prev">‹ Anterior</a>`:'')+Array.from({length:N},(_,i)=>i+1).map(i=>i===n?`<span class="on">${i}</span>`:`<a href="${url(i).slice(1)}">${i}</a>`).join('')+(n<N?`<a href="${url(n+1).slice(1)}" rel="next">Próxima ›</a>`:'')+'</nav>'}
+ let nav='';if(N>1){nav='<div class="pag" id="pag" role="navigation" aria-label="Páginas do blog">'+(n>1?`<a href="${url(n-1).slice(1)}" rel="prev">‹ Anterior</a>`:'')+Array.from({length:N},(_,i)=>i+1).map(i=>i===n?`<span class="on">${i}</span>`:`<a href="${url(i).slice(1)}">${i}</a>`).join('')+(n<N?`<a href="${url(n+1).slice(1)}" rel="next">Próxima ›</a>`:'')+'</div>'}
  const titulo=n===1?'Blog de arrancada, carburação e carros antigos | Grid 402':`Blog Grid 402 — página ${n}`;
  const desc=n===1?'Guias de carburador Weber, giclagem, injeção, turbo, nitro e carros antigos, além da cobertura da arrancada.':`Página ${n} do blog Grid 402: guias de preparação, carburação e arrancada.`;
  let h=tpl.replace(/<title>[^<]*<\/title>/,`<title>${titulo}</title>`)
