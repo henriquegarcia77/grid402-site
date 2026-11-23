@@ -186,6 +186,6 @@ render();
 const _y=document.getElementById('y');_y&&(_y.textContent=new Date().getFullYear());
 </script>
 <script src="common.js"></script>
-<script>{const e=document.getElementById('lstamp');if(e&&window.PRECOS_EM)e.textContent='● Preços conferidos em '+new Date(PRECOS_EM+'T12:00').toLocaleDateString('pt-BR')+'. Itens sem estoque são retirados da loja.'}</script>
+<script>{const e=document.getElementById('lstamp');if(e)e.remove()}</script>
 </body>
 </html>

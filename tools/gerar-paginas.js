@@ -82,7 +82,7 @@ for (const f of files) {
   const grupo = (CATS.includes(slug) || ESP[slug]) ? CATS : MODS;
   const chips = `<h2 class="sec">${(CATS.includes(slug) || ESP[slug]) ? 'Outras categorias' : 'Peças para outros modelos'}</h2><div class="chips">${grupo.filter(x => x !== slug && nomes[x]).map(x => `<a href="pecas/${x}">${esc(nomes[x])}</a>`).join('')}<a href="${CATS.includes(slug) ? 'antigos' : 'loja'}">${CATS.includes(slug) ? 'Peças para carros antigos' : 'Peças de performance'}</a><a href="loja">Ver toda a loja</a></div>`;
 
-  const main = `<main class="lp">${crumb}<h1>${h1}</h1><p class="intro">${intro}</p><p class="upd">Preços conferidos no Mercado Livre em ${hoje.split('-').reverse().join('/')}.</p><div class="lpg">${lista.map(card).join('')}</div>${txt}${faq}${rel}${chips}<p class="aff">Os links são de afiliado do Mercado Livre: você paga o mesmo preço e ajuda o Grid 402.</p></main>`;
+  const main = `<main class="lp">${crumb}<h1>${h1}</h1><p class="intro">${intro}</p><div class="lpg">${lista.map(card).join('')}</div>${txt}${faq}${rel}${chips}<p class="aff">Os links são de afiliado do Mercado Livre: você paga o mesmo preço e ajuda o Grid 402.</p></main>`;
   s = s.replace(/<main class="lp">[\s\S]*?<\/main>/, main);
 
   const crumbLd = [{ '@type': 'ListItem', position: 1, name: 'Início', item: SITE + '/' }];
