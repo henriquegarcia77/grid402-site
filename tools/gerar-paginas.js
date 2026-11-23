@@ -25,7 +25,17 @@ const hoje = new Date().toISOString().slice(0, 10);
 const CATS = CATEGORIAS.map(c => c.id);
 const MODS = MODELOS.map(m => m.id);
 
+// páginas especiais (banners e carrosséis da home)
+const offP = p => p.de > p.preco && p.preco ? Math.round((1 - p.preco / p.de) * 100) : 0;
+const vendN = p => { const m = String(p.vendidos || '').match(/([\d.]+)\s*(mil)?/); return m ? parseFloat(m[1].replace('.', '')) * (m[2] ? 1000 : 1) : 0; };
+const TODOS = (() => { const v = new Set(), out = []; for (const p of [...PRODUTOS, ...PECAS]) { if (!p.preco || v.has(p.link)) continue; v.add(p.link); out.push(p); } return out; })();
+const ESP = {
+  'black-november': () => TODOS.filter(p => offP(p) >= 3).sort((a, b) => offP(b) - offP(a)).map(p => ({ ...p, rot: offP(p) + '% OFF' })),
+  'fueltech': () => TODOS.filter(p => /fueltech|ft ?(250|300|450|550|600|700)\b/i.test(p.nome + ' ' + (p.marca || ''))).sort((a, b) => offP(b) - offP(a) || vendN(b) - vendN(a)).map(p => ({ ...p, rot: offP(p) ? offP(p) + '% OFF' : (p.marca || 'FuelTech') })),
+  'mais-vendidos': () => TODOS.filter(p => vendN(p) >= 100).sort((a, b) => vendN(b) - vendN(a) || (b.nota || 0) - (a.nota || 0)).map(p => ({ ...p, rot: p.vendidos + ' vendidos' })),
+};
 function itens(slug) {
+  if (ESP[slug]) return ESP[slug]();
   if (CATS.includes(slug)) return PRODUTOS.filter(p => p.categoria === slug).map(p => ({ ...p, rot: p.marca || '' }));
   if (MODS.includes(slug)) return PECAS.filter(p => p.modelo === slug).map(p => ({ ...p, rot: p.tipo || '' }));
   return null;
@@ -67,8 +77,8 @@ for (const f of files) {
   const faq = seo.faq.length ? `<h2 class="sec">Perguntas frequentes</h2><div class="faq">${seo.faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</div>` : '';
   const posts = seo.posts.map(id => POSTS.find(p => p.id === id)).filter(Boolean);
   const rel = posts.length ? `<h2 class="sec">Guias do blog</h2><div class="rel">${posts.map(p => `<a href="blog/${p.id}"><span>${esc(p.categoria || 'Guia')}</span>${esc(p.titulo)}</a>`).join('')}</div>` : '';
-  const grupo = CATS.includes(slug) ? CATS : MODS;
-  const chips = `<h2 class="sec">${CATS.includes(slug) ? 'Outras categorias' : 'Peças para outros modelos'}</h2><div class="chips">${grupo.filter(x => x !== slug && nomes[x]).map(x => `<a href="pecas/${x}">${esc(nomes[x])}</a>`).join('')}<a href="${CATS.includes(slug) ? 'antigos' : 'loja'}">${CATS.includes(slug) ? 'Peças para carros antigos' : 'Peças de performance'}</a><a href="loja">Ver toda a loja</a></div>`;
+  const grupo = (CATS.includes(slug) || ESP[slug]) ? CATS : MODS;
+  const chips = `<h2 class="sec">${(CATS.includes(slug) || ESP[slug]) ? 'Outras categorias' : 'Peças para outros modelos'}</h2><div class="chips">${grupo.filter(x => x !== slug && nomes[x]).map(x => `<a href="pecas/${x}">${esc(nomes[x])}</a>`).join('')}<a href="${CATS.includes(slug) ? 'antigos' : 'loja'}">${CATS.includes(slug) ? 'Peças para carros antigos' : 'Peças de performance'}</a><a href="loja">Ver toda a loja</a></div>`;
 
   const main = `<main class="lp">${crumb}<h1>${h1}</h1><p class="intro">${intro}</p><p class="upd">Preços conferidos no Mercado Livre em ${hoje.split('-').reverse().join('/')}.</p><div class="lpg">${lista.map(card).join('')}</div>${txt}${faq}${rel}${chips}<p class="aff">Os links são de afiliado do Mercado Livre: você paga o mesmo preço e ajuda o Grid 402.</p></main>`;
   s = s.replace(/<main class="lp">[\s\S]*?<\/main>/, main);

@@ -11,7 +11,7 @@
 <link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
 <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="apple-touch-icon" href="favicon-180.png">
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
 <style>
 body>nav{display:none}
 /* TOPO DA LOJA */
@@ -257,8 +257,8 @@ h2{font-size:clamp(34px,4.5vw,54px)}
 .pb:after{content:"";position:absolute;inset:auto 0 0 0;height:30%;background:linear-gradient(0deg,rgba(0,0,0,.6),transparent)}
 .pb .w{position:relative;z-index:2;height:100%;width:min(1240px,100%);margin:0 auto;padding:0 28px;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:10px}
 .pb .prods{position:relative;height:100%}
-.pb .cut{position:absolute;border-radius:50%;background:radial-gradient(circle,#fff 0 56%,rgba(255,255,255,0) 71%);display:grid;place-items:center;filter:drop-shadow(0 20px 40px rgba(0,0,0,.6))}
-.pb .cut img{width:66%;height:66%;object-fit:contain;mix-blend-mode:multiply;border-radius:14px}
+.pb .cut{position:absolute;border-radius:50%;background:#fff;overflow:hidden;display:grid;place-items:center;box-shadow:0 0 0 6px rgba(255,255,255,.08),0 0 40px rgba(255,40,20,.55),0 24px 40px rgba(0,0,0,.6)}
+.pb .cut img{width:70%;height:70%;object-fit:contain;mix-blend-mode:multiply;filter:brightness(1.07) contrast(1.12)}
 .pb .c1{width:62%;aspect-ratio:1;left:2%;top:12%;transform:rotate(-6deg)}
 .pb .c2{width:44%;aspect-ratio:1;right:4%;top:4%;transform:rotate(5deg)}
 .pb .c3{width:40%;aspect-ratio:1;right:10%;bottom:4%;transform:rotate(-3deg)}
@@ -303,8 +303,8 @@ h2{font-size:clamp(34px,4.5vw,54px)}
 .rail .ra.l{left:2px}.rail .ra.r{right:2px}
 .of{flex:0 0 200px;scroll-snap-align:start;text-decoration:none;color:#fff;display:flex;flex-direction:column}
 .of .tile{position:relative;background:#e10600;aspect-ratio:1;display:grid;place-items:center;overflow:hidden}
-.of .tile i{position:absolute;inset:14%;background:#fff;border-radius:50%;filter:blur(18px);opacity:.9}
-.of .tile img{position:relative;width:82%;height:82%;object-fit:contain;mix-blend-mode:multiply}
+.of .tile i{position:absolute;inset:9%;background:#fff;border-radius:50%}
+.of .tile img{position:relative;width:62%;height:62%;object-fit:contain;mix-blend-mode:multiply;filter:brightness(1.07) contrast(1.12)}
 .of .tile b{position:absolute;top:8px;left:8px;background:#ffd400;color:#000;font:900 15px/1 Inter,sans-serif;padding:6px 8px;z-index:2}
 .of h3{font-size:13px;font-weight:600;line-height:1.3;margin:10px 0 6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:34px;color:#fff}
 .of s{font-size:12px;opacity:.6}
@@ -325,6 +325,7 @@ h2{font-size:clamp(34px,4.5vw,54px)}
 .mvc .pr em{font-style:normal;font-size:11px;border:1px solid #e10600;color:#e10600;padding:2px 4px;margin-left:6px;vertical-align:3px}
 .mvc .mlb{font-size:12px;color:#00a650;margin-top:auto;padding-top:6px}
 #descontos{display:none}
+.ofs h2,.mv h2{display:flex;justify-content:space-between;align-items:baseline;gap:12px}.vt{font-size:15px;font-weight:700;color:#e10600;white-space:nowrap}.ofs .vt{color:#ffd400}
 .of .g4add{display:none!important}
 .lhero .lstage,.lhero .lbig{display:none!important}.lhero{height:auto!important;min-height:0!important;padding:40px 0 30px}.lhero .lbottom{position:relative!important;inset:auto!important}
 @media(max-width:900px){
@@ -339,6 +340,7 @@ h2{font-size:clamp(34px,4.5vw,54px)}
  .of{flex-basis:160px}.mvc{flex-basis:200px}
  .lhero .lbig{display:none}
 }
+.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
 
 
@@ -403,24 +405,10 @@ h2{font-size:clamp(34px,4.5vw,54px)}
 <div><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg><p><b>Parcelado no cartão</b><span>Condições do próprio Mercado Livre</span></p></div>
 <div><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg><p><b>Entrega para todo o Brasil</b><span>Prazo e frete mostrados no anúncio</span></p></div>
 </div></section>
-<section class="ofs" id="ofertas"><h2><span>Ofertas de hoje</span></h2><div class="rail"><button class="ra l" aria-label="Voltar">‹</button><div class="rail-t" id="ofT"></div><button class="ra r" aria-label="Avançar">›</button></div></section>
-<section class="mv" id="maisvendidos"><h2><span>Produtos mais vendidos</span></h2><div class="rail"><button class="ra l" aria-label="Voltar">‹</button><div class="rail-t" id="mvT"></div><button class="ra r" aria-label="Avançar">›</button></div></section>
-<section class="lhero" id="lhero">
-  <div class="lbig" aria-hidden="true"><span>GRID</span><span class="o">402</span></div>
-  <div class="lstage"><img id="golPoster" alt="Turbina"><div class="loading mono" id="loading">CARREGANDO……</div><canvas id="car3d"></canvas></div>
-  <div class="wrap lbottom">
-    <div class="hero-in">
-      <span class="tag mono">// LOJA DE PEÇAS PARA ARRANCADA E CARROS ANTIGOS</span>
-      <h1 class="h1like">Peças de arrancada<span class="r">com preço conferido hoje.</span></h1>
-      <p class="hsub">Turbo, injeção, Weber, nitro e peças para Opala, Fusca e Maverick. Você compra direto no Mercado Livre, com pagamento e entrega garantidos por eles.</p>
-      <form class="hsearch" action="loja.html" role="search"><input name="q" type="search" placeholder="O que seu carro precisa? Ex.: Weber 40, FT450, turbina" aria-label="Buscar peças"><button class="btn red" type="submit">Buscar</button></form>
-      <div class="hchips"><a href="pecas/turbo">Turbo</a><a href="pecas/injecao">Injeção</a><a href="pecas/opala">Opala</a><a href="pecas/fusca">Fusca</a><a href="pecas/nitro">Nitro</a><a href="#descontos">🔻 Descontos</a></div>
-      <p class="hstamp" id="hstamp"></p>
-    </div>
-    <a class="nextcard" id="nextcard" href="eventos.html"></a>
-  </div>
-  <div class="lscroll mono">ROLE <i></i></div>
-</section>
+<section class="ofs" id="ofertas"><h2><span>Ofertas de hoje</span><a class="vt" href="pecas/black-november">Ver todas →</a></h2><div class="rail"><button class="ra l" aria-label="Voltar">‹</button><div class="rail-t" id="ofT"></div><button class="ra r" aria-label="Avançar">›</button></div></section>
+<section class="mv" id="maisvendidos"><h2><span>Produtos mais vendidos</span><a class="vt" href="pecas/mais-vendidos">Ver todos →</a></h2><div class="rail"><button class="ra l" aria-label="Voltar">‹</button><div class="rail-t" id="mvT"></div><button class="ra r" aria-label="Avançar">›</button></div></section>
+<h1 class="sr-only">Peças de arrancada e carros antigos com preço conferido hoje</h1>
+
 
 <div class="perks"><div class="ptrack in">
   <div class="perk"><svg viewBox="0 0 48 48"><path class="d" d="M24 4 8 10v12c0 10 7 18 16 22 9-4 16-12 16-22V10L24 4z"/><path class="d2" d="m17 24 5 5 10-11"/></svg><div><b>Compra segura</b><small>Pagamento pelo Mercado Livre</small></div></div>
@@ -507,12 +495,6 @@ h2{font-size:clamp(34px,4.5vw,54px)}
 </div></footer>
 
 
-<script>(()=>{const p=document.getElementById('golPoster');if(!p||!window.GOL_POSTER)return;p.src=window.GOL_POSTER;
-const MOB=matchMedia('(max-width:900px),(pointer:coarse)').matches;
-// no celular a foto aparece na hora; no PC só se o 3D demorar
-setTimeout(()=>{if(!document.getElementById('lhero').classList.contains('ready'))p.classList.add('on')},MOB?0:6000);
-let ok=false;try{const c=document.createElement('canvas');ok=!!(c.getContext('webgl2')||c.getContext('webgl'))}catch(e){}
-if(!ok){p.classList.add('on');document.getElementById('car3d').style.display='none';const l=document.getElementById('loading');l&&l.remove()}})();</script>
 <script src="config.js"></script>
 <script src="eventos.js"></script>
 <script src="header.js?v=8"></script>
@@ -609,7 +591,7 @@ const tb=withImg.filter(p=>p.categoria==='turbo').sort((a,b)=>vend(b)-vend(a)||b
 const op=withImg.filter(p=>/opala/i.test(p.nome)).sort((a,b)=>vend(b)-vend(a));
 const ve=(typeof VESTUARIO!=='undefined'?VESTUARIO:[]).filter(v=>v.img);
 const B=[];
-if(ft.length)B.push(`<a class="pb" href="#ofertas"><div class="w"><div class="prods">${cut(ft[0],'c1')}${cut(ft[1],'c2')}${cut(ft[2],'c3')}</div><div class="txt"><div class="neon">BLACK</div><div class="sub2">November</div><div class="brandl">GRID 402 PERFORMANCE</div><div class="stks"><span class="stk wt">FuelTech</span>${ftOff?`<span class="stk g"><small>ofertas com até</small><b>${ftOff}%</b> OFF</span>`:''}<span class="stk o">Preço<br>conferido hoje</span></div><div class="note">${maxOff?`E ATÉ ${maxOff}% OFF EM OUTRAS PEÇAS DO SITE`:'COMPRA PROTEGIDA PELO MERCADO LIVRE'}</div></div></div></a>`);
+if(ft.length)B.push(`<a class="pb" href="pecas/black-november"><div class="w"><div class="prods">${cut(ft[0],'c1')}${cut(ft[1],'c2')}${cut(ft[2],'c3')}</div><div class="txt"><div class="neon">BLACK</div><div class="sub2">November</div><div class="brandl">GRID 402 PERFORMANCE</div><div class="stks"><span class="stk wt">FuelTech</span>${ftOff?`<span class="stk g"><small>ofertas com até</small><b>${ftOff}%</b> OFF</span>`:''}<span class="stk o">Preço<br>conferido hoje</span></div><div class="note">${maxOff?`E ATÉ ${maxOff}% OFF EM OUTRAS PEÇAS DO SITE`:'COMPRA PROTEGIDA PELO MERCADO LIVRE'}</div></div></div></a>`);
 if(tb.length)B.push(`<a class="pb blue" href="pecas/turbo"><div class="w"><div class="prods">${cut(tb[0],'c1',1)}${cut(tb[1],'c2',1)}${cut(tb[2],'c3',1)}</div><div class="txt"><div class="neon">TURBO</div><div class="sub2">linha completa</div><div class="stks"><span class="stk y"><small>a partir de</small>${R0(tbMin)}</span><span class="stk wt">Blow off · Wastegate<br>Aeroquip · Kits</span></div><div class="note">MAIS VENDIDOS DA ARRANCADA</div></div></div></a>`);
 if(op.length)B.push(`<a class="pb amber" href="pecas/opala"><div class="w"><div class="prods">${cut(op[0],'c1',1)}${cut(op[1],'c2',1)}${cut(op[2],'c3',1)}</div><div class="txt"><div class="neon">OPALA</div><div class="sub2">peças e restauro</div><div class="stks"><span class="stk o">Coletor · Radiador<br>Carburador</span><span class="stk y">Preço<br>conferido hoje</span></div><div class="note">4CC E 6CC · RUA E ARRANCADA</div></div></div></a>`);
 B.push(`<a class="pb photo" href="blog/super-final-spid-cup-2026"><div class="bgp" style="background-image:url(img/blog/spid-cup-2026.jpg)"></div><div class="w" style="grid-template-columns:1fr"><div class="txt"><div class="neon wh">SPID CUP</div><div class="sub2">Super Final 2026</div><div class="stks"><span class="stk y">Leia no blog →</span></div><div class="note">PRO MOD, RECORDES E FUNNY CAR EM ITATIBA</div></div></div></a>`);
@@ -634,101 +616,6 @@ document.querySelectorAll('.rail').forEach(r=>{const t=r.querySelector('.rail-t'
 })();</script>
 <script src="common.js"></script>
 
-<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
-<script type="module">
-// Desempenho: no celular/conexão lenta o 3D não carrega (economiza ~3 MB); no PC ele só carrega depois que a página termina
-const _lite=true||(navigator.connection&&(navigator.connection.saveData||/2g/.test(navigator.connection.effectiveType||'')));
-if(_lite){document.getElementById('lhero').classList.add('lite');document.getElementById('loading')?.remove();await new Promise(()=>{});}
-await new Promise(r=>{const go=()=>('requestIdleCallback' in window?requestIdleCallback(r,{timeout:2500}):setTimeout(r,1200));document.readyState==='complete'?go():addEventListener('load',go,{once:true})});
-const THREE=await import('three');
-const {GLTFLoader}=await import('three/addons/loaders/GLTFLoader.js');
-const {RoomEnvironment}=await import('three/addons/environments/RoomEnvironment.js');
-
-const canvas=document.getElementById('car3d');
-const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
-renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.35;
-renderer.outputColorSpace=THREE.SRGBColorSpace;
-const scene=new THREE.Scene();
-const pmrem=new THREE.PMREMGenerator(renderer);
-scene.environment=pmrem.fromScene(new RoomEnvironment(),0.02).texture;
-
-const camera=new THREE.PerspectiveCamera(30,1,0.1,100);
-const CZ=matchMedia("(max-width:760px)").matches?8.4:9.4,LY=matchMedia("(max-width:760px)").matches?.55:.05;camera.position.set(0,1.9,CZ);camera.lookAt(0,LY,0);
-
-const sun=new THREE.DirectionalLight(0xffffff,2.2);
-sun.position.set(4,8,3);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);
-Object.assign(sun.shadow.camera,{left:-4,right:4,top:4,bottom:-4});sun.shadow.radius=6;
-scene.add(sun,new THREE.HemisphereLight(0xffffff,0xdedad2,1.4),new THREE.AmbientLight(0xffffff,.6));
-
-const ground=new THREE.Mesh(new THREE.CircleGeometry(7,64),new THREE.ShadowMaterial({opacity:.28}));
-ground.rotation.x=-Math.PI/2;ground.receiveShadow=true;scene.add(ground);
-const rimL=new THREE.PointLight(0xe10600,18,12);rimL.position.set(-3,1.2,-2.5);scene.add(rimL);
-
-const car=new THREE.Group();scene.add(car);
-function addModel(gltf){
-  const m=gltf.scene;
-  m.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;
-    const mat=o.material;if(mat){mat.envMapIntensity=1.8;mat.needsUpdate=true}}});
-  // centraliza e escala a turbina
-  const box=new THREE.Box3().setFromObject(m),c=box.getCenter(new THREE.Vector3()),sz=box.getSize(new THREE.Vector3());
-  const k=2.8/Math.max(sz.x,sz.y,sz.z);m.scale.setScalar(k);m.position.set(-c.x*k,-c.y*k,-c.z*k);
-  car.add(m);car.position.y=.45;
-  // saída do tubo (coordenadas do modelo original) -> espaço da turbina
-  car.updateMatrixWorld(true);let mesh;m.traverse(o=>{if(o.isMesh&&!mesh)mesh=o});
-  const tip=mesh.localToWorld(new THREE.Vector3(...PICK.tip)),tip2=mesh.localToWorld(new THREE.Vector3(...PICK.dir));
-  window.EMIT=car.worldToLocal(tip.clone());window.EDIR=car.worldToLocal(tip2.clone()).sub(window.EMIT).normalize();
-  document.getElementById('loading')?.remove();document.getElementById('lhero').classList.add('ready');
-}
-// fogo: partículas que saem da turbina quando rola a página
-const fireTex=(()=>{const c=document.createElement('canvas');c.width=c.height=64;const g=c.getContext('2d'),r=g.createRadialGradient(32,32,0,32,32,32);
-  r.addColorStop(0,'rgba(255,255,220,1)');r.addColorStop(.25,'rgba(255,190,40,.9)');r.addColorStop(.6,'rgba(225,40,0,.5)');r.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=r;g.fillRect(0,0,64,64);return new THREE.CanvasTexture(c)})();
-const fire=[];for(let i=0;i<70;i++){const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:fireTex,blending:THREE.AdditiveBlending,depthWrite:false,transparent:true,opacity:0}));sp.userData={life:0};car.add(sp);fire.push(sp)}
-const fireLight=new THREE.PointLight(0xff6a00,0,6);car.add(fireLight);
-let heat=0,lastSy=scrollY;
-function burn(){const v=Math.min(Math.abs(scrollY-lastSy),80);lastSy=scrollY;heat=Math.max(heat*.93,v/40);
-  const E=window.EMIT;if(!E)return;fireLight.position.copy(E);fireLight.intensity=heat*14;
-  for(const p of fire){const u=p.userData;
-    if(u.life<=0&&Math.random()<heat*.5){u.life=1;p.position.copy(E);const D=window.EDIR;u.v=D.clone().multiplyScalar(PICK.gas?.11+Math.random()*.06:.05+Math.random()*.05).add(new THREE.Vector3((Math.random()-.5)*.025,(Math.random()-.5)*.025,(Math.random()-.5)*.025))}
-    if(u.life>0){u.life-=.035;p.position.add(u.v);const s=PICK.gas?.15+(1-u.life)*1.3:.25+(1-u.life)*.7;p.scale.set(s,s,s);p.material.opacity=u.life*.95}else p.material.opacity=0}}
-const loader=new GLTFLoader();
-const MOB=matchMedia('(max-width:900px),(pointer:coarse)').matches;let _n=0;try{_n=+(localStorage.getItem('g402m')||0)+1;localStorage.setItem('g402m',_n)}catch(e){_n=Date.now()}
-const _q=new URLSearchParams(location.search).get('m');
-const PICK=(_q?_q==='turbo':(_n%2===0))?{f:'turbo',tip:[-.40,.49,1.03],dir:[-.40,.40,1.03],gas:0}:{f:'nitro',tip:[.21,0,2.0],dir:[.4,0,2.0],gas:1};
-const FN=PICK.f+'-m',GLB='modelo/'+FN+'.glb',DATA='modelo/'+FN+'-data.js';
-if(PICK.gas){fireTex.image=(()=>{const c=document.createElement('canvas');c.width=c.height=64;const g=c.getContext('2d'),r=g.createRadialGradient(32,32,0,32,32,32);
-  r.addColorStop(0,'rgba(240,250,255,.9)');r.addColorStop(.35,'rgba(120,190,255,.55)');r.addColorStop(1,'rgba(40,110,255,0)');g.fillStyle=r;g.fillRect(0,0,64,64);return c})();fireTex.needsUpdate=true;fireLight.color.set(0x4aa3ff);fire.forEach(p=>p.material.blending=THREE.NormalBlending)}
-if(MOB){renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));sun.shadow.mapSize.set(1024,1024)}
-function fromEmbedded(){ // quando o site é aberto com dois cliques (file://)
-  const s=document.createElement('script');s.src=DATA;
-  s.onload=()=>{document.getElementById('loading')&&(document.getElementById('loading').textContent='MONTANDO……');const bin=Uint8Array.from(atob(window.GOL_GLB),c=>c.charCodeAt(0));loader.parse(bin.buffer,'',addModel,e=>console.error(e))};
-  document.body.appendChild(s);
-}
-if(location.protocol==='file:') fromEmbedded();
-else loader.load(GLB,addModel,x=>{const l=document.getElementById('loading');if(l&&x.total)l.textContent='CARREGANDO…… '+Math.round(x.loaded/x.total*100)+'%'},fromEmbedded);
-
-function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}
-addEventListener('resize',resize);resize();
-
-// rotação estilo Lando Norris: segue o mouse + gira com o scroll + arrastar no celular
-let tt=0,mx=0,my=0,drag=0,dx0=null,rot=-0.6,tilt=0;
-addEventListener('pointermove',e=>{mx=e.clientX/innerWidth*2-1;my=e.clientY/innerHeight*2-1});
-canvas.addEventListener('pointerdown',e=>{dx0=e.clientX});addEventListener('pointerup',()=>dx0=null);
-canvas.addEventListener('pointermove',e=>{if(dx0!==null){drag+=(e.clientX-dx0)*.01;dx0=e.clientX}});
-const big=document.querySelector('.lbig');
-renderer.setAnimationLoop(()=>{
-  tt+=.016;
-  const sy=scrollY;
-  const target=-0.6+mx*.55+drag+sy*.006+Math.sin(tt*.4)*.05;
-  rot+=(target-rot)*.06;tilt+=((-my*.08)-tilt)*.06;
-  car.rotation.y=rot;car.rotation.x=tilt*.4;
-  car.position.y=.45+Math.sin(tt*1.2)*.06+Math.random()*heat*.015;burn();
-  camera.position.z=CZ+sy*.004;camera.position.y=1.9+sy*.0012;camera.lookAt(0,LY,0);
-  if(big)big.style.transform=`translateY(calc(-6% + ${sy*.25}px)) scale(${1+sy*.0003})`;
-  renderer.render(scene,camera);
-});
-</script>
 <script>(()=>{const t=document.querySelector(".ptrack");t.innerHTML+=t.innerHTML})()</script>
 </body>
 </html>

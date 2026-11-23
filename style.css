@@ -154,3 +154,5 @@ body:has(.m3d:hover) .g-ring,body:has(.m3d:hover) .g-dot{opacity:0}
 .ps b{color:#d48a00;font-weight:700;font-size:inherit}.ps .ch{color:#00a650;font-weight:700}
 .hot{display:inline-block;font-style:normal;background:#111;color:#fff;font-size:10px;font-weight:800;line-height:1;letter-spacing:.06em;padding:5px 8px;border-radius:6px;margin:0 0 6px}
 .hot.ult{background:#e10600}
+.lpg .hot{display:inline-block!important;align-self:flex-start;width:auto!important}
+.lpg .ps b{font-size:12px!important;display:inline!important;margin:0!important;color:#d48a00!important}
