@@ -206,11 +206,15 @@ const getR=()=>{try{return JSON.parse(localStorage.getItem(RK))||[]}catch(e){ret
 const setR=r=>{mem=r;try{localStorage.setItem(RK,JSON.stringify(r))}catch(e){}};
 try{pname.value=localStorage.getItem('grid402-nome')||''}catch(e){}
 pname.oninput=()=>{pname.classList.remove('need');pmsg.textContent='';try{localStorage.setItem('grid402-nome',pname.value)}catch(e){}};
-function saveRank(n,t){const r=getR(),i=r.findIndex(x=>x.n.toLowerCase()===n.toLowerCase());
-  if(i<0)r.push({n,t});else if(t<r[i].t)r[i]={n,t};else{drawRank();return}
-  r.sort((a,b)=>a.t-b.t);setR(r.slice(0,50));const pos=r.findIndex(x=>x.n.toLowerCase()===n.toLowerCase())+1;pmsg.textContent='Novo recorde! '+pos+'º lugar';drawRank()}
+async function saveRank(n,t){const loc=getR(),i=loc.findIndex(x=>x.n.toLowerCase()===n.toLowerCase());
+  if(i<0)loc.push({n,t});else if(t<loc[i].t)loc[i]={n,t};loc.sort((a,b)=>a.t-b.t);setR(loc.slice(0,100));drawRank();
+  try{const r=await fetch('/api/ranking',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({n,t})});
+    if(r.ok){const top=await r.json();if(Array.isArray(top)){setR(top);const pos=top.findIndex(x=>x.n.toLowerCase()===n.toLowerCase())+1;const me=top[pos-1];
+      pmsg.textContent=me&&Math.abs(me.t-t)<0.0005?'Tempo salvo! Você está em '+pos+'º lugar no ranking':'Tempo salvo. Seu melhor continua '+(me?f3(me.t)+' s ('+pos+'º lugar)':'');drawRank();return}}
+    pmsg.textContent='Não deu para salvar no ranking agora. Tente de novo.'}catch(e){pmsg.textContent='Sem conexão: tempo guardado só neste aparelho.'}}
 function drawRank(){const r=getR(),me=pname.value.trim().toLowerCase();
-  rank.innerHTML=r.length?r.slice(0,10).map(x=>`<li class="${x.n.toLowerCase()===me?'me':''}"><span>${x.n.replace(/[<>&"]/g,'')}</span><b>${f3(x.t)} s</b></li>`).join(''):'<li class="empty">Ninguém largou ainda. Seja o primeiro!</li>'}
+  rank.innerHTML=r.length?r.slice(0,10).map((x,i)=>`<li class="${x.n.toLowerCase()===me?'me':''}"><span>${i+1}º ${x.n.replace(/[<>&"]/g,'')}</span><b>${f3(x.t)} s</b></li>`).join(''):'<li class="empty">Ninguém largou ainda. Seja o primeiro!</li>'}
+(async()=>{try{const r=await fetch('/api/ranking',{cache:'no-store'});if(r.ok){const top=await r.json();if(Array.isArray(top)){setR(top);drawRank()}}}catch(e){}})();
 drawRank();
 addEventListener('keydown',e=>{if(e.code==='Space'&&document.getElementById('reacao').classList.contains('on')&&e.target.tagName!=='INPUT'){e.preventDefault();hit()}});
 
