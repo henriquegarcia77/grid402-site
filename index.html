@@ -342,6 +342,11 @@ h2{font-size:clamp(34px,4.5vw,54px)}
 }
 .sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .mlbar{background:#ffe600;color:#2d3277;display:flex;gap:6px 12px;flex-wrap:wrap;justify-content:center;align-items:center;text-align:center;padding:12px 16px;font-size:14px;line-height:1.35}.mlbar b{font-size:15px}
+.evh{background:#0f0f10;color:#fff;padding:46px 0 40px!important}.evh h2{width:min(1240px,100%);margin:0 auto 18px;padding:0 22px;font-size:clamp(24px,3vw,34px);letter-spacing:-.02em;display:flex;justify-content:space-between;align-items:baseline;gap:12px}.evh h2 span{border-bottom:3px solid #e10600;padding-bottom:4px}.evh .vt{color:#ffd400}
+.evc{flex:0 0 270px;scroll-snap-align:start;background:#1c1c1e;border:1px solid #2c2c30;border-radius:10px;padding:18px;color:#fff;text-decoration:none;display:flex;flex-direction:column;gap:8px}
+.evc .dt{display:flex;align-items:baseline;gap:8px}.evc .dt b{font:900 34px/1 Inter,sans-serif;color:#ffd400}.evc .dt span{font:800 13px/1.2 Inter,sans-serif;text-transform:uppercase;letter-spacing:.06em}
+.evc h3{font-size:17px;line-height:1.25;margin:0;color:#fff}.evc p{font-size:13px;opacity:.75;margin:0}.evc .tp{align-self:flex-start;font:800 11px/1 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;background:#e10600;padding:5px 8px}
+.evc .ig{margin-top:auto;font:800 12px/1 Inter,sans-serif;color:#1fc0f0}
 </style>
 
 
@@ -409,6 +414,7 @@ h2{font-size:clamp(34px,4.5vw,54px)}
 </div></section>
 <section class="ofs" id="ofertas"><h2><span>Ofertas de hoje</span><a class="vt" href="pecas/black-november">Ver todas →</a></h2><div class="rail"><button class="ra l" aria-label="Voltar">‹</button><div class="rail-t" id="ofT"></div><button class="ra r" aria-label="Avançar">›</button></div></section>
 <section class="mv" id="maisvendidos"><h2><span>Produtos mais vendidos</span><a class="vt" href="pecas/mais-vendidos">Ver todos →</a></h2><div class="rail"><button class="ra l" aria-label="Voltar">‹</button><div class="rail-t" id="mvT"></div><button class="ra r" aria-label="Avançar">›</button></div></section>
+<section class="evh" id="proximos-eventos"><h2><span>Próximos eventos</span><a class="vt" href="eventos">Ver agenda →</a></h2><div class="rail"><button class="ra l" aria-label="Voltar">‹</button><div class="rail-t" id="evT"></div><button class="ra r" aria-label="Avançar">›</button></div></section>
 <h1 class="sr-only">Grid 402 Performance: peças de arrancada e carros antigos</h1>
 
 
@@ -616,6 +622,13 @@ document.getElementById('mvT').innerHTML=M.map(p=>`<a class="mvc" href="${E(p.li
 // setas dos trilhos
 document.querySelectorAll('.rail').forEach(r=>{const t=r.querySelector('.rail-t');r.querySelector('.ra.l').onclick=()=>t.scrollBy({left:-t.clientWidth*.8,behavior:'smooth'});r.querySelector('.ra.r').onclick=()=>t.scrollBy({left:t.clientWidth*.8,behavior:'smooth'})});
 })();</script>
+<script>(()=>{const T=document.getElementById('evT');if(!T||typeof EVENTOS==='undefined'){document.getElementById('proximos-eventos')?.remove();return}
+const now=new Date();const L=EVENTOS.filter(e=>e.inicio&&new Date((e.fim||e.inicio)+'T23:59:59')>=now).sort((a,b)=>a.inicio.localeCompare(b.inicio));
+if(!L.length){document.getElementById('proximos-eventos').remove();return}
+const M=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];const E=s=>String(s||'').replace(/</g,'&lt;');
+T.innerHTML=L.map(e=>{const a=new Date(e.inicio+'T12:00'),b=new Date((e.fim||e.inicio)+'T12:00');const d=a.getDate()+(b>a?'–'+b.getDate():'');const link=e.ingresso||e.insta||e.site||'eventos';
+return `<a class="evc" href="${link}"${/^http/.test(link)?' target="_blank" rel="noopener"':''}><div class="dt"><b>${d}</b><span>${M[a.getMonth()]}<br>${a.getFullYear()}</span></div><span class="tp">${E(e.tipo||'Arrancada')}</span><h3>${E(e.nome)}</h3><p>${E(e.local)} · ${E(e.cidade)}/${E(e.uf)}</p><span class="ig">${e.ingresso?'Comprar ingresso →':'Ver detalhes →'}</span></a>`}).join('');
+const r=T.closest('.rail');r.querySelector('.ra.l').onclick=()=>T.scrollBy({left:-T.clientWidth*.8,behavior:'smooth'});r.querySelector('.ra.r').onclick=()=>T.scrollBy({left:T.clientWidth*.8,behavior:'smooth'});})();</script>
 <script src="common.js"></script>
 
 <script>(()=>{const t=document.querySelector(".ptrack");t.innerHTML+=t.innerHTML})()</script>
