@@ -244,32 +244,101 @@ h2{font-size:clamp(34px,4.5vw,54px)}
 .hcats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.hcat{background:#fff;border:1px solid var(--line);border-radius:22px;padding:14px;display:flex;flex-direction:column;gap:4px;transition:.25s}.hcat:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.08);border-color:var(--red)}.hcat .hi{aspect-ratio:1;display:grid;place-items:center;background:#fff;border-radius:14px;overflow:hidden;margin-bottom:6px}.hcat img{width:100%;height:100%;object-fit:contain}.hcat b{font-size:15px}.hcat small{color:var(--mut);font-size:12.5px}
 @media(max-width:900px){.hcats{grid-template-columns:repeat(2,1fr)}}.btn.big{font-size:17px;padding:18px 30px}
 .pgrid>*,.mpgrid>*,.hcats>*{min-width:0}.pgrid h3,.pgrid h4,.pgrid .nm,.mpgrid h3,.mpgrid h4{overflow-wrap:anywhere;hyphens:auto}
-/* BANNERS (carrossel topo) */
-.bnr{position:relative;background:#0b0b0c;overflow:hidden;padding:0!important;margin:0}
-.bnr-t{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.bnr-t::-webkit-scrollbar{display:none}
-.bn{flex:0 0 100%;scroll-snap-align:start;position:relative;min-height:clamp(300px,42vw,460px);display:flex;align-items:center;color:#fff;text-decoration:none;overflow:hidden}
-.bn .in{position:relative;z-index:2;width:min(1200px,100%);margin:0 auto;padding:28px 22px 46px;display:grid;grid-template-columns:1.1fr 1fr;gap:20px;align-items:center}
-.bn small{display:inline-block;font:700 12px/1 'JetBrains Mono',monospace;letter-spacing:.18em;padding:7px 10px;border-radius:6px;background:#ffd400;color:#000;margin-bottom:14px}
-.bn h2{font-size:clamp(34px,6vw,72px);line-height:.95;letter-spacing:-.04em;font-weight:800;margin:0 0 12px;color:#fff}
-.bn h2 em{font-style:normal;color:#ffd400}
-.bn p{font-size:clamp(15px,1.6vw,19px);opacity:.85;margin:0 0 18px;max-width:460px}
-.bn .cta{display:inline-flex;align-items:center;gap:8px;background:#e10600;color:#fff;font-weight:700;padding:13px 22px;border-radius:980px;font-size:16px}
-.bn .pics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.bn .pic{background:#fff;border-radius:16px;aspect-ratio:1;display:grid;place-items:center;position:relative;overflow:hidden}
-.bn .pic img{width:88%;height:88%;object-fit:contain}
-.bn .pic b{position:absolute;top:6px;left:6px;background:#e10600;color:#fff;font-size:12px;padding:4px 7px;border-radius:6px}
-.bn.b1{background:radial-gradient(ellipse at 80% 40%,#3a0a08 0,#0b0b0c 60%)}
-.bn.b1:before{content:"BLACK";position:absolute;right:-2%;bottom:-8%;font:900 clamp(120px,22vw,300px)/1 Inter,sans-serif;color:transparent;-webkit-text-stroke:1px rgba(255,212,0,.18);letter-spacing:-.06em}
-.bn.b2{background:#000}
-.bn.b2 .bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.45}
-.bn.b2:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#000 15%,transparent 85%)}
-.bn.b3{background:linear-gradient(120deg,#111 0,#1c1c1f 55%,#e10600 160%)}
-.bnr-d{position:absolute;left:0;right:0;bottom:16px;display:flex;justify-content:center;gap:8px;z-index:3}
-.bnr-d button{width:9px;height:9px;border-radius:9px;border:0;background:rgba(255,255,255,.35);padding:0;transition:.3s}
-.bnr-d button.on{width:26px;background:#ffd400}
-@media(max-width:760px){.bn .in{grid-template-columns:1fr;padding:26px 18px 48px}.bn .pics{order:-1;gap:8px}.bn .pic{border-radius:12px}.bn h2{font-size:clamp(32px,10vw,46px)}
- .lhero .lbig{display:none}.lhero{min-height:0!important}}
+/* ===== HOME ESTILO VITRINE (topo preto, banners cartaz, ofertas, mais vendidos) ===== */
+.gnav{background:#000!important;border-bottom:0!important}
+.gnav .burger span{background:#fff!important}
+.gnav .sBtn,.gnav .ic,.gnav svg{color:#fff!important;stroke:#fff}
+@media(min-width:901px){.gnav .glinks a{color:#fff!important;opacity:.85}}
+.hv{background:#0a0a0b;color:#fff;position:relative;overflow:hidden;padding:0!important;margin:0}
+.hv-t{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.hv-t::-webkit-scrollbar{display:none}
+.pb{flex:0 0 100%;scroll-snap-align:start;position:relative;height:clamp(420px,40vw,540px);overflow:hidden;color:#fff;text-decoration:none;display:block;
+ background:radial-gradient(ellipse at 30% 60%,rgba(225,6,0,.55) 0,rgba(225,6,0,0) 55%),radial-gradient(ellipse at 85% 20%,rgba(255,40,0,.35) 0,transparent 45%),repeating-linear-gradient(115deg,#0b0b0c 0 22px,#101012 22px 44px)}
+.pb:after{content:"";position:absolute;inset:auto 0 0 0;height:30%;background:linear-gradient(0deg,rgba(0,0,0,.6),transparent)}
+.pb .w{position:relative;z-index:2;height:100%;width:min(1240px,100%);margin:0 auto;padding:0 28px;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:10px}
+.pb .prods{position:relative;height:100%}
+.pb .cut{position:absolute;border-radius:50%;background:radial-gradient(circle,#fff 0 56%,rgba(255,255,255,0) 71%);display:grid;place-items:center;filter:drop-shadow(0 20px 40px rgba(0,0,0,.6))}
+.pb .cut img{width:66%;height:66%;object-fit:contain;mix-blend-mode:multiply;border-radius:14px}
+.pb .c1{width:62%;aspect-ratio:1;left:2%;top:12%;transform:rotate(-6deg)}
+.pb .c2{width:44%;aspect-ratio:1;right:4%;top:4%;transform:rotate(5deg)}
+.pb .c3{width:40%;aspect-ratio:1;right:10%;bottom:4%;transform:rotate(-3deg)}
+.pb .txt{text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.neon{font:900 italic clamp(64px,10vw,150px)/.85 Inter,sans-serif;letter-spacing:-.05em;color:#ff2a1f;-webkit-text-stroke:2px #ffb3ad;text-shadow:0 0 8px #ff1a0d,0 0 28px #ff1a0d,0 0 60px rgba(255,26,13,.7);transform:skew(-6deg)}
+.neon.wh{color:#fff;-webkit-text-stroke:0;text-shadow:0 0 18px rgba(255,255,255,.35)}
+.sub2{font:800 clamp(28px,4.2vw,58px)/1 Inter,sans-serif;letter-spacing:.02em;color:transparent;-webkit-text-stroke:2px #fff;text-transform:uppercase}
+.brandl{font:800 clamp(14px,1.6vw,22px)/1 'JetBrains Mono',monospace;letter-spacing:.3em;padding:8px 14px;border:2px solid #fff;margin:4px 0 6px}
+.stks{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:6px}
+.stk{font:900 clamp(15px,1.8vw,22px)/1 Inter,sans-serif;padding:12px 16px;transform:skew(-8deg);text-transform:uppercase;box-shadow:0 8px 20px rgba(0,0,0,.4)}
+.stk small{display:block;font-size:.55em;font-weight:800;letter-spacing:.06em}
+.stk.g{background:#7cff2e;color:#000}.stk.g b{font-size:1.9em;line-height:.9}
+.stk.o{background:#ff6a00;color:#fff}.stk.y{background:#ffd400;color:#000}.stk.wt{background:#fff;color:#000}
+.pb .note{font:800 clamp(13px,1.5vw,18px)/1 Inter,sans-serif;letter-spacing:.04em;margin-top:8px;opacity:.95}
+.pb .note:before{content:"";display:inline-block;width:4px;height:1em;background:#e10600;margin-right:8px;vertical-align:-2px}
+.pb.blue{background:radial-gradient(ellipse at 30% 60%,rgba(0,140,255,.5) 0,transparent 55%),repeating-linear-gradient(115deg,#07090d 0 22px,#0b0e14 22px 44px)}
+.pb.blue .neon{color:#33b6ff;-webkit-text-stroke:2px #bfe8ff;text-shadow:0 0 8px #0a9cff,0 0 28px #0a9cff,0 0 60px rgba(10,156,255,.7)}
+.pb.amber{background:radial-gradient(ellipse at 30% 60%,rgba(255,140,0,.45) 0,transparent 55%),repeating-linear-gradient(115deg,#0d0a07 0 22px,#14100b 22px 44px)}
+.pb.amber .neon{color:#ffb21f;-webkit-text-stroke:2px #ffe2a8;text-shadow:0 0 8px #ff9500,0 0 28px #ff9500,0 0 60px rgba(255,149,0,.6)}
+.pb.photo .bgp{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.55}
+.pb.photo{background:#000}
+.hv-d{position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:center;gap:8px;z-index:5}
+.hv-d button{width:10px;height:10px;border-radius:10px;border:0;background:rgba(255,255,255,.4);padding:0;transition:.3s}
+.hv-d button.on{width:28px;background:#e10600}
+.hv-a{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:24px;cursor:pointer}
+.hv-a.l{left:14px}.hv-a.r{right:14px}
+/* faixa de confiança */
+.trust{background:#161618;color:#fff;padding:0!important}
+.trust .w{width:min(1240px,100%);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:16px 22px}
+.trust div{display:flex;gap:10px;align-items:center;font-size:13px;line-height:1.25}
+.trust svg{flex:none;width:30px;height:30px;stroke:#e10600;fill:none;stroke-width:1.8}
+.trust b{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.03em}
+.trust span{opacity:.7;font-size:12px}
+/* ofertas */
+.ofs{background:#1c1c1e;color:#fff;padding:46px 0 40px!important}
+.ofs h2,.mv h2{width:min(1240px,100%);margin:0 auto 18px;padding:0 22px;font-size:clamp(24px,3vw,34px);letter-spacing:-.02em}
+.ofs h2 span,.mv h2 span{border-bottom:3px solid #e10600;padding-bottom:4px}
+.rail{position:relative;width:min(1240px,100%);margin:0 auto}
+.rail-t{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 22px 10px;scrollbar-width:none}
+.rail-t::-webkit-scrollbar{display:none}
+.rail .ra{position:absolute;top:40%;z-index:3;width:42px;height:42px;border-radius:50%;border:0;background:#000;color:#fff;font-size:22px;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.3)}
+.rail .ra.l{left:2px}.rail .ra.r{right:2px}
+.of{flex:0 0 200px;scroll-snap-align:start;text-decoration:none;color:#fff;display:flex;flex-direction:column}
+.of .tile{position:relative;background:#e10600;aspect-ratio:1;display:grid;place-items:center;overflow:hidden}
+.of .tile i{position:absolute;inset:14%;background:#fff;border-radius:50%;filter:blur(18px);opacity:.9}
+.of .tile img{position:relative;width:82%;height:82%;object-fit:contain;mix-blend-mode:multiply}
+.of .tile b{position:absolute;top:8px;left:8px;background:#ffd400;color:#000;font:900 15px/1 Inter,sans-serif;padding:6px 8px;z-index:2}
+.of h3{font-size:13px;font-weight:600;line-height:1.3;margin:10px 0 6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:34px;color:#fff}
+.of s{font-size:12px;opacity:.6}
+.of .pr{font:800 20px/1.1 Inter,sans-serif;color:#ffd400;margin:2px 0 10px}
+.of .go{margin-top:auto;background:#1fc0f0;color:#00131a;font:900 12px/1 Inter,sans-serif;text-align:center;padding:11px 8px;border-radius:980px;letter-spacing:.04em}
+/* mais vendidos */
+.mv{background:#fff;padding:46px 0 40px!important}
+.mvc{flex:0 0 250px;scroll-snap-align:start;background:#fff;border:1px solid #e6e6e9;border-radius:6px;padding:16px;text-decoration:none;color:#1d1d1f;display:flex;flex-direction:column;transition:.2s}
+.mvc:hover{box-shadow:0 14px 30px rgba(0,0,0,.1);transform:translateY(-3px)}
+.mvc .im{aspect-ratio:1;display:grid;place-items:center;margin-bottom:10px}
+.mvc .im img{width:92%;height:92%;object-fit:contain}
+.mvc .tg{align-self:flex-start;background:#000;color:#fff;font:800 11px/1 Inter,sans-serif;letter-spacing:.08em;padding:5px 7px;margin-bottom:8px}
+.mvc h3{font-size:13px;font-weight:500;text-transform:uppercase;line-height:1.35;margin:0 0 8px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:52px}
+.mvc .ch{align-self:flex-start;background:#00a650;color:#fff;font:700 12px/1 Inter,sans-serif;padding:6px 9px;border-radius:5px;margin-bottom:8px}
+.mvc .st{font-size:12px;color:#666;margin-bottom:6px}.mvc .st b{color:#d48a00}
+.mvc s{font-size:12px;color:#888}
+.mvc .pr{font:800 22px/1.1 Inter,sans-serif;margin:2px 0}
+.mvc .pr em{font-style:normal;font-size:11px;border:1px solid #e10600;color:#e10600;padding:2px 4px;margin-left:6px;vertical-align:3px}
+.mvc .mlb{font-size:12px;color:#00a650;margin-top:auto;padding-top:6px}
+#descontos{display:none}
+.of .g4add{display:none!important}
+.lhero .lstage,.lhero .lbig{display:none!important}.lhero{height:auto!important;min-height:0!important;padding:40px 0 30px}.lhero .lbottom{position:relative!important;inset:auto!important}
+@media(max-width:900px){
+ .pb{height:auto;min-height:560px}
+ .pb .w{grid-template-columns:1fr;grid-template-rows:auto 250px;padding:26px 16px 48px;gap:0}
+ .pb .txt{order:1}.pb .prods{order:2;height:250px}
+ .pb .c1{width:50%;left:6%;top:6%}.pb .c2{width:38%;right:6%;top:0}.pb .c3{width:34%;right:16%;bottom:0}
+ .neon{font-size:clamp(58px,19vw,92px)}
+ .hv-a{display:none}
+ .trust .w{grid-template-columns:repeat(2,1fr);gap:14px 10px}
+ .rail .ra{display:none}
+ .of{flex-basis:160px}.mvc{flex-basis:200px}
+ .lhero .lbig{display:none}
+}
 </style>
 
 
@@ -327,11 +396,15 @@ h2{font-size:clamp(34px,4.5vw,54px)}
 
 <div id="hdr"></div>
 
-<section class="bnr" id="bnr" aria-label="Destaques"><div class="bnr-t" id="bnrT">
-<a class="bn b1" href="#descontos"><div class="in"><div><small>BLACK GRID 402</small><h2>Até <em id="bnOff">40%</em> OFF<br>em peças de verdade</h2><p>Descontos reais, conferidos hoje no Mercado Livre. Quando acaba o estoque, sai do site.</p><span class="cta">Ver ofertas →</span></div><div class="pics" id="bnPics"></div></div></a>
-<a class="bn b2" href="blog/super-final-spid-cup-2026"><div class="bg" style="background-image:url(img/blog/spid-cup-2026.jpg)"></div><div class="in"><div><small>NO BLOG</small><h2>Super Final<br><em>SPID CUP 2026</em></h2><p>Pro Mod embolada, recordes e a estreia de um Funny Car em Itatiba. Leia o resumo da decisão.</p><span class="cta">Ler agora →</span></div></div></a>
-<a class="bn b3" href="vestuario"><div class="in"><div><small>VESTUÁRIO</small><h2>Vista a <em>pista.</em></h2><p>Bonés, camisetas FuelTech e drag racing para ir ao autódromo no estilo.</p><span class="cta">Ver roupas →</span></div><div class="pics" id="bnRoupa"></div></div></a>
-</div><div class="bnr-d" id="bnrD"></div></section>
+<section class="hv" id="hv" aria-label="Destaques da Grid 402"><div class="hv-t" id="hvT"></div><button class="hv-a l" aria-label="Anterior" id="hvL">‹</button><button class="hv-a r" aria-label="Próximo" id="hvR">›</button><div class="hv-d" id="hvD"></div></section>
+<section class="trust" aria-label="Por que comprar pela Grid 402"><div class="w">
+<div><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><p><b>Compra protegida</b><span>Pagamento e entrega pelo Mercado Livre</span></p></div>
+<div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><p><b>Preço conferido hoje</b><span id="trData">Todos os preços revisados diariamente</span></p></div>
+<div><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg><p><b>Parcelado no cartão</b><span>Condições do próprio Mercado Livre</span></p></div>
+<div><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg><p><b>Entrega para todo o Brasil</b><span>Prazo e frete mostrados no anúncio</span></p></div>
+</div></section>
+<section class="ofs" id="ofertas"><h2><span>Ofertas de hoje</span></h2><div class="rail"><button class="ra l" aria-label="Voltar">‹</button><div class="rail-t" id="ofT"></div><button class="ra r" aria-label="Avançar">›</button></div></section>
+<section class="mv" id="maisvendidos"><h2><span>Produtos mais vendidos</span></h2><div class="rail"><button class="ra l" aria-label="Voltar">‹</button><div class="rail-t" id="mvT"></div><button class="ra r" aria-label="Avançar">›</button></div></section>
 <section class="lhero" id="lhero">
   <div class="lbig" aria-hidden="true"><span>GRID</span><span class="o">402</span></div>
   <div class="lstage"><img id="golPoster" alt="Turbina"><div class="loading mono" id="loading">CARREGANDO……</div><canvas id="car3d"></canvas></div>
@@ -525,22 +598,46 @@ const g=document.getElementById('dgrid');if(g&&typeof card==='function'){const L
 if(L.length)g.innerHTML=L.map(p=>card(p).replace('<div class="info">',`<div class="info"><span class="save">Economize ${brl(p.de-p.preco)}</span>`)).join('');else g.closest('section').remove()}
 const st=document.getElementById('hstamp');if(st){if(!window.PRECOS_EM){st.remove();return}const d=new Date(PRECOS_EM+'T12:00');st.innerHTML=`<b>●</b> ${PRODUTOS.length} peças com preço conferido em ${d.toLocaleDateString('pt-BR')}`}})();</script>
 <script src="vestuario.js"></script>
-<script>(()=>{const T=document.getElementById('bnrT'),D=document.getElementById('bnrD');if(!T)return;
-const pic=(p,tag)=>`<span class="pic">${tag?`<b>${tag}</b>`:''}<img src="${p.img}" alt="${(p.nome||'').replace(/"/g,'')}" loading="lazy"></span>`;
-try{const L=PRODUTOS.filter(p=>p.de>p.preco&&p.img).map(p=>({...p,o:Math.round((1-p.preco/p.de)*100)})).sort((a,b)=>b.o-a.o);
- if(L.length){document.getElementById('bnOff').textContent=L[0].o+'%';document.getElementById('bnPics').innerHTML=L.slice(0,3).map(p=>pic(p,'-'+p.o+'%')).join('')}}catch(e){}
-try{document.getElementById('bnRoupa').innerHTML=VESTUARIO.filter(v=>v.img).slice(0,3).map(v=>pic(v)).join('')}catch(e){}
-const n=T.children.length;D.innerHTML=Array.from({length:n},(_,i)=>`<button aria-label="Banner ${i+1}"${i?'':' class="on"'}></button>`).join('');
-let i=0,t;const go=k=>{i=(k+n)%n;T.scrollTo({left:T.clientWidth*i,behavior:'smooth'})};
+<script>(()=>{const P=typeof PRODUTOS!=='undefined'?PRODUTOS:[];const E=s=>String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+const R=v=>'R$ '+(+v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});const R0=v=>'R$ '+Math.floor(v).toLocaleString('pt-BR');
+const off=p=>p.de>p.preco&&p.preco?Math.round((1-p.preco/p.de)*100):0;
+const vend=p=>{const m=String(p.vendidos||'').match(/([\d.]+)\s*(mil)?/);return m?parseFloat(m[1].replace('.',''))*(m[2]?1000:1):0};
+const cut=(p,c,lazy)=>p&&p.img?`<span class="cut ${c}"><img src="${E(p.img)}" alt="${E(p.nome)}"${lazy?' loading="lazy"':''}></span>`:'';
+const withImg=P.filter(p=>p.img&&p.preco);const maxOff=Math.max(0,...withImg.map(off));
+const ft=withImg.filter(p=>/ft ?(450|550|600|700|300)/i.test(p.nome)).sort((a,b)=>off(b)-off(a));const ftOff=Math.max(0,...ft.map(off));
+const tb=withImg.filter(p=>p.categoria==='turbo').sort((a,b)=>vend(b)-vend(a)||b.preco-a.preco);const tbMin=Math.min(...tb.map(p=>p.preco));
+const op=withImg.filter(p=>/opala/i.test(p.nome)).sort((a,b)=>vend(b)-vend(a));
+const ve=(typeof VESTUARIO!=='undefined'?VESTUARIO:[]).filter(v=>v.img);
+const B=[];
+if(ft.length)B.push(`<a class="pb" href="#ofertas"><div class="w"><div class="prods">${cut(ft[0],'c1')}${cut(ft[1],'c2')}${cut(ft[2],'c3')}</div><div class="txt"><div class="neon">BLACK</div><div class="sub2">November</div><div class="brandl">GRID 402 PERFORMANCE</div><div class="stks"><span class="stk wt">FuelTech</span>${ftOff?`<span class="stk g"><small>ofertas com até</small><b>${ftOff}%</b> OFF</span>`:''}<span class="stk o">Preço<br>conferido hoje</span></div><div class="note">${maxOff?`E ATÉ ${maxOff}% OFF EM OUTRAS PEÇAS DO SITE`:'COMPRA PROTEGIDA PELO MERCADO LIVRE'}</div></div></div></a>`);
+if(tb.length)B.push(`<a class="pb blue" href="pecas/turbo"><div class="w"><div class="prods">${cut(tb[0],'c1',1)}${cut(tb[1],'c2',1)}${cut(tb[2],'c3',1)}</div><div class="txt"><div class="neon">TURBO</div><div class="sub2">linha completa</div><div class="stks"><span class="stk y"><small>a partir de</small>${R0(tbMin)}</span><span class="stk wt">Blow off · Wastegate<br>Aeroquip · Kits</span></div><div class="note">MAIS VENDIDOS DA ARRANCADA</div></div></div></a>`);
+if(op.length)B.push(`<a class="pb amber" href="pecas/opala"><div class="w"><div class="prods">${cut(op[0],'c1',1)}${cut(op[1],'c2',1)}${cut(op[2],'c3',1)}</div><div class="txt"><div class="neon">OPALA</div><div class="sub2">peças e restauro</div><div class="stks"><span class="stk o">Coletor · Radiador<br>Carburador</span><span class="stk y">Preço<br>conferido hoje</span></div><div class="note">4CC E 6CC · RUA E ARRANCADA</div></div></div></a>`);
+B.push(`<a class="pb photo" href="blog/super-final-spid-cup-2026"><div class="bgp" style="background-image:url(img/blog/spid-cup-2026.jpg)"></div><div class="w" style="grid-template-columns:1fr"><div class="txt"><div class="neon wh">SPID CUP</div><div class="sub2">Super Final 2026</div><div class="stks"><span class="stk y">Leia no blog →</span></div><div class="note">PRO MOD, RECORDES E FUNNY CAR EM ITATIBA</div></div></div></a>`);
+if(ve.length)B.push(`<a class="pb" href="vestuario"><div class="w"><div class="prods">${cut(ve[0],'c1',1)}${cut(ve[1],'c2',1)}${cut(ve[2],'c3',1)}</div><div class="txt"><div class="neon">RACING</div><div class="sub2">vestuário</div><div class="stks"><span class="stk wt">Bonés · Camisetas</span><span class="stk g"><small>vista a</small><b>pista</b></span></div><div class="note">FUELTECH, DRAG RACING E CLÁSSICOS</div></div></div></a>`);
+const T=document.getElementById('hvT'),D=document.getElementById('hvD');T.innerHTML=B.join('');
+const n=B.length;D.innerHTML=B.map((_,i)=>`<button aria-label="Banner ${i+1}"${i?'':' class="on"'}></button>`).join('');
+let i=0,t;const go=k=>{i=(k+n)%n;T.scrollTo({left:T.clientWidth*i,behavior:'smooth'})};const reset=()=>{clearInterval(t);t=setInterval(()=>go(i+1),5500)};
 D.onclick=e=>{const b=[...D.children].indexOf(e.target);if(b>-1){go(b);reset()}};
-T.addEventListener('scroll',()=>{const k=Math.round(T.scrollLeft/T.clientWidth);if(k!==i)i=k;[...D.children].forEach((b,j)=>b.classList.toggle('on',j===i))},{passive:true});
-const reset=()=>{clearInterval(t);t=setInterval(()=>go(i+1),5000)};T.addEventListener('pointerdown',reset);reset();})();</script>
+document.getElementById('hvL').onclick=()=>{go(i-1);reset()};document.getElementById('hvR').onclick=()=>{go(i+1);reset()};
+T.addEventListener('scroll',()=>{i=Math.round(T.scrollLeft/T.clientWidth);[...D.children].forEach((b,j)=>b.classList.toggle('on',j===i))},{passive:true});
+T.addEventListener('pointerdown',reset);reset();
+try{if(window.PRECOS_EM){const d=new Date(PRECOS_EM+'T12:00').toLocaleDateString('pt-BR');document.getElementById('trData').textContent=withImg.length+' peças revisadas em '+d}}catch(e){}
+// ofertas
+const O=withImg.filter(p=>off(p)>=5).sort((a,b)=>off(b)-off(a)).slice(0,18);
+document.getElementById('ofT').innerHTML=O.map(p=>`<a class="of" href="${E(p.link)}" target="_blank" rel="sponsored noopener"><div class="tile"><i></i><img src="${E(p.img)}" alt="${E(p.nome)}" loading="lazy"><b>${off(p)}% OFF</b></div><h3>${E(p.nome)}</h3><s>${R(p.de)}</s><div class="pr">${R(p.preco)}</div><span class="go">CLIQUE E APROVEITE</span></a>`).join('');
+if(!O.length)document.getElementById('ofertas').remove();
+// mais vendidos
+const M=withImg.filter(p=>vend(p)>=100).sort((a,b)=>vend(b)-vend(a)||(b.nota||0)-(a.nota||0)).slice(0,18);
+document.getElementById('mvT').innerHTML=M.map(p=>`<a class="mvc" href="${E(p.link)}" target="_blank" rel="sponsored noopener"><div class="im"><img src="${E(p.img)}" alt="${E(p.nome)}" loading="lazy"></div>${off(p)?'<span class="tg">BLACK NOVEMBER</span>':''}<h3>${E(p.nome)}</h3>${p.chega?`<span class="ch">🚚 Chega ${E(p.chega)}</span>`:''}<div class="st">${p.nota?`<b>★ ${(+p.nota).toFixed(1)}</b> · `:''}${E(p.vendidos)} vendidos</div>${off(p)?`<s>${R(p.de)}</s>`:''}<div class="pr">${R(p.preco)}${off(p)?`<em>${off(p)}% OFF</em>`:''}</div><span class="mlb">Comprar no Mercado Livre →</span></a>`).join('');
+// setas dos trilhos
+document.querySelectorAll('.rail').forEach(r=>{const t=r.querySelector('.rail-t');r.querySelector('.ra.l').onclick=()=>t.scrollBy({left:-t.clientWidth*.8,behavior:'smooth'});r.querySelector('.ra.r').onclick=()=>t.scrollBy({left:t.clientWidth*.8,behavior:'smooth'})});
+})();</script>
 <script src="common.js"></script>
 
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
 <script type="module">
 // Desempenho: no celular/conexão lenta o 3D não carrega (economiza ~3 MB); no PC ele só carrega depois que a página termina
-const _lite=matchMedia('(max-width:900px),(pointer:coarse)').matches||(navigator.connection&&(navigator.connection.saveData||/2g/.test(navigator.connection.effectiveType||'')));
+const _lite=true||(navigator.connection&&(navigator.connection.saveData||/2g/.test(navigator.connection.effectiveType||'')));
 if(_lite){document.getElementById('lhero').classList.add('lite');document.getElementById('loading')?.remove();await new Promise(()=>{});}
 await new Promise(r=>{const go=()=>('requestIdleCallback' in window?requestIdleCallback(r,{timeout:2500}):setTimeout(r,1200));document.readyState==='complete'?go():addEventListener('load',go,{once:true})});
 const THREE=await import('three');
