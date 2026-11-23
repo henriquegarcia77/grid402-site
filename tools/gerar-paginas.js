@@ -86,7 +86,7 @@ for (const f of files) {
   s = s.replace(/<main class="lp">[\s\S]*?<\/main>/, main);
 
   const crumbLd = [{ '@type': 'ListItem', position: 1, name: 'Início', item: SITE + '/' }];
-  if (MODS.includes(slug)) crumbLd.push({ '@type': 'ListItem', position: 2, name: 'Carros antigos', item: SITE + '/antigos' });
+  if (MODS.includes(slug)) crumbLd.push({ '@type': 'ListItem', position: 2, name: 'Loja', item: SITE + '/loja' });
   crumbLd.push({ '@type': 'ListItem', position: crumbLd.length + 1, name: h1.replace(/<[^>]+>/g, ''), item: url });
   const graph = [
     {
@@ -118,7 +118,7 @@ for (const f of files) {
 
 // sitemap: lastmod de hoje para as páginas de peças, loja e antigos
 let sm = rd('sitemap.xml');
-sm = sm.replace(/(<loc>[^<]*\/(?:pecas\/[\w-]+|loja|antigos)<\/loc><lastmod>)[^<]*/g, `$1${hoje}`);
+sm = sm.replace(/(<loc>[^<]*\/(?:pecas\/[\w-]+|loja)<\/loc><lastmod>)[^<]*/g, `$1${hoje}`);
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sm);
 console.log('páginas geradas:', feitos);
 // data da última conferência de preços (mostrada na home e na loja)

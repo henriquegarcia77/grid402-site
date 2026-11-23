@@ -8,7 +8,7 @@ try{sessionStorage.setItem('g402load','1');if(!/index\.html$|\/$/.test(location.
 const LOGO='<img src="logo-sm.png" alt="Grid 402 Performance" class="hlogo">';
 const SEARCH='<svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>';
 const BAG='<svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>';
-const links=[["Home","index.html"],["Loja","loja.html"],["Carros antigos","antigos.html"],["Na pista","na-pista.html"],["Eventos","eventos.html"],["Vestuário","vestuario.html"],["Blog","blog.html"]];
+const links=[["Home","index.html"],["Loja","loja.html"],["Na pista","na-pista.html"],["Eventos","eventos.html"],["Vestuário","vestuario.html"],["Blog","blog.html"]];
 const isIndex=!!document.getElementById('pq');
 document.getElementById('hdr').outerHTML=`
 <header class="gnav" id="gnav"><div class="gwrap">
@@ -69,8 +69,8 @@ const html=`<footer class="gfoot"><div class="gw"><div class="gc">
 <p>Peças de performance para arrancada e peças para carros antigos. Compra segura pelo Mercado Livre.</p>
 <div class="gs"><a href="https://www.instagram.com/grid402performance/" target="_blank" rel="noopener" aria-label="Instagram">${ig}</a><a href="https://www.facebook.com/profile.php?id=61588606083936" target="_blank" rel="noopener" aria-label="Facebook">${fb}</a></div></div>
 <div><h6>Loja</h6><ul>${cats.map(c=>`<li><a href="pecas/${c[0]}">${c[1]}</a></li>`).join('')}<li><a href="loja.html"><b>Ver todos →</b></a></li></ul></div>
-<div><h6>Clássicos</h6><ul>${mods.map(m=>`<li><a href="pecas/${m[0]}">Peças ${m[1]}</a></li>`).join('')}<li><a href="antigos.html"><b>Todos os modelos →</b></a></li></ul></div>
-<div><h6>Navegar</h6><ul><li><a href="index.html">Home</a></li><li><a href="loja.html">Loja</a></li><li><a href="antigos.html">Carros antigos</a></li><li><a href="na-pista.html">Na pista</a></li><li><a href="eventos.html">Eventos</a></li><li><a href="vestuario.html">Vestuário</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+<div><h6>Clássicos</h6><ul>${mods.map(m=>`<li><a href="pecas/${m[0]}">Peças ${m[1]}</a></li>`).join('')}<li><a href="loja.html?cat=classicos"><b>Todos os modelos →</b></a></li></ul></div>
+<div><h6>Navegar</h6><ul><li><a href="index.html">Home</a></li><li><a href="loja.html">Loja</a></li><li><a href="na-pista.html">Na pista</a></li><li><a href="eventos.html">Eventos</a></li><li><a href="vestuario.html">Vestuário</a></li><li><a href="blog.html">Blog</a></li></ul></div>
 <div><h6>Ferramentas</h6><ul><li><a href="na-pista.html#tempo">Tempo do carro</a></li><li><a href="na-pista.html">Tempo de reação</a></li><li><a href="na-pista.html">Calculadora de bico</a></li><li><a href="#" onclick="window.G4projeto&&G4projeto.open();return false">🛒 Meu projeto</a></li></ul></div>
 </div>
 <div class="gb"><span>© ${y} <b>Grid 402 Performance</b>. Todos os direitos reservados.</span><span>Os produtos são vendidos e entregues pelo Mercado Livre. Links de afiliado.</span></div>
