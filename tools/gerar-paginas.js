@@ -32,6 +32,8 @@ const TODOS = (() => { const v = new Set(), out = []; for (const p of [...PRODUT
 const ESP = {
   'black-november': () => TODOS.filter(p => offP(p) >= 3).sort((a, b) => offP(b) - offP(a)).map(p => ({ ...p, rot: offP(p) + '% OFF' })),
   'fueltech': () => TODOS.filter(p => /fueltech|ft ?(250|300|450|550|600|700)\b/i.test(p.nome + ' ' + (p.marca || ''))).sort((a, b) => offP(b) - offP(a) || vendN(b) - vendN(a)).map(p => ({ ...p, rot: offP(p) ? offP(p) + '% OFF' : (p.marca || 'FuelTech') })),
+  'ofertas-turbo': () => TODOS.filter(p => p.categoria === 'turbo' || /turbo|turbina|wastegate|blow ?off|intercooler/i.test(p.nome)).sort((a, b) => offP(b) - offP(a) || vendN(b) - vendN(a)).map(p => ({ ...p, rot: offP(p) ? offP(p) + '% OFF' : (p.marca || 'Turbo') })),
+  'ofertas-opala': () => TODOS.filter(p => p.modelo === 'opala' || /opala/i.test(p.nome)).sort((a, b) => offP(b) - offP(a) || vendN(b) - vendN(a)).map(p => ({ ...p, rot: offP(p) ? offP(p) + '% OFF' : (p.tipo || 'Opala') })),
   'mais-vendidos': () => TODOS.filter(p => vendN(p) >= 100).sort((a, b) => vendN(b) - vendN(a) || (b.nota || 0) - (a.nota || 0)).map(p => ({ ...p, rot: p.vendidos + ' vendidos' })),
 };
 function itens(slug) {
