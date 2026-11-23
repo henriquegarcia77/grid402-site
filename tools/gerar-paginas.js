@@ -109,3 +109,5 @@ let sm = rd('sitemap.xml');
 sm = sm.replace(/(<loc>[^<]*\/(?:pecas\/[\w-]+|loja|antigos)<\/loc><lastmod>)[^<]*/g, `$1${hoje}`);
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sm);
 console.log('páginas geradas:', feitos);
+// data da última conferência de preços (mostrada na home e na loja)
+require('fs').writeFileSync(require('path').join(__dirname,'..','precos-data.js'),`window.PRECOS_EM="${new Date().toISOString().slice(0,10)}";\n`);

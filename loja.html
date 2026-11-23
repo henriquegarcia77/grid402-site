@@ -70,7 +70,7 @@ body{background:#f2f2f4;font-family:Inter,system-ui,sans-serif;color:#1d1d1f;mar
 <div id="hdr"></div>
 <div class="lband"><div class="lwrap">
   <h1>Loja de peças para arrancada e carros antigos</h1>
-  <p>Turbo, injeção, bicos, nitro, motor forjado, rodas, acessórios e peças para clássicos. Monte seu projeto 🛒 e compre com segurança pelo Mercado Livre.</p>
+  <p>Turbo, injeção, bicos, nitro, motor forjado, rodas, acessórios e peças para clássicos. Monte seu projeto 🛒 e compre com segurança pelo Mercado Livre.</p><p class="lstamp" id="lstamp" style="font-size:13px;opacity:.75;margin-top:6px"></p>
   <div class="lnav" id="lnav"></div>
 </div></div>
 <div class="sov" id="sov"></div>
@@ -81,7 +81,7 @@ body{background:#f2f2f4;font-family:Inter,system-ui,sans-serif;color:#1d1d1f;mar
       <button class="ftog" id="ftog">☰ Filtros</button>
       <div class="lsearch"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="pq" type="search" placeholder="Buscar produto: turbina, bico, FuelTech…"></div>
       <label for="sort">Ordenar</label>
-      <select id="sort"><option value="rel">Mais procurados</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option><option value="az">Nome A–Z</option></select>
+      <select id="sort"><option value="rel">Em destaque</option><option value="off">Maior desconto</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option><option value="az">Nome A–Z</option></select>
     </div>
   </div>
   <div class="lgrid">
@@ -112,6 +112,7 @@ body{background:#f2f2f4;font-family:Inter,system-ui,sans-serif;color:#1d1d1f;mar
 <script src="config.js"></script>
 <script src="header.js?v=8"></script>
 <script src="produtos.js"></script>
+<script src="precos-data.js"></script>
 <script>
 const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
 const norm=s=>(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
@@ -128,7 +129,7 @@ $('fBrand').innerHTML=marcas.map(m=>`<label class="chk" data-b="${norm(m)}"><spa
 $('bq').oninput=()=>{const q=norm($('bq').value);document.querySelectorAll('#fBrand .chk').forEach(l=>l.style.display=l.dataset.b.includes(q)?'':'none')};
 document.querySelectorAll('.side input[type=checkbox]').forEach(i=>i.onchange=()=>{i.checked?st[i.dataset.f].add(i.value):st[i.dataset.f].delete(i.value);st.lim=0;render()});
 const card=p=>{const off=p.de>p.preco?Math.round((1-p.preco/p.de)*100):0;const top=TOP.indexOf(p.link);
- const bd=top>-1?`<span class="bd">🔥 MAIS PROCURADO</span>`:off?`<span class="bd">${off}% OFF</span>`:p.preco&&p.preco<=300?`<span class="bd dk">ATÉ R$ 300</span>`:`<span class="bd dk">${(p.tipo||cname(p.categoria)).toUpperCase()}</span>`;
+ const bd=top>-1?`<span class="bd">⭐ ESCOLHA DO BOX</span>`:off?`<span class="bd">${off}% OFF</span>`:p.preco&&p.preco<=300?`<span class="bd dk">ATÉ R$ 300</span>`:`<span class="bd dk">${(p.tipo||cname(p.categoria)).toUpperCase()}</span>`;
  return `<a class="pc4" href="${p.link}" target="_blank" rel="sponsored noopener"><div class="im">${p.img?`<img src="${p.img}" alt="${p.nome.replace(/"/g,'')}" loading="lazy">`:''}</div>${bd}<div class="mk">${p.modelo&&window.__MOD?((__MOD.find(m=>m.id===p.modelo)||{}).nome||'')+' · ':''}${p.marca}</div><h3>${p.nome}</h3>
  ${p.de>p.preco?`<span class="old">${brl(p.de)}</span>`:''}${p.preco?`<div class="pr">${brl(p.preco)}</div>${p.parcelas>1?`<div class="pa">em até ${p.parcelas}x de ${brl(p.preco/p.parcelas)}</div>`:'<div class="pa">no Mercado Livre</div>'}`:'<div class="pr" style="font-size:15px">Ver preço</div>'}
  <div class="bts"><span class="buy">Comprar no Mercado Livre</span></div></a>`};
@@ -136,7 +137,7 @@ function render(){
   let L=ALL.filter(p=>(!st.cats.size||st.cats.has(p.categoria))&&(!st.mods.size||st.mods.has(p.modelo))&&(!st.brands.size||st.brands.has(p.marca))&&(!st.q||norm(p.nome+' '+p.marca+' '+cname(p.categoria)+' '+(p.modelo||'')).includes(norm(st.q)))&&(st.min==null||p.preco>=st.min)&&(st.max==null||p.preco<=st.max));
   const s=$('sort').value;
   if(s==='rel')L.sort((a,b)=>{const ia=TOP.indexOf(a.link),ib=TOP.indexOf(b.link);return (ia<0?99:ia)-(ib<0?99:ib)||(b.destaque?1:0)-(a.destaque?1:0)});
-  if(s==='menor')L.sort((a,b)=>(a.preco||1e9)-(b.preco||1e9));if(s==='maior')L.sort((a,b)=>b.preco-a.preco);if(s==='az')L.sort((a,b)=>a.nome.localeCompare(b.nome));
+  if(s==='off')L.sort((a,b)=>((b.de>b.preco?(b.de-b.preco)/b.de:0)-(a.de>a.preco?(a.de-a.preco)/a.de:0)));if(s==='menor')L.sort((a,b)=>(a.preco||1e9)-(b.preco||1e9));if(s==='maior')L.sort((a,b)=>b.preco-a.preco);if(s==='az')L.sort((a,b)=>a.nome.localeCompare(b.nome));
   const per=innerWidth<=860?10:16;st.lim=st.lim||per;
   $('grid').innerHTML=L.length?L.slice(0,st.lim).map(card).join(''):`<div class="empty">Nenhum produto encontrado com esses filtros.<br><br><button class="more" onclick="document.getElementById('clear').click()">Limpar filtros</button></div>`;
   $('moreBtn').style.display=L.length>st.lim?'':'none';
@@ -161,6 +162,7 @@ window.doSearch=t=>{$('pq').value=t;st.q=t;st.lim=0;render()};
 const hp=new URLSearchParams(location.search);
 if(hp.get('cat')){st.cats.add(hp.get('cat'));document.querySelectorAll('[data-f=cats]').forEach(i=>i.checked=st.cats.has(i.value))}
 if(hp.get('marca')){st.brands.add(hp.get('marca'));document.querySelectorAll('[data-f=brands]').forEach(i=>i.checked=st.brands.has(i.value))}
+if(hp.get('sort')){$('sort').value=hp.get('sort')}
 if(hp.get('q')){st.q=hp.get('q');$('pq').value=st.q}
 if(hp.get('modelo'))st.mods.add(hp.get('modelo'));
 if(hp.get('preco')){const[a,b]=hp.get('preco').split('-');st.min=a?+a:null;st.max=b?+b:null}
@@ -181,5 +183,6 @@ render();
 const _y=document.getElementById('y');_y&&(_y.textContent=new Date().getFullYear());
 </script>
 <script src="common.js"></script>
+<script>{const e=document.getElementById('lstamp');if(e&&window.PRECOS_EM)e.textContent='● Preços conferidos em '+new Date(PRECOS_EM+'T12:00').toLocaleDateString('pt-BR')+'. Itens sem estoque são retirados da loja.'}</script>
 </body>
 </html>
