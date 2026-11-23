@@ -10,7 +10,7 @@
 <link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
 <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="apple-touch-icon" href="favicon-180.png">
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 <style>
 :root{--red:#e10600;--line:#e5e5ea;--mut:#6e6e73}
 body{background:#f2f2f4;font-family:Inter,system-ui,sans-serif;color:#1d1d1f;margin:0}
@@ -65,6 +65,7 @@ body{background:#f2f2f4;font-family:Inter,system-ui,sans-serif;color:#1d1d1f;mar
 .sov{display:none}@media(max-width:860px){.sov{display:block}}
 .sclose{display:none;position:absolute;top:16px;right:16px;background:#111;color:#fff;border:0;border-radius:50%;width:36px;height:36px;font-size:16px}
 .pgrid>*,.mpgrid>*,.hcats>*{min-width:0}.pgrid h3,.pgrid h4,.pgrid .nm,.mpgrid h3,.mpgrid h4{overflow-wrap:anywhere;hyphens:auto}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","name":"Loja de peças para arrancada e carros antigos","url":"https://grid402performance.com.br/loja","isPartOf":{"@type":"WebSite","name":"Grid 402 Performance","url":"https://grid402performance.com.br/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://grid402performance.com.br/"},{"@type":"ListItem","position":2,"name":"Loja","item":"https://grid402performance.com.br/loja"}]}]}</script>
 </head>
 <body>
 <div id="hdr"></div>
@@ -128,9 +129,11 @@ let marcas=[...new Set(PRODUTOS.map(p=>p.marca))].sort((a,b)=>a.localeCompare(b)
 $('fBrand').innerHTML=marcas.map(m=>`<label class="chk" data-b="${norm(m)}"><span>${m}</span><em>${count(p=>p.marca===m)}</em><input type="checkbox" value="${m}" data-f="brands"></label>`).join('');
 $('bq').oninput=()=>{const q=norm($('bq').value);document.querySelectorAll('#fBrand .chk').forEach(l=>l.style.display=l.dataset.b.includes(q)?'':'none')};
 document.querySelectorAll('.side input[type=checkbox]').forEach(i=>i.onchange=()=>{i.checked?st[i.dataset.f].add(i.value):st[i.dataset.f].delete(i.value);st.lim=0;render()});
+const ps=p=>{const a=[];if(p.nota)a.push(`<b>★ ${(+p.nota).toFixed(1)}</b>`);if(p.vendidos)a.push(`${p.vendidos} vendidos`);if(p.chega)a.push(`<span class="ch">Chega ${p.chega}</span>`);return a.length?`<div class="ps">${a.join(' · ')}</div>`:''};
+const hot=p=>p.ultimas?'<span class="hot ult">ÚLTIMAS UNIDADES</span>':/mil|1000/.test(p.vendidos||'')?'<span class="hot">🔥 MAIS VENDIDO</span>':'';
 const card=p=>{const off=p.de>p.preco?Math.round((1-p.preco/p.de)*100):0;const top=TOP.indexOf(p.link);
  const bd=top>-1?`<span class="bd">⭐ ESCOLHA DO BOX</span>`:off?`<span class="bd">${off}% OFF</span>`:p.preco&&p.preco<=300?`<span class="bd dk">ATÉ R$ 300</span>`:`<span class="bd dk">${(p.tipo||cname(p.categoria)).toUpperCase()}</span>`;
- return `<a class="pc4" href="${p.link}" target="_blank" rel="sponsored noopener"><div class="im">${p.img?`<img src="${p.img}" alt="${p.nome.replace(/"/g,'')}" loading="lazy">`:''}</div>${bd}<div class="mk">${p.modelo&&window.__MOD?((__MOD.find(m=>m.id===p.modelo)||{}).nome||'')+' · ':''}${p.marca}</div><h3>${p.nome}</h3>
+ return `<a class="pc4" href="${p.link}" target="_blank" rel="sponsored noopener"><div class="im">${p.img?`<img src="${p.img}" alt="${p.nome.replace(/"/g,'')}" loading="lazy">`:''}</div>${bd}<div class="mk">${p.modelo&&window.__MOD?((__MOD.find(m=>m.id===p.modelo)||{}).nome||'')+' · ':''}${p.marca}</div>${hot(p)}<h3>${p.nome}</h3>${ps(p)}
  ${p.de>p.preco?`<span class="old">${brl(p.de)}</span>`:''}${p.preco?`<div class="pr">${brl(p.preco)}</div>${p.parcelas>1?`<div class="pa">em até ${p.parcelas}x de ${brl(p.preco/p.parcelas)}</div>`:'<div class="pa">no Mercado Livre</div>'}`:'<div class="pr" style="font-size:15px">Ver preço</div>'}
  <div class="bts"><span class="buy">Comprar no Mercado Livre</span></div></a>`};
 function render(){

@@ -31,6 +31,7 @@
 
 ## Guias do blog
 - [FT450 ou FT550: qual FuelTech comprar para o seu projeto](https://grid402performance.com.br/blog/ft450-ou-ft550-qual-fueltech-comprar): Diferenças entre FuelTech FT450 e FT550, qual combina com turbo de rua ou arrancada e o que mais comprar junto (chicote e wideband).
+- [Cânister no Opala: o que é, onde fica e se pode tirar](https://grid402performance.com.br/blog/canister-opala-o-que-e-onde-fica): Entenda o que é o cânister (canister), se o seu Opala tem, onde fica, os sintomas de defeito e como trocar sem errar.
 - [3 step: o que é, como funciona e como instalar no carro turbo](https://grid402performance.com.br/blog/3-step-o-que-e-como-funciona): Entenda o que é 3 step (e 2 step), para que serve na largada de arrancada, como instalar e quais modelos comprar.
 - [Sonda wideband: o que é, para que serve e qual comprar](https://grid402performance.com.br/blog/sonda-wideband-o-que-e-qual-comprar): Por que a wideband é obrigatória em carro preparado, diferença para a sonda original, Bosch 4.2 x 4.9 e como instalar.
 - [Manômetro de turbo e de óleo: quais instalar e como ligar](https://grid402performance.com.br/blog/manometro-pressao-turbo-oleo-como-instalar): Os relógios que todo carro turbo precisa: pressão do turbo, pressão de óleo e combustível. Qual comprar e como instalar.

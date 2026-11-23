@@ -33,7 +33,7 @@ function itens(slug) {
 
 function card(p) {
   const de = p.de && p.de > p.preco ? `<s>${brl(p.de)}</s>` : '';
-  return `<a href="${p.link}" target="_blank" rel="sponsored noopener"><img src="${esc(p.img)}" alt="${esc(p.nome)}" loading="lazy" decoding="async" width="300" height="300"><small>${esc(p.rot)}</small><h2>${esc(p.nome)}</h2>${de}<b>${brl(p.preco)}</b><em>Ver no Mercado Livre →</em></a>`;
+  return `<a href="${p.link}" target="_blank" rel="sponsored noopener"><img src="${esc(p.img)}" alt="${esc(p.nome)}" loading="lazy" decoding="async" width="300" height="300"><small>${esc(p.rot)}</small>${p.vendidos&&/mil|1000/.test(p.vendidos)?'<i class="hot">🔥 MAIS VENDIDO</i>':''}<h2>${esc(p.nome)}</h2>${(p.nota||p.vendidos||p.chega)?`<div class="ps">${[p.nota&&`<b>★ ${(+p.nota).toFixed(1)}</b>`,p.vendidos&&`${p.vendidos} vendidos`,p.chega&&`<span class="ch">Chega ${p.chega}</span>`].filter(Boolean).join(' · ')}</div>`:''}${de}<b>${brl(p.preco)}</b><em>Ver no Mercado Livre →</em></a>`;
 }
 
 const CSS = `<style id="seo-css">.lp .txt{max-width:780px;font-size:17px;line-height:1.7;color:#333;margin-top:10px}.lp .txt h2{font-size:26px;margin:34px 0 10px;letter-spacing:-.02em;line-height:1.2}.lp .txt p{margin-bottom:14px}
