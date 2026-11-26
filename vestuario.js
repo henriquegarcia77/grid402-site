@@ -5,6 +5,8 @@
    img  : link da foto do produto
    ========================================================= */
 const VESTUARIO = [
+ {"nome": "Camiseta FuelTech Carro Esportivo Arrancada", "tipo": "Camiseta", "loja": "ml", "img": "https://http2.mlstatic.com/D_NQ_NP_822286-MLB95659965175_102025-O-camiseta-fueltech-carro-esportivo-arrancada.webp", "preco": 29.9, "link": "https://meli.la/2epFNCG"},
+ {"nome": "Boné Jeans Drag Racing Engine com Bandeira Quadriculada", "tipo": "Boné", "loja": "ml", "img": "https://http2.mlstatic.com/D_NQ_NP_699816-CBT119003117242_112026-O-bone-de-beisebol-jeans-drag-racing-engine-com-bandeira-quadriculada.webp", "preco": 47.06, "link": "https://meli.la/1P9Frgn"},
  {"nome": "Boné Simpson Racing Arrancada Original", "tipo": "Boné", "loja": "ml", "img": "https://http2.mlstatic.com/D_NQ_NP_705653-MLB115604318515_082026-O-bone-simpson-racing-arrancada-original-turbo-aspirado.webp", "preco": 231.57, "link": "https://meli.la/1TtXS1h"},
  {"nome": "Boné Trucker Bordô FuelTech", "tipo": "Boné", "loja": "ml", "img": "https://http2.mlstatic.com/D_NQ_NP_887033-MLA117604888962_102026-O.webp", "preco": 78, "link": "https://meli.la/1WCwj4o"},
  {"nome": "Boné Trucker Telinha Fuel Tech Motor Sensor", "tipo": "Boné", "loja": "ml", "img": "https://http2.mlstatic.com/D_NQ_NP_736188-MLB74317195396_022024-O-bone-trucker-telinha-personalizado-fuel-tech-motor-sensor.webp", "preco": 54.9, "link": "https://meli.la/2PxgU23"},

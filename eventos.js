@@ -6,7 +6,7 @@
    site         : site oficial (opcional)
    Eventos com data que já passou somem sozinhos da lista "Próximos".
    Coloque data:"" em eventos sem data confirmada (aparecem em "Em breve").
-   Fonte das datas: SPID CUP, FuelTech/imprensa, PascoalDragster, Sympla (conferido em 23/11/2026)
+   Fonte das datas: SPID CUP, FuelTech/imprensa, PascoalDragster, Sympla (conferido em 26/11/2026)
    ========================================================= */
 const EVENTOS = [
   { nome:"Super Final SPID CUP 2026", prova:"A etapa que decide os campeões da temporada do SPID CUP. São quatro dias de treinos, classificatórias e eliminatórias em mais de dez categorias, com destaque para a Pro Mod, onde carros passam dos 300 km/h nos 201 metros. Boxes abertos para o público, praça de alimentação e área de expositores.", metros:201, pista:'Pista de arrancada asfaltada com preparação (prep), 2 raias, cronometragem eletrônica e árvore de largada oficial.', tipo:"Campeonato", inicio:"2026-11-19", fim:"2026-11-22",
@@ -46,6 +46,10 @@ const EVENTOS = [
     local:"Race Valley Motorsport Park", cidade:"Tremembé", uf:"SP",
     desc:"Pega de rua organizado no Race Valley, ingresso a partir de R$ 40.",
     insta:"https://www.instagram.com/racevalley/", ingresso:"https://www.sympla.com.br/evento/raiz-o-verdadeiro-pega-de-rua-race-valley/3653440", site:"" },
+  { nome:"Racha Tarumã — Encontro de Opalas e Caravans", prova:"Noite de encontro de Opalas e Caravans no Autódromo de Tarumã, com exposição dos carros e confraternização entre opaleiros do Rio Grande do Sul.", metros:0, pista:'Autódromo Internacional de Tarumã.', tipo:"Encontro", inicio:"2026-12-11", fim:"2026-12-11",
+    local:"Autódromo Internacional de Tarumã", cidade:"Viamão", uf:"RS",
+    desc:"Encontro noturno de Opalas e Caravans em Tarumã.",
+    insta:"", ingresso:"https://www.sympla.com.br/evento/racha-taruma-encontro-de-opalas-e-caravans/3539532", site:"" },
   { nome:"Lista Área 43 — Londrina", prova:"Festa da lista No Prep de Londrina e região: disputas entre o TOP 20 da Lista Área 43, desafios do Shark Tank e carros atração.", metros:201, pista:'Pista No Prep de 2 raias em Londrina.', tipo:"No Prep", inicio:"2026-12-12", fim:"2026-12-12",
     local:"Av. Henrique Mansano, 777 — Jardim dos Alpes I", cidade:"Londrina", uf:"PR",
     desc:"TOP 20 da Lista Área 43 e Shark Tank no mesmo dia.",
