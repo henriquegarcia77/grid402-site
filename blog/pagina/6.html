@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Grid 402 — página 6</title>
+<!--seo--><base href="/"><meta name="description" content="Página 6 do blog Grid 402: guias de preparação, carburação e arrancada."><link rel="canonical" href="https://grid402performance.com.br/blog/pagina/6"><link rel="prev" href="https://grid402performance.com.br/blog/pagina/5"><meta property="og:type" content="website"><meta property="og:site_name" content="Grid 402 Performance"><meta property="og:title" content="Blog Grid 402 — página 6"><meta property="og:description" content="Página 6 do blog Grid 402: guias de preparação, carburação e arrancada."><meta property="og:url" content="https://grid402performance.com.br/blog/pagina/6"><meta property="og:image" content="https://grid402performance.com.br/og.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#e10600"><!--/seo-->
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="apple-touch-icon" href="favicon-180.png">
+<link rel="stylesheet" href="style.css?v=6">
+<style>
+.bhero{padding-top:80px;padding-bottom:30px}@media(max-width:700px){.bhero{padding-top:40px}.bhero h1{font-size:44px}.bhero p{font-size:17px}}
+.bhero p{color:var(--mut);font-size:20px;margin-top:10px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:30px 0 40px}
+.filters button{border:0;background:#e8e8ed;padding:9px 18px;border-radius:980px;font:600 14px var(--font);cursor:pointer;transition:.2s}
+.filters button.on{background:var(--ink);color:#fff}
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-bottom:100px}
+.post{background:#fff;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:.4s cubic-bezier(.16,1,.3,1)}
+.post:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(0,0,0,.1)}
+.post .cover{position:relative;overflow:hidden}.post .cover .pcover{height:100%}
+
+.post .cover span{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.2);padding:5px 10px;border-radius:980px;backdrop-filter:blur(6px)}
+.post .body{padding:24px;display:flex;flex-direction:column;flex:1}
+.post h3{font-size:22px;line-height:1.2;margin-bottom:10px}
+.post p{color:var(--mut);font-size:15px;flex:1}
+.post small{margin-top:16px;color:var(--mut);font-size:13px}
+.post:first-child{grid-column:span 2;flex-direction:row}
+.post:first-child .cover{aspect-ratio:auto;flex:1.2}
+.post:first-child .body{justify-content:center;padding:40px}
+.post:first-child h3{font-size:32px}
+@media(max-width:900px){.posts{grid-template-columns:1fr}.post:first-child{grid-column:auto;flex-direction:column}.post:first-child .cover{aspect-ratio:16/10}}
+
+.pcover{position:relative;overflow:hidden;aspect-ratio:16/10;background:#0b0b0d;isolation:isolate}
+.pcover .pc-bg{position:absolute;inset:0;background:radial-gradient(120% 90% at 80% 20%,var(--c),transparent 60%),linear-gradient(135deg,#0b0b0d,#1d1d22);opacity:.95}
+.pcover .pc-grid{position:absolute;inset:0;background:repeating-conic-gradient(#fff 0 25%,transparent 0 50%) 0 0/28px 28px;opacity:.05;transform:perspective(500px) rotateX(55deg) translateY(30%) scale(1.6);transform-origin:bottom}
+.pc-i{position:absolute;width:38%;aspect-ratio:1;object-fit:contain;background:#fff;border-radius:18px;padding:8px;box-shadow:0 18px 40px rgba(0,0,0,.45);transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.pc-i0{right:8%;top:14%;transform:rotate(6deg);z-index:3}
+.pc-i1{right:34%;top:30%;width:30%;transform:rotate(-8deg);z-index:2}
+.pc-i2{right:-4%;top:52%;width:28%;transform:rotate(12deg);z-index:1}
+a:hover .pc-i0,.pcover.big:hover .pc-i0{transform:rotate(2deg) translateY(-8px) scale(1.04)}
+a:hover .pc-i1,.pcover.big:hover .pc-i1{transform:rotate(-12deg) translateX(-8px)}
+a:hover .pc-i2,.pcover.big:hover .pc-i2{transform:rotate(16deg) translateY(6px)}
+.pc-tag{position:absolute;left:20px;bottom:18px;z-index:4;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.18);padding:6px 12px;border-radius:980px;backdrop-filter:blur(6px)}
+.pc-402{position:absolute;left:14px;top:-18px;font-size:120px;font-weight:800;letter-spacing:-.06em;color:#fff;opacity:.08;z-index:0}
+.post:first-child .pc-i{width:52%}.post:first-child .pc-i0{right:10%;top:18%}.post:first-child .pc-i1{right:42%;top:36%;width:40%}.post:first-child .pc-i2{right:-8%;top:58%;width:38%}
+.pag{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:0 0 100px}.pag a,.pag span{min-width:42px;text-align:center;padding:10px 14px;border-radius:980px;background:#e8e8ed;font:600 15px var(--font);color:inherit;text-decoration:none}.pag span.on{background:var(--ink);color:#fff}.pag a:hover{background:#d6d6dc}.posts{padding-bottom:40px}
+</style>
+</head>
+<body>
+<div id="hdr"></div>
+<div class="wrap bhero hero-in">
+  <span class="tag mono">// BLOG</span>
+  <h1>Blog — página 6</h1>
+  <p>Dicas de preparação, injeção, pilotagem e restauração.</p>
+</div>
+<div class="wrap">
+  <div class="filters" id="filters"></div>
+  <div class="posts stagger" id="posts">
+<a class="post" href="blog/tracao-201m-no-prep-rodas-embreagem" data-id="tracao-201m-no-prep-rodas-embreagem"><div class="cover"><div class="pcover" style="--c:#111111"><div class="pc-bg"></div><span class="pc-tag">Pista</span></div></div><div class="body"><h3>Tração no 201 m e no No Prep: rodas, embreagem e tanque que fazem diferença</h3><p>Potência sem tração vira fumaça. Veja as peças que ajudam o carro a sair na frente na arrancada e no No Prep.</p><small>14 de novembro de 2026 · 3 min de leitura</small></div></a>
+</div>
+<div class="pag" id="pag" role="navigation" aria-label="Páginas do blog"><a href="blog/pagina/5" rel="prev">‹ Anterior</a><a href="blog">1</a><a href="blog/pagina/2">2</a><a href="blog/pagina/3">3</a><a href="blog/pagina/4">4</a><a href="blog/pagina/5">5</a><span class="on">6</span></div>
+</div>
+<footer><div class="wrap"><span>© <span id="y"></span> Grid 402 Performance · Compras pelo Mercado Livre</span></div></footer>
+<script src="config.js"></script>
+<script src="header.js?v=9"></script>
+<script src="produtos.js"></script>
+<script src="posts.js?v=1795707763532"></script>
+<script src="blogui.js?v=5"></script>
+<script>
+const PAG=6,POR=12;
+const fmt=d=>new Date(d+'T12:00').toLocaleDateString('pt-BR',{day:'numeric',month:'long',year:'numeric'});
+const cats=['Todos',...new Set(POSTS.map(p=>p.categoria))];
+filters.innerHTML=cats.map((c,i)=>`<button class="${i?'':'on'}">${c}</button>`).join('');
+const card=p=>`<a class="post" href="blog/${p.id}"><div class="cover">${coverHTML(p)}</div><div class="body"><h3>${p.titulo}</h3><p>${p.resumo}</p><small>${fmt(p.data)} · ${p.tempo} de leitura</small></div></a>`;
+const ord=[...POSTS].sort((a,b)=>b.data.localeCompare(a.data));
+function draw(c){const pag=document.getElementById('pag');
+  if(c==='Todos'){posts.innerHTML=ord.slice((PAG-1)*POR,PAG*POR).map(card).join('');if(pag)pag.style.display=''}
+  else{posts.innerHTML=ord.filter(p=>p.categoria===c).map(card).join('');if(pag)pag.style.display='none'}}
+filters.onclick=e=>{if(e.target.tagName!=='BUTTON')return;[...filters.children].forEach(b=>b.classList.toggle('on',b===e.target));draw(e.target.textContent)};
+draw('Todos');
+</script>
+<script src="common.js"></script>
+</body>
+</html>

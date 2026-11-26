@@ -43,16 +43,23 @@ function itens(slug) {
   return null;
 }
 
+let PSLUG = {};
+try { PSLUG = eval(rd('produto-slugs.js').replace('window.PSLUG=', '(') .replace(/;\s*$/, ')')); } catch (e) { }
 function card(p) {
   const de = p.de && p.de > p.preco ? `<s>${brl(p.de)}</s>` : '';
-  return `<a href="${p.link}" target="_blank" rel="sponsored noopener"><img src="${esc(p.img)}" alt="${esc(p.nome)}" loading="lazy" decoding="async" width="300" height="300"><small>${esc(p.rot)}</small>${p.vendidos&&/mil|1000/.test(p.vendidos)?'<i class="hot">🔥 MAIS VENDIDO</i>':''}<h2>${esc(p.nome)}</h2>${(p.nota||p.vendidos||p.chega)?`<div class="ps">${[p.nota&&`<b>★ ${(+p.nota).toFixed(1)}</b>`,p.vendidos&&`${p.vendidos} vendidos`,p.chega&&`<span class="ch">Chega ${p.chega}</span>`].filter(Boolean).join(' · ')}</div>`:''}${de}<b>${brl(p.preco)}</b><em>Ver no Mercado Livre →</em></a>`;
+  const sl = PSLUG[p.link];
+  const top = `<img src="${esc(p.img)}" alt="${esc(p.nome)}" loading="lazy" decoding="async" width="300" height="300"><small>${esc(p.rot)}</small>${p.vendidos&&/mil|1000/.test(p.vendidos)?'<i class="hot">🔥 MAIS VENDIDO</i>':''}${p.ultimas?'<i class="hot">ÚLTIMAS UNIDADES</i>':''}<h2>${esc(p.nome)}</h2>`;
+  const info = `${(p.nota||p.vendidos||p.chega)?`<div class="ps">${[p.nota&&`<b>★ ${(+p.nota).toFixed(1)}</b>`,p.vendidos&&`${p.vendidos} vendidos`,p.chega&&`<span class="ch">${p.chega}</span>`].filter(Boolean).join(' · ')}</div>`:''}${de}<b>${brl(p.preco)}</b>`;
+  if (!sl) return `<a href="${p.link}" target="_blank" rel="sponsored noopener">${top}${info}<em>Ver no Mercado Livre →</em></a>`;
+  return `<div class="lpc"><a href="produto/${sl}" class="lpi">${top}</a>${info}<a href="${p.link}" target="_blank" rel="sponsored noopener" class="lpm">Ver no Mercado Livre →</a><a href="produto/${sl}" class="lpd">Ficha técnica e detalhes</a></div>`;
 }
 
 const CSS = `<style id="seo-css">.lp .txt{max-width:780px;font-size:17px;line-height:1.7;color:#333;margin-top:10px}.lp .txt h2{font-size:26px;margin:34px 0 10px;letter-spacing:-.02em;line-height:1.2}.lp .txt p{margin-bottom:14px}
 .lpg s{color:var(--mut);font-size:13px}.lp .sec{font-size:24px;margin:44px 0 14px;letter-spacing:-.02em}
 .faq{max-width:780px}.faq details{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin-bottom:10px}.faq summary{font-weight:700;cursor:pointer;font-size:16px;list-style:none;display:flex;justify-content:space-between;gap:12px}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";color:var(--red);font-size:22px;line-height:1}.faq details[open] summary:after{content:"–"}.faq details p{margin-top:10px;color:#333;line-height:1.65}
 .rel{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;max-width:1100px}.rel a{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;font-weight:600;line-height:1.35;transition:.2s}.rel a:hover{border-color:var(--red);color:var(--red)}.rel a span{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:6px}
-.upd{font-size:13px;color:var(--mut);margin-top:6px}</style>`;
+.upd{font-size:13px;color:var(--mut);margin-top:6px}
+.lpg .lpc{background:#fff;border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:6px;border:1px solid var(--line);transition:.25s}.lpg .lpc:hover{box-shadow:0 14px 30px rgba(0,0,0,.08)}.lpg .lpc a{background:none;border:0;padding:0;border-radius:0;transform:none!important;box-shadow:none!important}.lpg .lpi{display:flex;flex-direction:column;gap:6px}.lpg .lpm{color:var(--red);font-weight:700;font-size:14px;margin-top:4px}.lpg .lpd{font-size:12.5px;color:var(--mut);text-decoration:underline}.lpg .lpc b{font-size:18px}</style>`;
 
 const nomes = {};
 const files = fs.readdirSync(path.join(ROOT, 'pecas')).filter(f => f.endsWith('.html'));

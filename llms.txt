@@ -30,6 +30,11 @@
 - [Peças para Omega](https://grid402performance.com.br/pecas/omega): O sedã 6 cilindros que virou lenda.
 
 ## Guias do blog
+- [Weber 40 ou 44: qual carburador usar no seu motor](https://grid402performance.com.br/blog/weber-40-ou-44-qual-usar): Diferença entre Weber 40 IDF e 44 IDF, como o difusor muda tudo, qual combina com AP, Opala 4cc, Opala 6cc e Fusca, e quando um só carburador basta.
+- [Como sincronizar dois carburadores Weber (passo a passo)](https://grid402performance.com.br/blog/como-sincronizar-weber-dupla): Passo a passo para sincronizar Weber dupla no Opala 6cc, Fusca e motores com dois carburadores: varão, sincronizador de fluxo, marcha lenta e mistura.
+- [2-step, 3-step e launch control: qual a diferença](https://grid402performance.com.br/blog/2-step-3-step-launch-control-diferenca): Entenda de uma vez a diferença entre 2-step, 3-step e launch control, para que cada um serve na arrancada e se o seu carro precisa de algum deles.
+- [Bico injetor: como escolher o tamanho pela potência (com tabela)](https://grid402performance.com.br/blog/bico-injetor-tamanho-por-potencia): Como calcular a vazão do bico injetor pela potência, diferença entre gasolina e etanol, lb/h e cc/min, e tabela prática para 4 cilindros.
+- [Como começar na arrancada gastando pouco](https://grid402performance.com.br/blog/como-comecar-na-arrancada-gastando-pouco): Guia para começar na arrancada com o carro que você tem: o que é obrigatório, o que vale investir primeiro e como evoluir sem jogar dinheiro fora.
 - [FT450 ou FT550: qual FuelTech comprar para o seu projeto](https://grid402performance.com.br/blog/ft450-ou-ft550-qual-fueltech-comprar): Diferenças entre FuelTech FT450 e FT550, qual combina com turbo de rua ou arrancada e o que mais comprar junto (chicote e wideband).
 - [Cânister no Opala: o que é, onde fica e se pode tirar](https://grid402performance.com.br/blog/canister-opala-o-que-e-onde-fica): Entenda o que é o cânister (canister), se o seu Opala tem, onde fica, os sintomas de defeito e como trocar sem errar.
 - [Weber não segura a lenta e morre: causas e como resolver](https://grid402performance.com.br/blog/weber-nao-segura-lenta-morre): Carro com Weber 40 ou 44 que só funciona acelerando e morre quando solta o pé? Veja as causas mais comuns e o passo a passo para acertar a lenta.
