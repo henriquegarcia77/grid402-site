@@ -509,7 +509,7 @@ const POSTS = [
  {
   "id": "3-step-o-que-e-como-funciona",
   "titulo": "3 step: o que é, como funciona e como instalar no carro turbo",
-  "resumo": "Entenda o que é 3 step (e 2 step), para que serve na largada de arrancada, como instalar e quais modelos comprar.",
+  "resumo": "3 step e 2 step explicados: para que serve o corte de giro na largada, diferença entre eles, como ligar no carro turbo e quais modelos comprar.",
   "categoria": "Preparação",
   "data": "2026-11-20",
   "tempo": "4 min",
@@ -522,7 +522,7 @@ const POSTS = [
  {
   "id": "sonda-wideband-o-que-e-qual-comprar",
   "titulo": "Sonda wideband: o que é, para que serve e qual comprar",
-  "resumo": "Por que a wideband é obrigatória em carro preparado, diferença para a sonda original, Bosch 4.2 x 4.9 e como instalar.",
+  "resumo": "Wideband FuelTech ou Bosch: para que serve, diferença para a sonda original, LSU 4.2 x 4.9, onde instalar no escape e qual comprar.",
   "categoria": "Injeção",
   "data": "2026-11-20",
   "tempo": "4 min",
@@ -694,7 +694,7 @@ const POSTS = [
  {
   "id": "carburador-weber-no-opala",
   "titulo": "Carburador Weber no Opala 4cc e 6cc: qual coletor usar e como acertar",
-  "resumo": "Weber 40, 44 ou 45? Um ou dois carburadores? Veja como escolher o coletor de admissão certo para o seu Opala.",
+  "resumo": "Weber 40, 44 ou 45 no Opala 4cc e 6cc: um ou dois carburadores, qual coletor de admissão usar e e como acertar a giclagem.",
   "categoria": "Clássicos",
   "data": "2026-11-18",
   "tempo": "6 min",
